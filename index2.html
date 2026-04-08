@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PocketSod Web Pages | Veteran-Built Websites for Small Business</title>
+  <meta name="description" content="PocketSod LLC — Veteran-owned web design for small businesses. Custom websites, SEO, hosting management, and ongoing support. Serving all 50 states.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500;600&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & ROOT ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:       #1A1206;
+      --dark-mid:   #241A08;
+      --dark-warm:  #32240C;
+      --gold:       #9E6E14;
+      --gold-light: #C8913A;
+      --gold-pale:  #DEB865;
+      --cream:      #F0EDE4;
+      --cream-mid:  #E6E0D2;
+      --cream-dark: #D8D0BE;
+      --white:      #FAFAF7;
+      --text:       #1A1206;
+      --text-muted: #5C4F38;
+
+      --font-head:  'Barlow Condensed', sans-serif;
+      --font-body:  'Barlow', sans-serif;
+      --font-serif: 'Crimson Pro', serif;
+
+      --shadow:    0 4px 24px rgba(26,18,6,0.10);
+      --shadow-lg: 0 12px 48px rgba(26,18,6,0.18);
+      --t: 0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--cream); line-height: 1.6; }
+
+    /* ── UTILITY ─────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+    .section    { padding: 100px 0; }
+
+    .label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    /* ── VERSION TOGGLE ─────────────────────────────── */
+    .version-toggle {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--dark);
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.28);
+      overflow: hidden;
+    }
+    .version-toggle-label {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      padding: 0 0.9rem;
+      white-space: nowrap;
+      border-right: 1px solid rgba(200,145,58,0.25);
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .version-toggle-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.6rem 1.1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--t);
+    }
+    .version-toggle-btn.active { background: var(--gold-light); }
+    .version-toggle-btn.active .vt-num  { color: var(--dark); }
+    .version-toggle-btn.active .vt-name { color: var(--dark); opacity: 0.7; }
+    .version-toggle-btn:not(.active):hover { background: rgba(255,255,255,0.08); }
+    .vt-num  { font-family: var(--font-head); font-size: 1rem; font-weight: 800; color: #fff; line-height: 1; }
+    .vt-name { font-family: var(--font-head); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 2px; }
+    .vt-divider { width: 1px; height: 36px; background: rgba(200,145,58,0.25); }
+
+    /* ── BUTTONS ─────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2.25rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all var(--t);
+      line-height: 1;
+      text-align: center;
+    }
+    .btn-dark          { background: var(--dark);  color: var(--cream); border-color: var(--dark); }
+    .btn-dark:hover    { background: transparent;  color: var(--dark); }
+    .btn-gold          { background: var(--gold);  color: var(--cream); border-color: var(--gold); }
+    .btn-gold:hover    { background: transparent;  color: var(--gold); }
+    .btn-outline-dark        { background: transparent; color: var(--dark);  border-color: rgba(26,18,6,0.4); }
+    .btn-outline-dark:hover  { border-color: var(--dark); background: rgba(26,18,6,0.05); }
+    .btn-outline-gold        { background: transparent; color: var(--gold);  border-color: var(--gold); }
+    .btn-outline-gold:hover  { background: var(--gold); color: var(--cream); }
+    .btn-outline-cream        { background: transparent; color: var(--cream); border-color: rgba(240,237,228,0.5); }
+    .btn-outline-cream:hover  { border-color: var(--cream); background: rgba(240,237,228,0.08); }
+
+    /* ── NAVBAR ──────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--cream);
+      border-bottom: 2px solid var(--gold);
+      transition: all var(--t);
+    }
+    .nav.scrolled { box-shadow: 0 4px 24px rgba(26,18,6,0.12); }
+    .nav-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: height var(--t);
+    }
+    .nav.scrolled .nav-inner { height: 58px; }
+    .nav-logo img { height: 46px; display: block; transition: height var(--t); }
+    .nav.scrolled .nav-logo img { height: 38px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color var(--t);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform var(--t);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links .btn { padding: 0.5rem 1.25rem; font-size: 0.8rem; }
+    .nav-links .btn::after { display: none; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all var(--t); }
+
+    .nav-mobile {
+      display: none;
+      background: var(--cream);
+      border-top: 1px solid var(--cream-dark);
+      padding: 1.5rem 5%;
+    }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; }
+    .nav-mobile a {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+      transition: color var(--t);
+    }
+    .nav-mobile a:hover { color: var(--gold); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* diagonal warm dark panel on right */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 42%;
+      height: 100%;
+      background: var(--dark);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-vet-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(158,110,20,0.1);
+      border: 1px solid rgba(158,110,20,0.45);
+      color: var(--gold);
+      padding: 0.45rem 1.1rem;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+    .hero-vet-badge svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(3.2rem, 5.5vw, 5.8rem);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 0.97;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title .accent { color: var(--gold); display: block; }
+
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 510px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* right side: logo on dark panel */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-logo-frame {
+      position: relative;
+      padding: 2.5rem;
+      border: 1px solid rgba(200,145,58,0.3);
+    }
+    .hero-logo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 1px solid rgba(200,145,58,0.12);
+    }
+    .hero-logo-frame img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      display: block;
+    }
+    .hero-logo-rule {
+      position: absolute;
+      bottom: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+    }
+    .hero-logo-rule::before,
+    .hero-logo-rule::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: rgba(200,145,58,0.35);
+    }
+    .hero-logo-rule span {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(200,145,58,0.6);
+    }
+
+    /* ── STATS STRIP ─────────────────────────────────── */
+    .stats-strip {
+      background: var(--dark);
+      border-top: 1px solid rgba(200,145,58,0.22);
+      border-bottom: 1px solid rgba(200,145,58,0.22);
+      padding: 44px 5%;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .stat-value {
+      font-family: var(--font-head);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-family: var(--font-head);
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.2rem;
+    }
+
+    /* ── ABOUT ───────────────────────────────────────── */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+    .about-quote {
+      background: var(--dark);
+      padding: 90px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-quote::before {
+      content: '"';
+      position: absolute;
+      top: -0.2em;
+      left: 0.1em;
+      font-family: var(--font-serif);
+      font-size: 18rem;
+      color: rgba(200,145,58,0.05);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .about-quote blockquote {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      position: relative;
+    }
+    .about-quote blockquote span { color: var(--gold-light); }
+    .about-quote-attr {
+      font-family: var(--font-head);
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(240,237,228,0.35);
+    }
+    .about-content {
+      background: var(--white);
+      padding: 90px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-content p {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 2.25rem;
+    }
+    .about-value {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 1.1rem;
+      background: var(--cream);
+      border-left: 3px solid var(--gold);
+    }
+    .about-value-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+    .about-value-text {
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .about-value-text small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── PACKAGES ────────────────────────────────────── */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+    .package-card {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      position: relative;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .package-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .package-card.featured { border-color: var(--gold); border-width: 2px; }
+    .package-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--cream);
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      padding: 0.22rem 0.9rem;
+      white-space: nowrap;
+    }
+    .package-header { background: var(--dark); padding: 2rem 2rem 1.75rem; color: var(--cream); }
+    .package-card.featured .package-header { background: var(--dark-warm); }
+    .package-tier {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .package-name {
+      font-family: var(--font-head);
+      font-size: 2.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .package-price-range {
+      font-family: var(--font-head);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .package-price-note {
+      font-size: 0.8rem;
+      color: rgba(240,237,228,0.45);
+      font-family: var(--font-body);
+    }
+    .package-body { padding: 2rem; }
+    .package-desc {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--cream-mid);
+    }
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 2rem;
+    }
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .package-features li::before {
+      content: '';
+      width: 17px;
+      height: 17px;
+      min-width: 17px;
+      border-radius: 50%;
+      background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M4 8.5l3 3L13 5.5' stroke='%23F0EDE4' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover;
+      margin-top: 1px;
+    }
+
+    /* ── ADD-ONS ─────────────────────────────────────── */
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    .addon-card {
+      padding: 2.5rem 2.25rem;
+      border: 1px solid var(--cream-dark);
+      background: var(--white);
+      transition: all var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+    .addon-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--t);
+    }
+    .addon-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .addon-card:hover::after { transform: scaleX(1); }
+    .addon-icon {
+      width: 52px; height: 52px;
+      background: rgba(158,110,20,0.08);
+      border: 1px solid rgba(158,110,20,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      margin-bottom: 1.5rem;
+    }
+    .addon-name {
+      font-family: var(--font-head);
+      font-size: 1.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .addon-price {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+    .addon-desc {
+      font-family: var(--font-serif);
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ── PORTFOLIO ───────────────────────────────────── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    .portfolio-card {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      overflow: hidden;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .portfolio-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+    .portfolio-browser { height: 230px; position: relative; overflow: hidden; }
+    .browser-chrome {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 32px;
+      background: #2A2A2E;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+      z-index: 2;
+    }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-dot-r { background: #FF5F57; }
+    .browser-dot-y { background: #FEBC2E; }
+    .browser-dot-g { background: #28C840; }
+    .browser-url {
+      flex: 1;
+      margin-left: 8px;
+      height: 18px;
+      background: #3A3A3E;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+    .browser-url span { font-family: var(--font-body); font-size: 0.62rem; color: rgba(255,255,255,0.38); }
+
+    .portfolio-mock { position: absolute; top: 32px; left: 0; right: 0; bottom: 0; overflow: hidden; }
+
+    .mock-delara { background: #F8F5EF; display: flex; flex-direction: column; }
+    .mock-delara-nav { background: #2C2B28; height: 34px; display: flex; align-items: center; padding: 0 16px; gap: 12px; }
+    .mock-nav-pip { width: 28px; height: 2px; background: rgba(255,255,255,0.28); border-radius: 1px; }
+    .mock-nav-pip.long { width: 44px; }
+    .mock-delara-body { flex: 1; display: flex; align-items: center; padding: 16px 24px; gap: 20px; }
+    .mock-delara-text { flex: 1; }
+    .mock-d-h1 { font-family: var(--font-head); font-size: 1.45rem; font-weight: 800; color: #2C2B28; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
+    .mock-d-h1 span { color: #BF3020; }
+    .mock-d-sub { font-size: 0.58rem; color: #888; margin-bottom: 8px; }
+    .mock-d-btn { display: inline-block; background: #BF3020; color: #fff; font-family: var(--font-head); font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; }
+    .mock-d-orb { width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #CC4428, #2C2B28 80%); flex-shrink: 0; box-shadow: 0 4px 16px rgba(191,48,32,0.35); }
+    .mock-delara-strip { height: 26px; background: #2C2B28; display: flex; align-items: center; justify-content: space-around; padding: 0 20px; }
+    .mock-stat-pill { width: 34px; height: 6px; background: rgba(191,48,32,0.5); border-radius: 2px; }
+
+    .mock-azpw { background: #EEF3F8; display: flex; flex-direction: column; }
+    .mock-azpw-nav { background: #1A4E8C; height: 34px; display: flex; align-items: center; padding: 0 16px; }
+    .mock-azpw-brand { font-family: var(--font-head); font-size: 0.7rem; font-weight: 800; color: #fff; letter-spacing: 0.1em; }
+    .mock-azpw-hero { flex: 1; background: linear-gradient(135deg, #1A4E8C 0%, #2D6FBF 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 14px; }
+    .mock-az-h1 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 800; color: #fff; text-transform: uppercase; margin-bottom: 4px; }
+    .mock-az-sub { font-size: 0.57rem; color: rgba(255,255,255,0.68); margin-bottom: 10px; }
+    .mock-az-btn { display: inline-block; background: #fff; color: #1A4E8C; font-family: var(--font-head); font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; font-weight: 700; }
+    .mock-azpw-services { background: #fff; padding: 8px 16px; display: flex; gap: 8px; justify-content: center; }
+    .mock-svc-pill { background: #EEF3F8; border: 1px solid #D0DDE8; width: 42px; height: 14px; border-radius: 2px; }
+
+    .portfolio-info { padding: 1.75rem 2rem; }
+    .portfolio-tag { display: inline-block; font-family: var(--font-head); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .portfolio-title { font-family: var(--font-head); font-size: 1.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.6rem; }
+    .portfolio-desc { font-family: var(--font-serif); font-size: 0.97rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; }
+    .portfolio-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .portfolio-pill { background: var(--cream-mid); color: var(--text-muted); font-family: var(--font-head); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.26rem 0.7rem; }
+
+    /* ── PROCESS ─────────────────────────────────────── */
+    .process-wrap { text-align: center; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 5rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 31px; left: 12.5%; right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(158,110,20,0.5), rgba(158,110,20,0.1));
+    }
+    .process-step { text-align: center; padding: 0 1.5rem; }
+    .process-num {
+      width: 62px; height: 62px;
+      background: var(--cream);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+    }
+    .process-step-title { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dark); margin-bottom: 0.75rem; }
+    .process-step-desc { font-family: var(--font-serif); font-size: 0.97rem; color: var(--text-muted); line-height: 1.8; }
+
+    /* ── CONTACT ─────────────────────────────────────── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contact-info-block { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1.25rem; }
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      background: rgba(158,110,20,0.1);
+      border: 1px solid rgba(158,110,20,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item-label { font-family: var(--font-head); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+    .contact-item-value { font-family: var(--font-body); font-size: 1rem; color: var(--dark); }
+    .contact-item-value a { color: var(--dark); text-decoration: none; transition: color var(--t); }
+    .contact-item-value a:hover { color: var(--gold); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-family: var(--font-head); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      color: var(--text);
+      padding: 0.875rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color var(--t);
+      width: 100%;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(26,18,6,0.28); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select { cursor: pointer; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(200,145,58,0.18);
+      padding: 70px 5% 40px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-logo { height: 50px; margin-bottom: 1.25rem; display: block; }
+    .footer-tagline { font-family: var(--font-serif); font-size: 0.97rem; color: rgba(240,237,228,0.42); line-height: 1.75; max-width: 280px; margin-bottom: 1.75rem; }
+    .footer-vet-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(200,145,58,0.1);
+      border: 1px solid rgba(200,145,58,0.22);
+      color: var(--gold-light);
+      padding: 0.35rem 0.9rem;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .footer-col h4 { font-family: var(--font-head); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col a { color: rgba(240,237,228,0.42); text-decoration: none; font-size: 0.9rem; font-family: var(--font-body); transition: color var(--t); }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-copy { font-size: 0.8rem; color: rgba(240,237,228,0.26); font-family: var(--font-body); }
+
+    /* ── SCROLL REVEAL ───────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .hero::after { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-quote, .about-content { padding: 70px 48px; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .addons-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
+      .portfolio-grid { grid-template-columns: 1fr; max-width: 600px; margin-left: auto; margin-right: auto; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .process-steps::before { display: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 70px 0; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .about-quote, .about-content { padding: 56px 28px; }
+      .about-values { grid-template-columns: 1fr; }
+      .packages-grid, .addons-grid, .portfolio-grid { max-width: 100%; }
+      .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0.75rem; }
+      .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VERSION TOGGLE -->
+  <div class="version-toggle">
+    <span class="version-toggle-label">Design</span>
+    <a href="index.html" class="version-toggle-btn">
+      <span class="vt-num">V1</span>
+      <span class="vt-name">Navy</span>
+    </a>
+    <div class="vt-divider"></div>
+    <div class="version-toggle-btn active">
+      <span class="vt-num">V2</span>
+      <span class="vt-name">Cream</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- NAVBAR                                          -->
+  <!-- ════════════════════════════════════════════════ -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <img src="PSlogo5.png" alt="PocketSod Web Pages">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="btn btn-gold">Get a Quote</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <ul>
+        <li><a href="#about"     onclick="closeMobile()">About</a></li>
+        <li><a href="#packages"  onclick="closeMobile()">Packages</a></li>
+        <li><a href="#portfolio" onclick="closeMobile()">Portfolio</a></li>
+        <li><a href="#process"   onclick="closeMobile()">Process</a></li>
+        <li><a href="#contact"   onclick="closeMobile()">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- HERO                                            -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-vet-badge">
+          <svg viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 0l1.796 3.64L13 4.347l-3 2.924.708 4.126L7 9.5l-3.708 1.896L4 7.271 1 4.347l4.204-.707L7 0z"/>
+          </svg>
+          Veteran Owned &amp; Operated
+        </div>
+
+        <h1 class="hero-title">
+          Mission-Ready<br>
+          <span class="accent">Websites</span>
+          For Small Business
+        </h1>
+
+        <p class="hero-subtitle">
+          Built with military precision. Delivered with small-business heart.
+          PocketSod LLC helps companies across the nation establish a
+          powerful online presence — on time, on budget, no compromises.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#packages" class="btn btn-dark">View Packages</a>
+          <a href="#contact"  class="btn btn-outline-dark">Get a Free Quote</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-logo-frame">
+          <img src="PSlogo5.png" alt="PocketSod Web Pages logo">
+          <div class="hero-logo-rule">
+            <span>Est. 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STATS STRIP                                     -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-icon">★</div>
+        <div class="stat-value">Veteran</div>
+        <div class="stat-label">Owned &amp; Operated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🌎</div>
+        <div class="stat-value">All 50</div>
+        <div class="stat-label">States Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-value">Fast</div>
+        <div class="stat-label">Turnaround</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🛡️</div>
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Satisfaction Focus</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- ABOUT                                           -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section id="about" style="padding:0;">
+    <div class="about-inner">
+      <div class="about-quote">
+        <blockquote>
+          "The same <span>discipline and mission focus</span> that defined
+          our service now drives every website we build."
+        </blockquote>
+        <div class="about-quote-attr">— PocketSod LLC &nbsp;·&nbsp; Veteran-Owned</div>
+      </div>
+
+      <div class="about-content">
+        <span class="label">Who We Are</span>
+        <h2 class="section-title">Built on Service.<br>Focused on Growth.</h2>
+        <p>
+          PocketSod LLC is a veteran-owned web design company dedicated to helping
+          small businesses compete online. We know that a great website isn't a
+          luxury — it's your storefront, your first impression, and your
+          hardest-working employee.
+        </p>
+        <p>
+          We bring military-grade attention to detail to every project: clean code,
+          responsive design, and sites built to perform. From a simple landing page
+          to a full bilingual site with SEO and ongoing support — we've got a
+          package that fits your mission and your budget.
+        </p>
+
+        <div class="about-values">
+          <div class="about-value">
+            <div class="about-value-icon">🎯</div>
+            <div class="about-value-text">
+              Precision-Built
+              <small>No bloat, no guesswork</small>
+            </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">🤝</div>
+            <div class="about-value-text">
+              Always Honest
+              <small>Straight talk, fair pricing</small>
+            </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">📱</div>
+            <div class="about-value-text">
+              Mobile-First
+              <small>Looks great everywhere</small>
+            </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">🔧</div>
+            <div class="about-value-text">
+              Built to Last
+              <small>We're in it for the long run</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- PACKAGES                                        -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="section" id="packages" style="background:var(--cream-mid);">
+    <div class="container">
+      <span class="label">Packages &amp; Pricing</span>
+      <h2 class="section-title">Clear Pricing.<br>No Surprises.</h2>
+      <p class="section-subtitle">
+        Every package is built around your goals. Choose a starting point and
+        customize as needed — or reach out for a tailored quote.
+      </p>
+
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <div class="package-header">
+            <div class="package-tier">Package 01</div>
+            <div class="package-name">Starter</div>
+            <div class="package-price-range">$500 – $1,000</div>
+          </div>
+          <div class="package-body">
+            <p class="package-desc">
+              Perfect for businesses that need a clean, professional presence
+              online. Get found, get calls, get business.
+            </p>
+            <ul class="package-features">
+              <li>Up to 3 pages</li>
+              <li>Mobile-responsive design</li>
+              <li>Contact form integration</li>
+              <li>Basic on-page SEO</li>
+              <li>Google Maps embed</li>
+              <li>1 round of revisions</li>
+            </ul>
+            <a href="#contact" class="btn btn-dark" style="width:100%;">Get Started</a>
+          </div>
+        </div>
+
+        <div class="package-card featured reveal reveal-d1">
+          <div class="package-header">
+            <div class="package-tier">Package 02</div>
+            <div class="package-name">Growth</div>
+            <div class="package-price-range">$1,000 – $2,500</div>
+          </div>
+          <div class="package-body">
+            <p class="package-desc">
+              Ideal for growing businesses ready to build an audience, publish
+              content, and reach customers in any language.
+            </p>
+            <ul class="package-features">
+              <li>Up to 6 pages</li>
+              <li>Blog / news section</li>
+              <li>Bilingual support (EN/ES)</li>
+              <li>Contact &amp; quote forms</li>
+              <li>SEO foundations</li>
+              <li>Social media integration</li>
+              <li>Maintenance add-on ready</li>
+            </ul>
+            <a href="#contact" class="btn btn-gold" style="width:100%;">Get Started</a>
+          </div>
+        </div>
+
+        <div class="package-card reveal reveal-d2">
+          <div class="package-header">
+            <div class="package-tier">Package 03</div>
+            <div class="package-name">Premium</div>
+            <div class="package-price-range">$2,500<span class="package-price-note">+</span></div>
+          </div>
+          <div class="package-body">
+            <p class="package-desc">
+              Full-service website with advanced SEO, hosting management, and
+              ongoing edits. Built to scale with your business.
+            </p>
+            <ul class="package-features">
+              <li>Unlimited pages</li>
+              <li>Custom design &amp; branding</li>
+              <li>Advanced SEO setup</li>
+              <li>Hosting management included</li>
+              <li>Ongoing content edits</li>
+              <li>Analytics &amp; monthly reporting</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="#contact" class="btn btn-dark" style="width:100%;">Get a Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- ADD-ONS                                         -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="section" id="addons" style="background:var(--cream);">
+    <div class="container">
+      <span class="label">Ongoing Services</span>
+      <h2 class="section-title">Maintenance &amp; Add-Ons</h2>
+      <p class="section-subtitle">
+        Keep your site sharp, secure, and growing with monthly add-on services.
+        We handle the technical side while you run your business.
+      </p>
+
+      <div class="addons-grid">
+        <div class="addon-card reveal">
+          <div class="addon-icon">🔧</div>
+          <div class="addon-name">Maintenance</div>
+          <div class="addon-price">$50 – $200 / month</div>
+          <p class="addon-desc">
+            Regular content updates, security patches, plugin management, and
+            performance checks. Your site stays fresh without lifting a finger.
+          </p>
+        </div>
+        <div class="addon-card reveal reveal-d1">
+          <div class="addon-icon">🖥️</div>
+          <div class="addon-name">Hosting Mgmt</div>
+          <div class="addon-price">$20 – $50 / month</div>
+          <p class="addon-desc">
+            End-to-end hosting management — renewals, uptime monitoring,
+            backups, and technical support so you never have to think about it.
+          </p>
+        </div>
+        <div class="addon-card reveal reveal-d2">
+          <div class="addon-icon">📈</div>
+          <div class="addon-name">SEO Management</div>
+          <div class="addon-price">$100 – $500 / month</div>
+          <p class="addon-desc">
+            Ongoing keyword targeting, content strategy, Google Business
+            optimization, and monthly ranking reports to grow your visibility.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- PORTFOLIO                                       -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="section" id="portfolio" style="background:var(--white);">
+    <div class="container">
+      <span class="label">Our Work</span>
+      <h2 class="section-title">Sites We've Built</h2>
+      <p class="section-subtitle">
+        Every project is custom-built for the client's industry, audience, and
+        goals. Here's a look at two recent sites.
+      </p>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-card reveal">
+          <div class="portfolio-browser">
+            <div class="browser-chrome">
+              <div class="browser-dot browser-dot-r"></div>
+              <div class="browser-dot browser-dot-y"></div>
+              <div class="browser-dot browser-dot-g"></div>
+              <div class="browser-url"><span>delara.pocketsod.com</span></div>
+            </div>
+            <div class="portfolio-mock mock-delara">
+              <div class="mock-delara-nav">
+                <div class="mock-nav-pip long"></div>
+                <div class="mock-nav-pip"></div>
+                <div class="mock-nav-pip"></div>
+                <div class="mock-nav-pip"></div>
+                <div class="mock-nav-pip"></div>
+              </div>
+              <div class="mock-delara-body">
+                <div class="mock-delara-text">
+                  <div class="mock-d-h1">DeLara<br><span>Consulting</span></div>
+                  <div class="mock-d-sub">Executive Strategy &amp; Business Solutions</div>
+                  <div class="mock-d-btn">Learn More</div>
+                </div>
+                <div class="mock-d-orb"></div>
+              </div>
+              <div class="mock-delara-strip">
+                <div class="mock-stat-pill"></div>
+                <div class="mock-stat-pill"></div>
+                <div class="mock-stat-pill"></div>
+                <div class="mock-stat-pill"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag">Consulting</span>
+            <h3 class="portfolio-title">DeLara Consulting</h3>
+            <p class="portfolio-desc">
+              A sophisticated multi-page consulting firm site with animated
+              sections, testimonials, services showcase, and contact form —
+              built with a refined warm aesthetic and scroll-reveal animations.
+            </p>
+            <div class="portfolio-tags">
+              <span class="portfolio-pill">Custom Design</span>
+              <span class="portfolio-pill">Animations</span>
+              <span class="portfolio-pill">Contact Form</span>
+              <span class="portfolio-pill">Mobile Responsive</span>
+            </div>
+            <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener" class="btn btn-outline-gold">View Live Site</a>
+          </div>
+        </div>
+
+        <div class="portfolio-card reveal reveal-d1">
+          <div class="portfolio-browser">
+            <div class="browser-chrome">
+              <div class="browser-dot browser-dot-r"></div>
+              <div class="browser-dot browser-dot-y"></div>
+              <div class="browser-dot browser-dot-g"></div>
+              <div class="browser-url"><span>azpowerwash.pocketsod.com</span></div>
+            </div>
+            <div class="portfolio-mock mock-azpw">
+              <div class="mock-azpw-nav">
+                <div class="mock-azpw-brand">AZ POWERWASH</div>
+              </div>
+              <div class="mock-azpw-hero">
+                <div class="mock-az-h1">Transform Your Property</div>
+                <div class="mock-az-sub">Professional Pressure Washing · Serving Greater Phoenix</div>
+                <div class="mock-az-btn">Get a Free Quote</div>
+              </div>
+              <div class="mock-azpw-services">
+                <div class="mock-svc-pill"></div>
+                <div class="mock-svc-pill"></div>
+                <div class="mock-svc-pill"></div>
+                <div class="mock-svc-pill"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag">Home Services</span>
+            <h3 class="portfolio-title">AZ Powerwash</h3>
+            <p class="portfolio-desc">
+              A bilingual (EN/ES) service business site with a before/after
+              gallery, quote request form, service area details, and
+              Schema.org SEO structured data for local search ranking.
+            </p>
+            <div class="portfolio-tags">
+              <span class="portfolio-pill">Bilingual EN/ES</span>
+              <span class="portfolio-pill">Gallery</span>
+              <span class="portfolio-pill">SEO Structured Data</span>
+              <span class="portfolio-pill">Quote Form</span>
+            </div>
+            <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="btn btn-outline-gold">View Live Site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- PROCESS                                         -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="section" id="process" style="background:var(--cream-mid);">
+    <div class="container process-wrap">
+      <span class="label">How It Works</span>
+      <h2 class="section-title">Your Path to Launch</h2>
+      <p class="section-subtitle" style="margin:0 auto;">
+        Four clear steps from first conversation to a live, performing site —
+        and continued support beyond.
+      </p>
+
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <div class="process-step-title">Consult</div>
+          <p class="process-step-desc">
+            We start with a free call to understand your business, your goals,
+            and what your customers need to see when they find you.
+          </p>
+        </div>
+        <div class="process-step reveal reveal-d1">
+          <div class="process-num">02</div>
+          <div class="process-step-title">Design</div>
+          <p class="process-step-desc">
+            We build a custom design tailored to your brand. You review,
+            give feedback, and we refine until it's exactly right.
+          </p>
+        </div>
+        <div class="process-step reveal reveal-d2">
+          <div class="process-num">03</div>
+          <div class="process-step-title">Launch</div>
+          <p class="process-step-desc">
+            Once you approve, we deploy your site, configure hosting, and
+            make sure everything runs clean across every device.
+          </p>
+        </div>
+        <div class="process-step reveal reveal-d3">
+          <div class="process-num">04</div>
+          <div class="process-step-title">Support</div>
+          <p class="process-step-desc">
+            We don't disappear after launch. Ongoing maintenance, SEO, and
+            content updates are available every month, on your terms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- CONTACT                                         -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="section" id="contact" style="background:var(--cream);">
+    <div class="container">
+      <div class="contact-inner">
+        <div>
+          <span class="label">Get in Touch</span>
+          <h2 class="section-title">Let's Build<br>Something.</h2>
+          <p class="section-subtitle">
+            Ready to get started? Have questions? Reach out — we respond fast,
+            no sales pressure.
+          </p>
+
+          <div class="contact-info-block">
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div>
+                <div class="contact-item-label">Phone</div>
+                <div class="contact-item-value">
+                  <a href="tel:3173480539">(317) 348-0539</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value">
+                  <a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🌎</div>
+              <div>
+                <div class="contact-item-label">Service Area</div>
+                <div class="contact-item-value">Nationwide — All 50 States</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input id="firstName" type="text" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" type="text" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="john@yourbusiness.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" type="tel" placeholder="(555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label for="package">I'm Interested In</label>
+            <select id="package">
+              <option value="">Select a package…</option>
+              <option>Starter Package ($500–$1,000)</option>
+              <option>Growth Package ($1,000–$2,500)</option>
+              <option>Premium Package ($2,500+)</option>
+              <option>Maintenance Add-on</option>
+              <option>Hosting Management</option>
+              <option>SEO Services</option>
+              <option>Not sure yet — just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your business</label>
+            <textarea id="message" placeholder="What does your business do? Do you have an existing site? What are your goals?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" id="submitBtn" style="width:100%;">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- FOOTER                                          -->
+  <!-- ════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <img src="PSlogo5.png" alt="PocketSod Web Pages" class="footer-logo">
+        <p class="footer-tagline">
+          Veteran-owned. Small business focused. Building the web presence
+          you've earned — one site at a time.
+        </p>
+        <div class="footer-vet-badge">★&nbsp; Veteran Owned &amp; Operated</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#addons">Add-Ons</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:3173480539">(317) 348-0539</a></li>
+          <li><a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a></li>
+          <li><a href="#contact">Get a Free Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 PocketSod LLC. All rights reserved.</span>
+      <span class="footer-copy">Veteran-Owned Small Business</span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          closeMobile();
+          const offset = nav.offsetHeight + 8;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const original = btn.textContent;
+      btn.textContent = 'Message Sent!';
+      btn.disabled = true;
+      btn.style.cssText += ';background:#2A7A4A;border-color:#2A7A4A;color:#fff;';
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.disabled = false;
+        btn.style.background = btn.style.borderColor = btn.style.color = '';
+        e.target.reset();
+      }, 3500);
+    }
+  </script>
+
+</body>
+</html>
