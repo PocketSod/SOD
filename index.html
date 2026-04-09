@@ -90,7 +90,7 @@
       padding: 0.85rem 2rem;
       border-radius: 6px;
       cursor: pointer;
-      transition: all var(--t);
+      transition: transform var(--t), box-shadow var(--t), background var(--t), border-color var(--t);
       border: 2px solid transparent;
     }
     .btn-primary {
@@ -106,8 +106,8 @@
     }
     .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
 
-    /* ── VERSION TOGGLE ──────────────────────────────── */
-    .version-toggle {
+    /* ── LANGUAGE TOGGLE ─────────────────────────────── */
+    .lang-toggle {
       position: fixed;
       bottom: 24px;
       right: 24px;
@@ -120,7 +120,7 @@
       overflow: hidden;
       box-shadow: 0 6px 28px rgba(26,51,86,0.35);
     }
-    .vt-label {
+    .lt-label {
       font-family: var(--font-head);
       font-size: 0.6rem;
       font-weight: 600;
@@ -132,25 +132,27 @@
       align-items: center;
       border-right: 1px solid rgba(74,143,189,0.25);
     }
-    .vt-btn {
+    .lt-btn {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 0.6rem 1rem;
       cursor: pointer;
+      background: none;
+      border: none;
       transition: background var(--t);
     }
-    .vt-btn.active { background: var(--blue); }
-    .vt-btn:not(.active):hover { background: rgba(255,255,255,0.07); }
-    .vt-num {
+    .lt-btn.active { background: var(--blue); }
+    .lt-btn:not(.active):hover { background: rgba(255,255,255,0.07); }
+    .lt-code {
       font-family: var(--font-head);
       font-size: 0.95rem;
       font-weight: 800;
       color: var(--white);
       line-height: 1;
     }
-    .vt-name {
+    .lt-name {
       font-family: var(--font-head);
       font-size: 0.5rem;
       letter-spacing: 0.1em;
@@ -158,8 +160,8 @@
       color: rgba(255,255,255,0.5);
       margin-top: 2px;
     }
-    .vt-btn.active .vt-name { color: rgba(255,255,255,0.75); }
-    .vt-divider { width: 1px; background: rgba(74,143,189,0.25); }
+    .lt-btn.active .lt-name { color: rgba(255,255,255,0.75); }
+    .lt-divider { width: 1px; background: rgba(74,143,189,0.25); }
 
     /* ── NAVBAR ─────────────────────────────────────── */
     .navbar {
@@ -432,7 +434,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 2.25rem 2rem;
-      transition: all var(--t);
+      transition: transform var(--t), box-shadow var(--t);
       position: relative;
     }
     .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
@@ -531,7 +533,7 @@
       display: flex;
       gap: 1.25rem;
       align-items: flex-start;
-      transition: all var(--t);
+      transition: background var(--t), border-color var(--t), transform var(--t);
     }
     .addon-card:hover { background: var(--blue-light); border-color: var(--blue); transform: translateY(-2px); }
     .addon-icon {
@@ -580,7 +582,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: all var(--t);
+      transition: transform var(--t), box-shadow var(--t);
     }
     .portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .browser-bar {
@@ -683,7 +685,7 @@
       font-weight: 800;
       color: var(--white);
       margin: 0 auto 1.25rem;
-      transition: all var(--t);
+      transition: background var(--t), border-color var(--t), transform var(--t);
     }
     .process-step:nth-child(4) .step-num { border-color: var(--green); }
     .process-step:hover .step-num { background: var(--blue); border-color: var(--blue); transform: scale(1.08); }
@@ -868,24 +870,24 @@
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .form-row { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
-      .version-toggle { bottom: 14px; right: 14px; }
+      .lang-toggle { bottom: 14px; right: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- VERSION TOGGLE -->
-  <div class="version-toggle">
-    <div class="vt-label">Design</div>
-    <a href="index.html" class="vt-btn active">
-      <span class="vt-num">V1</span>
-      <span class="vt-name">Grass</span>
-    </a>
-    <div class="vt-divider"></div>
-    <a href="index2.html" class="vt-btn">
-      <span class="vt-num">V2</span>
-      <span class="vt-name">Flower</span>
-    </a>
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle">
+    <div class="lt-label">Lang</div>
+    <button onclick="setLang('en')" class="lt-btn active" data-lang="en">
+      <span class="lt-code">EN</span>
+      <span class="lt-name">English</span>
+    </button>
+    <div class="lt-divider"></div>
+    <button onclick="setLang('es')" class="lt-btn" data-lang="es">
+      <span class="lt-code">ES</span>
+      <span class="lt-name">Español</span>
+    </button>
   </div>
 
   <!-- NAVBAR -->
@@ -895,11 +897,11 @@
         <img src="brand_assests/PSlogo6.png" alt="PocketSod">
       </a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#packages" data-i18n="nav_packages">Packages</a></li>
+        <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+        <li><a href="#process" data-i18n="nav_process">Process</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav_cta">Get a Quote</a></li>
       </ul>
       <div class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -907,11 +909,11 @@
     </div>
     <div class="container">
       <div class="mobile-menu" id="mobileMenu">
-        <a href="#about"     onclick="closeMobile()">About</a>
-        <a href="#packages"  onclick="closeMobile()">Packages</a>
-        <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-        <a href="#process"   onclick="closeMobile()">Process</a>
-        <a href="#contact"   onclick="closeMobile()">Get a Quote</a>
+        <a href="#about"     onclick="closeMobile()" data-i18n="nav_about">About</a>
+        <a href="#packages"  onclick="closeMobile()" data-i18n="nav_packages">Packages</a>
+        <a href="#portfolio" onclick="closeMobile()" data-i18n="nav_portfolio">Portfolio</a>
+        <a href="#process"   onclick="closeMobile()" data-i18n="nav_process">Process</a>
+        <a href="#contact"   onclick="closeMobile()" data-i18n="nav_cta">Get a Quote</a>
       </div>
     </div>
   </nav>
@@ -920,12 +922,12 @@
   <section class="hero" id="home">
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">Veteran-Owned &amp; Operated</div>
-        <h1>Your Business.<br><span class="hl-green">Online.</span><br><span class="hl-blue">Affordable.</span></h1>
-        <p class="hero-sub">PocketSod builds professional websites that help small businesses grow — fast turnaround, fair prices, and support you can count on. All 50 states.</p>
+        <div class="hero-badge" data-i18n="hero_badge">Veteran-Owned &amp; Operated</div>
+        <h1 data-i18n-html="hero_h1">Your Business.<br><span class="hl-green">Online.</span><br><span class="hl-blue">Affordable.</span></h1>
+        <p class="hero-sub" data-i18n="hero_sub">PocketSod builds professional websites that help small businesses grow — fast turnaround, fair prices, and support you can count on. All 50 states.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-          <a href="#packages" class="btn btn-outline">See Packages</a>
+          <a href="#contact" class="btn btn-primary" data-i18n="hero_cta_primary">Get a Free Quote</a>
+          <a href="#packages" class="btn btn-outline" data-i18n="hero_cta_secondary">See Packages</a>
         </div>
       </div>
       <div class="hero-logo-wrap">
@@ -940,19 +942,19 @@
       <div class="stats-inner">
         <div class="stat-item reveal">
           <div class="stat-number">★ Vet</div>
-          <div class="stat-label">Veteran Owned</div>
+          <div class="stat-label" data-i18n="stat_vet">Veteran Owned</div>
         </div>
         <div class="stat-item reveal">
           <div class="stat-number">50</div>
-          <div class="stat-label">States Served</div>
+          <div class="stat-label" data-i18n="stat_states">States Served</div>
         </div>
         <div class="stat-item reveal">
           <div class="stat-number">14</div>
-          <div class="stat-label">Day Avg Launch</div>
+          <div class="stat-label" data-i18n="stat_days">Day Avg Launch</div>
         </div>
         <div class="stat-item reveal">
           <div class="stat-number">100%</div>
-          <div class="stat-label">Satisfaction Focus</div>
+          <div class="stat-label" data-i18n="stat_satisfaction">Satisfaction Focus</div>
         </div>
       </div>
     </div>
@@ -962,20 +964,20 @@
   <section class="about section" id="about">
     <div class="container about-inner">
       <div class="about-quote reveal">
-        <blockquote>"We build websites the same way we served — with discipline, attention to detail, and no excuses."</blockquote>
-        <cite>— PocketSod LLC, Veteran-Owned</cite>
+        <blockquote data-i18n="about_quote">"We build websites the same way we served — with discipline, attention to detail, and no excuses."</blockquote>
+        <cite data-i18n="about_cite">— PocketSod LLC, Veteran-Owned</cite>
       </div>
       <div class="about-content reveal">
-        <span class="label">About Us</span>
-        <h2 class="section-title">Small Business Websites, <span class="green">Done Right</span></h2>
-        <p class="section-sub">We specialize in affordable, professional web design for small businesses across all 50 states. No bloated agencies, no confusing contracts — just results.</p>
+        <span class="label" data-i18n="about_label">About Us</span>
+        <h2 class="section-title" data-i18n-html="about_title">Small Business Websites, <span class="green">Done Right</span></h2>
+        <p class="section-sub" data-i18n="about_sub">We specialize in affordable, professional web design for small businesses across all 50 states. No bloated agencies, no confusing contracts — just results.</p>
         <ul class="about-list">
-          <li>Responsive design that works on every device and screen size</li>
-          <li>Built-in SEO so customers can find you on Google</li>
-          <li>Plain-language communication — no tech jargon</li>
-          <li>Ongoing support and maintenance plans available</li>
-          <li>Bilingual (EN/ES) options on Growth and Premium tiers</li>
-          <li>Veteran-owned: disciplined, accountable, mission-focused</li>
+          <li data-i18n="about_li1">Responsive design that works on every device and screen size</li>
+          <li data-i18n="about_li2">Built-in SEO so customers can find you on Google</li>
+          <li data-i18n="about_li3">Plain-language communication — no tech jargon</li>
+          <li data-i18n="about_li4">Ongoing support and maintenance plans available</li>
+          <li data-i18n="about_li5">Bilingual (EN/ES) options on Growth and Premium tiers</li>
+          <li data-i18n="about_li6">Veteran-owned: disciplined, accountable, mission-focused</li>
         </ul>
       </div>
     </div>
@@ -985,55 +987,58 @@
   <section class="packages section" id="packages">
     <div class="container">
       <div class="packages-header reveal">
-        <span class="label blue">Pricing</span>
-        <h2 class="section-title">Simple, <span class="blue">Transparent</span> Packages</h2>
-        <p class="section-sub">Pick the package that fits your business. No hidden fees, no surprises.</p>
+        <span class="label blue" data-i18n="pkg_label">Pricing</span>
+        <h2 class="section-title" data-i18n-html="pkg_title">Simple, <span class="blue">Transparent</span> Packages</h2>
+        <p class="section-sub" data-i18n="pkg_sub">Pick the package that fits your business. No hidden fees, no surprises.</p>
       </div>
       <div class="cards">
+        <!-- Starter -->
         <div class="card reveal">
           <div class="card-icon blue-bg">🌱</div>
-          <h3>Starter</h3>
-          <div class="card-price">$500–$1,000 <span>one-time</span></div>
+          <h3 data-i18n="pkg_starter_name">Starter</h3>
+          <div class="card-price">$500–$1,000 <span data-i18n="pkg_onetime">one-time</span></div>
           <ul class="card-features">
-            <li>Up to 3 pages</li>
-            <li>Contact form</li>
-            <li>Mobile responsive</li>
-            <li>Basic SEO setup</li>
-            <li>Google Maps integration</li>
-            <li>1 revision round</li>
+            <li data-i18n="pkg_s1">Up to 3 pages</li>
+            <li data-i18n="pkg_s2">Contact form</li>
+            <li data-i18n="pkg_s3">Mobile responsive</li>
+            <li data-i18n="pkg_s4">Basic SEO setup</li>
+            <li data-i18n="pkg_s5">Google Maps integration</li>
+            <li data-i18n="pkg_s6">1 revision round</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost">Get Started</a>
+          <a href="#contact" class="btn btn-ghost" data-i18n="pkg_btn_start">Get Started</a>
         </div>
+        <!-- Growth -->
         <div class="card featured reveal">
-          <div class="card-badge">Most Popular</div>
+          <div class="card-badge" data-i18n="pkg_popular">Most Popular</div>
           <div class="card-icon green-bg">🌿</div>
-          <h3>Growth</h3>
-          <div class="card-price">$1,000–$2,500 <span>one-time</span></div>
+          <h3 data-i18n="pkg_growth_name">Growth</h3>
+          <div class="card-price">$1,000–$2,500 <span data-i18n="pkg_onetime">one-time</span></div>
           <ul class="card-features">
-            <li>Up to 6 pages</li>
-            <li>Blog setup</li>
-            <li>Bilingual EN/ES option</li>
-            <li>Quote &amp; lead forms</li>
-            <li>SEO foundations</li>
-            <li>Social media links</li>
-            <li>Maintenance-ready</li>
+            <li data-i18n="pkg_g1">Up to 6 pages</li>
+            <li data-i18n="pkg_g2">Blog setup</li>
+            <li data-i18n="pkg_g3">Bilingual EN/ES option</li>
+            <li data-i18n="pkg_g4">Quote &amp; lead forms</li>
+            <li data-i18n="pkg_g5">SEO foundations</li>
+            <li data-i18n="pkg_g6">Social media links</li>
+            <li data-i18n="pkg_g7">Maintenance-ready</li>
           </ul>
-          <a href="#contact" class="btn btn-blue">Get Started</a>
+          <a href="#contact" class="btn btn-blue" data-i18n="pkg_btn_start">Get Started</a>
         </div>
+        <!-- Premium -->
         <div class="card reveal">
           <div class="card-icon dark-bg">🏆</div>
-          <h3>Premium</h3>
-          <div class="card-price">$2,500+ <span>one-time</span></div>
+          <h3 data-i18n="pkg_premium_name">Premium</h3>
+          <div class="card-price">$2,500+ <span data-i18n="pkg_onetime">one-time</span></div>
           <ul class="card-features">
-            <li>Unlimited pages</li>
-            <li>Custom design &amp; branding</li>
-            <li>Advanced SEO</li>
-            <li>Hosting mgmt included</li>
-            <li>Ongoing edits</li>
-            <li>Analytics dashboard</li>
-            <li>Priority support</li>
+            <li data-i18n="pkg_p1">Unlimited pages</li>
+            <li data-i18n="pkg_p2">Custom design &amp; branding</li>
+            <li data-i18n="pkg_p3">Advanced SEO</li>
+            <li data-i18n="pkg_p4">Hosting mgmt included</li>
+            <li data-i18n="pkg_p5">Ongoing edits</li>
+            <li data-i18n="pkg_p6">Analytics dashboard</li>
+            <li data-i18n="pkg_p7">Priority support</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost">Get Started</a>
+          <a href="#contact" class="btn btn-ghost" data-i18n="pkg_btn_start">Get Started</a>
         </div>
       </div>
     </div>
@@ -1043,33 +1048,33 @@
   <section class="addons section" id="addons">
     <div class="container">
       <div class="addons-header reveal">
-        <span class="label">Add-Ons</span>
-        <h2 class="section-title">Keep Growing with <span class="green">Monthly Services</span></h2>
-        <p class="section-sub">Add ongoing support to any package. We handle it so you can focus on running your business.</p>
+        <span class="label" data-i18n="addon_label">Add-Ons</span>
+        <h2 class="section-title" data-i18n-html="addon_title">Keep Growing with <span class="green">Monthly Services</span></h2>
+        <p class="section-sub" data-i18n="addon_sub">Add ongoing support to any package. We handle it so you can focus on running your business.</p>
       </div>
       <div class="addon-cards">
         <div class="addon-card reveal">
           <div class="addon-icon">🛠️</div>
           <div>
-            <h4>Monthly Maintenance</h4>
-            <p>Content updates, security patches, plugin management, and uptime monitoring.</p>
-            <div class="addon-price">$50–$200 / month</div>
+            <h4 data-i18n="addon1_title">Monthly Maintenance</h4>
+            <p data-i18n="addon1_desc">Content updates, security patches, plugin management, and uptime monitoring.</p>
+            <div class="addon-price" data-i18n="addon1_price">$50–$200 / month</div>
           </div>
         </div>
         <div class="addon-card reveal">
           <div class="addon-icon">☁️</div>
           <div>
-            <h4>Hosting Management</h4>
-            <p>We handle your domain, SSL certificate, server, backups, and renewals.</p>
-            <div class="addon-price">$20–$50 / month</div>
+            <h4 data-i18n="addon2_title">Hosting Management</h4>
+            <p data-i18n="addon2_desc">We handle your domain, SSL certificate, server, backups, and renewals.</p>
+            <div class="addon-price" data-i18n="addon2_price">$20–$50 / month</div>
           </div>
         </div>
         <div class="addon-card reveal">
           <div class="addon-icon">📈</div>
           <div>
-            <h4>SEO Management</h4>
-            <p>Ongoing keyword tracking, local SEO, Google Business optimization, and monthly reporting.</p>
-            <div class="addon-price">$100–$500 / month</div>
+            <h4 data-i18n="addon3_title">SEO Management</h4>
+            <p data-i18n="addon3_desc">Ongoing keyword tracking, local SEO, Google Business optimization, and monthly reporting.</p>
+            <div class="addon-price" data-i18n="addon3_price">$100–$500 / month</div>
           </div>
         </div>
       </div>
@@ -1080,9 +1085,9 @@
   <section class="portfolio section" id="portfolio">
     <div class="container">
       <div class="portfolio-header reveal">
-        <span class="label blue">Portfolio</span>
-        <h2 class="section-title">Sites We've <span class="blue">Built</span></h2>
-        <p class="section-sub">Real businesses, real results. Take a look at some of our recent work.</p>
+        <span class="label blue" data-i18n="port_label">Portfolio</span>
+        <h2 class="section-title" data-i18n-html="port_title">Sites We've <span class="blue">Built</span></h2>
+        <p class="section-sub" data-i18n="port_sub">Real businesses, real results. Take a look at some of our recent work.</p>
       </div>
       <div class="portfolio-grid">
         <div class="portfolio-card reveal">
@@ -1096,9 +1101,9 @@
           <div class="portfolio-info">
             <div>
               <h4>DeLara Consulting</h4>
-              <p>Professional consulting services website</p>
+              <p data-i18n="port1_desc">Professional consulting services website</p>
             </div>
-            <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link">Visit Site</a>
+            <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
         <div class="portfolio-card reveal">
@@ -1112,9 +1117,9 @@
           <div class="portfolio-info">
             <div>
               <h4>AZ Powerwash</h4>
-              <p>Pressure washing &amp; exterior cleaning</p>
+              <p data-i18n="port2_desc">Pressure washing &amp; exterior cleaning</p>
             </div>
-            <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link">Visit Site</a>
+            <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
       </div>
@@ -1125,34 +1130,34 @@
   <section class="process section" id="process">
     <div class="container">
       <div class="process-header reveal">
-        <span class="label">How It Works</span>
-        <h2 class="section-title">From Idea to <span class="green">Live Site</span></h2>
-        <p class="section-sub">Our straightforward 4-step process gets your site launched fast.</p>
+        <span class="label" data-i18n="proc_label">How It Works</span>
+        <h2 class="section-title" data-i18n-html="proc_title">From Idea to <span class="green">Live Site</span></h2>
+        <p class="section-sub" data-i18n="proc_sub">Our straightforward 4-step process gets your site launched fast.</p>
       </div>
       <div class="process-steps">
         <div class="process-step reveal">
           <div class="step-num">01</div>
           <div class="step-icon">💬</div>
-          <h4>Consult</h4>
-          <p>Free call to understand your business, goals, and what pages you need.</p>
+          <h4 data-i18n="proc_step1_title">Consult</h4>
+          <p data-i18n="proc_step1_desc">Free call to understand your business, goals, and what pages you need.</p>
         </div>
         <div class="process-step reveal">
           <div class="step-num">02</div>
           <div class="step-icon">🎨</div>
-          <h4>Design</h4>
-          <p>We build your site with your brand — logo, colors, content, and photos.</p>
+          <h4 data-i18n="proc_step2_title">Design</h4>
+          <p data-i18n="proc_step2_desc">We build your site with your brand — logo, colors, content, and photos.</p>
         </div>
         <div class="process-step reveal">
           <div class="step-num">03</div>
           <div class="step-icon">🚀</div>
-          <h4>Launch</h4>
-          <p>After your approval and revisions, we go live — fast and stress-free.</p>
+          <h4 data-i18n="proc_step3_title">Launch</h4>
+          <p data-i18n="proc_step3_desc">After your approval and revisions, we go live — fast and stress-free.</p>
         </div>
         <div class="process-step reveal">
           <div class="step-num">04</div>
           <div class="step-icon">🛡️</div>
-          <h4>Support</h4>
-          <p>Ongoing maintenance, hosting, and SEO plans keep your site running strong.</p>
+          <h4 data-i18n="proc_step4_title">Support</h4>
+          <p data-i18n="proc_step4_desc">Ongoing maintenance, hosting, and SEO plans keep your site running strong.</p>
         </div>
       </div>
     </div>
@@ -1162,29 +1167,29 @@
   <section class="contact section" id="contact">
     <div class="container contact-inner">
       <div class="contact-info reveal">
-        <span class="label blue">Contact</span>
-        <h2 class="section-title">Let's Build Your <span class="blue">Website</span></h2>
-        <p class="section-sub">Ready to get started or just have questions? Reach out — we respond fast.</p>
+        <span class="label blue" data-i18n="contact_label">Contact</span>
+        <h2 class="section-title" data-i18n-html="contact_title">Let's Build Your <span class="blue">Website</span></h2>
+        <p class="section-sub" data-i18n="contact_sub">Ready to get started or just have questions? Reach out — we respond fast.</p>
         <div class="contact-details">
           <div class="contact-item">
             <div class="contact-icon">📞</div>
             <div>
-              <strong>Phone</strong>
+              <strong data-i18n="contact_phone_label">Phone</strong>
               <a href="tel:3173480539">(317) 348-0539</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">✉️</div>
             <div>
-              <strong>Email</strong>
+              <strong data-i18n="contact_email_label">Email</strong>
               <a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">🗺️</div>
             <div>
-              <strong>Service Area</strong>
-              <span>All 50 States — Remote &amp; Nationwide</span>
+              <strong data-i18n="contact_area_label">Service Area</strong>
+              <span data-i18n="contact_area_val">All 50 States — Remote &amp; Nationwide</span>
             </div>
           </div>
         </div>
@@ -1193,40 +1198,40 @@
         <form onsubmit="handleSubmit(event)">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+              <label for="name" data-i18n="form_name_label">Your Name</label>
+              <input type="text" id="name" name="name" data-i18n-placeholder="form_name_ph" placeholder="Jane Smith" required>
             </div>
             <div class="form-group">
-              <label for="business">Business Name</label>
-              <input type="text" id="business" name="business" placeholder="Smith Plumbing Co.">
+              <label for="business" data-i18n="form_biz_label">Business Name</label>
+              <input type="text" id="business" name="business" data-i18n-placeholder="form_biz_ph" placeholder="Smith Plumbing Co.">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+              <label for="email" data-i18n="form_email_label">Email Address</label>
+              <input type="email" id="email" name="email" data-i18n-placeholder="form_email_ph" placeholder="jane@example.com" required>
             </div>
             <div class="form-group">
-              <label for="phone">Phone Number</label>
+              <label for="phone" data-i18n="form_phone_label">Phone Number</label>
               <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
             </div>
           </div>
           <div class="form-group">
-            <label for="package">Interested In</label>
-            <select id="package" name="package">
-              <option value="">Select a package...</option>
-              <option value="starter">Starter — $500–$1,000</option>
-              <option value="growth">Growth — $1,000–$2,500</option>
-              <option value="premium">Premium — $2,500+</option>
-              <option value="addon">Add-On Services Only</option>
-              <option value="unsure">Not Sure Yet</option>
+            <label for="package" data-i18n="form_pkg_label">Interested In</label>
+            <select id="package" name="package" data-i18n-select="form_select">
+              <option value="" data-i18n-opt="form_sel_default">Select a package...</option>
+              <option value="starter" data-i18n-opt="form_sel_starter">Starter — $500–$1,000</option>
+              <option value="growth" data-i18n-opt="form_sel_growth">Growth — $1,000–$2,500</option>
+              <option value="premium" data-i18n-opt="form_sel_premium">Premium — $2,500+</option>
+              <option value="addon" data-i18n-opt="form_sel_addon">Add-On Services Only</option>
+              <option value="unsure" data-i18n-opt="form_sel_unsure">Not Sure Yet</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Tell Us About Your Business</label>
-            <textarea id="message" name="message" placeholder="What does your business do? What pages do you need? Any specific goals?"></textarea>
+            <label for="message" data-i18n="form_msg_label">Tell Us About Your Business</label>
+            <textarea id="message" name="message" data-i18n-placeholder="form_msg_ph" placeholder="What does your business do? What pages do you need? Any specific goals?"></textarea>
           </div>
-          <button type="submit" class="btn btn-blue form-submit">Send My Request →</button>
+          <button type="submit" class="btn btn-blue form-submit" data-i18n="form_submit">Send My Request →</button>
         </form>
       </div>
     </div>
@@ -1238,62 +1243,370 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <img src="brand_assests/PSlogo6.png" alt="PocketSod">
-          <p>Veteran-owned web design for small businesses. Professional sites, fair prices, and support that doesn't disappear after launch.</p>
+          <p data-i18n="footer_brand_desc">Veteran-owned web design for small businesses. Professional sites, fair prices, and support that doesn't disappear after launch.</p>
         </div>
         <div class="footer-col">
-          <h5>Navigation</h5>
+          <h5 data-i18n="footer_nav_heading">Navigation</h5>
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="#addons">Add-Ons</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#process">Process</a></li>
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#packages" data-i18n="nav_packages">Packages</a></li>
+            <li><a href="#addons" data-i18n="addon_label">Add-Ons</a></li>
+            <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+            <li><a href="#process" data-i18n="nav_process">Process</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Contact</h5>
+          <h5 data-i18n="contact_label">Contact</h5>
           <ul>
             <li><a href="tel:3173480539">(317) 348-0539</a></li>
             <li><a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a></li>
-            <li><a href="#contact">Get a Free Quote</a></li>
+            <li><a href="#contact" data-i18n="hero_cta_primary">Get a Free Quote</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 PocketSod LLC. All rights reserved.</p>
-        <span class="vet-badge">★ Veteran Owned &amp; Operated</span>
+        <p data-i18n="footer_copy">© 2026 PocketSod LLC. All rights reserved.</p>
+        <span class="vet-badge" data-i18n="footer_vet">★ Veteran Owned &amp; Operated</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Navbar scroll
+    // ── TRANSLATIONS ──────────────────────────────────────────────────────────
+    const T = {
+      en: {
+        nav_about:        'About',
+        nav_packages:     'Packages',
+        nav_portfolio:    'Portfolio',
+        nav_process:      'Process',
+        nav_cta:          'Get a Quote',
+
+        hero_badge:        'Veteran-Owned & Operated',
+        hero_h1:           'Your Business.<br><span class="hl-green">Online.</span><br><span class="hl-blue">Affordable.</span>',
+        hero_sub:          'PocketSod builds professional websites that help small businesses grow — fast turnaround, fair prices, and support you can count on. All 50 states.',
+        hero_cta_primary:  'Get a Free Quote',
+        hero_cta_secondary:'See Packages',
+
+        stat_vet:          'Veteran Owned',
+        stat_states:       'States Served',
+        stat_days:         'Day Avg Launch',
+        stat_satisfaction: 'Satisfaction Focus',
+
+        about_quote: '"We build websites the same way we served — with discipline, attention to detail, and no excuses."',
+        about_cite:  '— PocketSod LLC, Veteran-Owned',
+        about_label: 'About Us',
+        about_title: 'Small Business Websites, <span class="green">Done Right</span>',
+        about_sub:   'We specialize in affordable, professional web design for small businesses across all 50 states. No bloated agencies, no confusing contracts — just results.',
+        about_li1:   'Responsive design that works on every device and screen size',
+        about_li2:   'Built-in SEO so customers can find you on Google',
+        about_li3:   'Plain-language communication — no tech jargon',
+        about_li4:   'Ongoing support and maintenance plans available',
+        about_li5:   'Bilingual (EN/ES) options on Growth and Premium tiers',
+        about_li6:   'Veteran-owned: disciplined, accountable, mission-focused',
+
+        pkg_label:        'Pricing',
+        pkg_title:        'Simple, <span class="blue">Transparent</span> Packages',
+        pkg_sub:          'Pick the package that fits your business. No hidden fees, no surprises.',
+        pkg_popular:      'Most Popular',
+        pkg_onetime:      'one-time',
+        pkg_starter_name: 'Starter',
+        pkg_growth_name:  'Growth',
+        pkg_premium_name: 'Premium',
+        pkg_btn_start:    'Get Started',
+        pkg_s1: 'Up to 3 pages',
+        pkg_s2: 'Contact form',
+        pkg_s3: 'Mobile responsive',
+        pkg_s4: 'Basic SEO setup',
+        pkg_s5: 'Google Maps integration',
+        pkg_s6: '1 revision round',
+        pkg_g1: 'Up to 6 pages',
+        pkg_g2: 'Blog setup',
+        pkg_g3: 'Bilingual EN/ES option',
+        pkg_g4: 'Quote & lead forms',
+        pkg_g5: 'SEO foundations',
+        pkg_g6: 'Social media links',
+        pkg_g7: 'Maintenance-ready',
+        pkg_p1: 'Unlimited pages',
+        pkg_p2: 'Custom design & branding',
+        pkg_p3: 'Advanced SEO',
+        pkg_p4: 'Hosting mgmt included',
+        pkg_p5: 'Ongoing edits',
+        pkg_p6: 'Analytics dashboard',
+        pkg_p7: 'Priority support',
+
+        addon_label: 'Add-Ons',
+        addon_title: 'Keep Growing with <span class="green">Monthly Services</span>',
+        addon_sub:   'Add ongoing support to any package. We handle it so you can focus on running your business.',
+        addon1_title: 'Monthly Maintenance',
+        addon1_desc:  'Content updates, security patches, plugin management, and uptime monitoring.',
+        addon1_price: '$50–$200 / month',
+        addon2_title: 'Hosting Management',
+        addon2_desc:  'We handle your domain, SSL certificate, server, backups, and renewals.',
+        addon2_price: '$20–$50 / month',
+        addon3_title: 'SEO Management',
+        addon3_desc:  'Ongoing keyword tracking, local SEO, Google Business optimization, and monthly reporting.',
+        addon3_price: '$100–$500 / month',
+
+        port_label: 'Portfolio',
+        port_title: 'Sites We\'ve <span class="blue">Built</span>',
+        port_sub:   'Real businesses, real results. Take a look at some of our recent work.',
+        port1_desc: 'Professional consulting services website',
+        port2_desc: 'Pressure washing & exterior cleaning',
+        port_visit: 'Visit Site',
+
+        proc_label: 'How It Works',
+        proc_title: 'From Idea to <span class="green">Live Site</span>',
+        proc_sub:   'Our straightforward 4-step process gets your site launched fast.',
+        proc_step1_title: 'Consult',
+        proc_step1_desc:  'Free call to understand your business, goals, and what pages you need.',
+        proc_step2_title: 'Design',
+        proc_step2_desc:  'We build your site with your brand — logo, colors, content, and photos.',
+        proc_step3_title: 'Launch',
+        proc_step3_desc:  'After your approval and revisions, we go live — fast and stress-free.',
+        proc_step4_title: 'Support',
+        proc_step4_desc:  'Ongoing maintenance, hosting, and SEO plans keep your site running strong.',
+
+        contact_label:      'Contact',
+        contact_title:      'Let\'s Build Your <span class="blue">Website</span>',
+        contact_sub:        'Ready to get started or just have questions? Reach out — we respond fast.',
+        contact_phone_label:'Phone',
+        contact_email_label:'Email',
+        contact_area_label: 'Service Area',
+        contact_area_val:   'All 50 States — Remote & Nationwide',
+
+        form_name_label:  'Your Name',
+        form_name_ph:     'Jane Smith',
+        form_biz_label:   'Business Name',
+        form_biz_ph:      'Smith Plumbing Co.',
+        form_email_label: 'Email Address',
+        form_email_ph:    'jane@example.com',
+        form_phone_label: 'Phone Number',
+        form_pkg_label:   'Interested In',
+        form_sel_default: 'Select a package...',
+        form_sel_starter: 'Starter — $500–$1,000',
+        form_sel_growth:  'Growth — $1,000–$2,500',
+        form_sel_premium: 'Premium — $2,500+',
+        form_sel_addon:   'Add-On Services Only',
+        form_sel_unsure:  'Not Sure Yet',
+        form_msg_label:   'Tell Us About Your Business',
+        form_msg_ph:      'What does your business do? What pages do you need? Any specific goals?',
+        form_submit:      'Send My Request →',
+        form_sent:        '✓ Message Sent!',
+
+        footer_nav_heading: 'Navigation',
+        footer_brand_desc:  'Veteran-owned web design for small businesses. Professional sites, fair prices, and support that doesn\'t disappear after launch.',
+        footer_copy:        '© 2026 PocketSod LLC. All rights reserved.',
+        footer_vet:         '★ Veteran Owned & Operated',
+      },
+
+      es: {
+        nav_about:        'Nosotros',
+        nav_packages:     'Paquetes',
+        nav_portfolio:    'Portafolio',
+        nav_process:      'Proceso',
+        nav_cta:          'Cotización Gratis',
+
+        hero_badge:        'Empresa de Veteranos',
+        hero_h1:           'Tu Negocio.<br><span class="hl-green">En Línea.</span><br><span class="hl-blue">Accesible.</span>',
+        hero_sub:          'PocketSod crea sitios web profesionales que ayudan a los pequeños negocios a crecer — entregas rápidas, precios justos y soporte confiable. Los 50 estados.',
+        hero_cta_primary:  'Cotización Gratis',
+        hero_cta_secondary:'Ver Paquetes',
+
+        stat_vet:          'Empresa Veterana',
+        stat_states:       'Estados Atendidos',
+        stat_days:         'Días Promedio',
+        stat_satisfaction: 'Satisfacción Total',
+
+        about_quote: '"Creamos sitios web de la misma manera que servimos — con disciplina, atención al detalle y sin excusas."',
+        about_cite:  '— PocketSod LLC, Empresa de Veteranos',
+        about_label: 'Sobre Nosotros',
+        about_title: 'Sitios Web para Negocios, <span class="green">Bien Hechos</span>',
+        about_sub:   'Nos especializamos en diseño web profesional y accesible para pequeños negocios en los 50 estados. Sin agencias costosas, sin contratos confusos — solo resultados.',
+        about_li1:   'Diseño responsivo que funciona en cualquier dispositivo y pantalla',
+        about_li2:   'SEO integrado para que tus clientes te encuentren en Google',
+        about_li3:   'Comunicación en lenguaje simple — sin tecnicismos',
+        about_li4:   'Planes de soporte y mantenimiento continuo disponibles',
+        about_li5:   'Opciones bilingüe (EN/ES) en los planes Growth y Premium',
+        about_li6:   'Empresa de veteranos: disciplinados, responsables y enfocados en la misión',
+
+        pkg_label:        'Precios',
+        pkg_title:        'Paquetes <span class="blue">Simples y Transparentes</span>',
+        pkg_sub:          'Elige el paquete que se adapta a tu negocio. Sin cargos ocultos, sin sorpresas.',
+        pkg_popular:      'Más Popular',
+        pkg_onetime:      'pago único',
+        pkg_starter_name: 'Inicial',
+        pkg_growth_name:  'Crecimiento',
+        pkg_premium_name: 'Premium',
+        pkg_btn_start:    'Comenzar',
+        pkg_s1: 'Hasta 3 páginas',
+        pkg_s2: 'Formulario de contacto',
+        pkg_s3: 'Diseño responsivo',
+        pkg_s4: 'SEO básico',
+        pkg_s5: 'Integración con Google Maps',
+        pkg_s6: '1 ronda de revisiones',
+        pkg_g1: 'Hasta 6 páginas',
+        pkg_g2: 'Configuración de blog',
+        pkg_g3: 'Opción bilingüe EN/ES',
+        pkg_g4: 'Formularios de cotización',
+        pkg_g5: 'Fundamentos de SEO',
+        pkg_g6: 'Links de redes sociales',
+        pkg_g7: 'Listo para mantenimiento',
+        pkg_p1: 'Páginas ilimitadas',
+        pkg_p2: 'Diseño y marca personalizada',
+        pkg_p3: 'SEO avanzado',
+        pkg_p4: 'Gestión de hosting incluida',
+        pkg_p5: 'Ediciones continuas',
+        pkg_p6: 'Panel de analíticas',
+        pkg_p7: 'Soporte prioritario',
+
+        addon_label: 'Servicios Adicionales',
+        addon_title: 'Sigue Creciendo con <span class="green">Servicios Mensuales</span>',
+        addon_sub:   'Agrega soporte continuo a cualquier paquete. Nosotros lo manejamos para que puedas enfocarte en tu negocio.',
+        addon1_title: 'Mantenimiento Mensual',
+        addon1_desc:  'Actualizaciones de contenido, parches de seguridad, gestión de plugins y monitoreo de uptime.',
+        addon1_price: '$50–$200 / mes',
+        addon2_title: 'Gestión de Hosting',
+        addon2_desc:  'Manejamos tu dominio, certificado SSL, servidor, copias de seguridad y renovaciones.',
+        addon2_price: '$20–$50 / mes',
+        addon3_title: 'Gestión de SEO',
+        addon3_desc:  'Seguimiento de palabras clave, SEO local, optimización de Google Business e informes mensuales.',
+        addon3_price: '$100–$500 / mes',
+
+        port_label: 'Portafolio',
+        port_title: 'Sitios que <span class="blue">Hemos Creado</span>',
+        port_sub:   'Negocios reales, resultados reales. Mira algunos de nuestros trabajos recientes.',
+        port1_desc: 'Sitio web de consultoría profesional',
+        port2_desc: 'Lavado a presión y limpieza exterior',
+        port_visit: 'Ver Sitio',
+
+        proc_label: 'Cómo Funciona',
+        proc_title: 'De la Idea al <span class="green">Sitio en Vivo</span>',
+        proc_sub:   'Nuestro proceso de 4 pasos lanza tu sitio rápidamente.',
+        proc_step1_title: 'Consulta',
+        proc_step1_desc:  'Llamada gratis para entender tu negocio, metas y las páginas que necesitas.',
+        proc_step2_title: 'Diseño',
+        proc_step2_desc:  'Creamos tu sitio con tu marca — logo, colores, contenido y fotos.',
+        proc_step3_title: 'Lanzamiento',
+        proc_step3_desc:  'Tras tu aprobación y revisiones, salimos en vivo — rápido y sin estrés.',
+        proc_step4_title: 'Soporte',
+        proc_step4_desc:  'Mantenimiento, hosting y planes de SEO mantienen tu sitio funcionando.',
+
+        contact_label:      'Contacto',
+        contact_title:      'Construyamos Tu <span class="blue">Sitio Web</span>',
+        contact_sub:        '¿Listo para comenzar o tienes preguntas? Contáctanos — respondemos rápido.',
+        contact_phone_label:'Teléfono',
+        contact_email_label:'Correo',
+        contact_area_label: 'Área de Servicio',
+        contact_area_val:   'Los 50 Estados — Remoto y Nacional',
+
+        form_name_label:  'Tu Nombre',
+        form_name_ph:     'Juan García',
+        form_biz_label:   'Nombre del Negocio',
+        form_biz_ph:      'García Plomería S.A.',
+        form_email_label: 'Correo Electrónico',
+        form_email_ph:    'juan@ejemplo.com',
+        form_phone_label: 'Número de Teléfono',
+        form_pkg_label:   'Interesado En',
+        form_sel_default: 'Selecciona un paquete...',
+        form_sel_starter: 'Inicial — $500–$1,000',
+        form_sel_growth:  'Crecimiento — $1,000–$2,500',
+        form_sel_premium: 'Premium — $2,500+',
+        form_sel_addon:   'Solo Servicios Adicionales',
+        form_sel_unsure:  'Aún No Sé',
+        form_msg_label:   'Cuéntanos Sobre Tu Negocio',
+        form_msg_ph:      '¿Qué hace tu negocio? ¿Qué páginas necesitas? ¿Alguna meta específica?',
+        form_submit:      'Enviar Mi Solicitud →',
+        form_sent:        '✓ Mensaje Enviado!',
+
+        footer_nav_heading: 'Navegación',
+        footer_brand_desc:  'Diseño web de veteranos para pequeños negocios. Sitios profesionales, precios justos y soporte que no desaparece tras el lanzamiento.',
+        footer_copy:        '© 2026 PocketSod LLC. Todos los derechos reservados.',
+        footer_vet:         '★ Empresa de Veteranos',
+      }
+    };
+
+    // ── SET LANGUAGE ──────────────────────────────────────────────────────────
+    function setLang(lang) {
+      const t = T[lang];
+      if (!t) return;
+
+      // text content
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // innerHTML (headings with colored spans)
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      // select options
+      document.querySelectorAll('[data-i18n-opt]').forEach(el => {
+        const key = el.dataset.i18nOpt;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // toggle button active states
+      document.querySelectorAll('.lt-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      // update html lang attribute
+      document.documentElement.lang = lang;
+
+      // persist preference
+      try { localStorage.setItem('ps_lang', lang); } catch(e) {}
+    }
+
+    // ── INIT LANGUAGE ─────────────────────────────────────────────────────────
+    (function() {
+      let saved;
+      try { saved = localStorage.getItem('ps_lang'); } catch(e) {}
+      const browserLang = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+      setLang(saved || browserLang);
+    })();
+
+    // ── NAVBAR SCROLL ─────────────────────────────────────────────────────────
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // Mobile menu
+    // ── MOBILE MENU ───────────────────────────────────────────────────────────
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
     function closeMobile() { mobileMenu.classList.remove('open'); }
 
-    // Scroll reveal
+    // ── SCROLL REVEAL ─────────────────────────────────────────────────────────
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
-    // Form submit
+    // ── FORM SUBMIT ───────────────────────────────────────────────────────────
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type=submit]');
-      btn.textContent = '✓ Message Sent!';
+      const lang = document.documentElement.lang || 'en';
+      btn.textContent = T[lang].form_sent || '✓ Sent!';
       btn.style.background = 'var(--green)';
       btn.disabled = true;
-      setTimeout(() => { btn.textContent = 'Send My Request →'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 4000);
+      setTimeout(() => {
+        btn.textContent = T[lang].form_submit || 'Send My Request →';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 4000);
     }
   </script>
 </body>
