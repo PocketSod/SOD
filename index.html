@@ -574,7 +574,7 @@
     .portfolio-header .section-sub { margin: 0 auto; }
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
     .portfolio-card {
@@ -857,7 +857,7 @@
       .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .addon-cards { grid-template-columns: 1fr; }
-      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .process-steps { grid-template-columns: repeat(2, 1fr); }
       .process-steps::before { display: none; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -1122,6 +1122,22 @@
             <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
+        <div class="portfolio-card reveal">
+          <div class="browser-bar">
+            <div class="browser-dot dot-r"></div>
+            <div class="browser-dot dot-y"></div>
+            <div class="browser-dot dot-g"></div>
+            <div class="browser-url">casaespanaindiana.org</div>
+          </div>
+          <div class="portfolio-thumb">Casa España Indiana</div>
+          <div class="portfolio-info">
+            <div>
+              <h4>Casa España Indiana</h4>
+              <p data-i18n="port3_desc">Spanish cultural organization website</p>
+            </div>
+            <a href="https://casaespanaindiana.org/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1352,6 +1368,7 @@
         port_sub:   'Real businesses, real results. Take a look at some of our recent work.',
         port1_desc: 'Professional consulting services website',
         port2_desc: 'Pressure washing & exterior cleaning',
+        port3_desc: 'Spanish cultural organization website',
         port_visit: 'Visit Site',
 
         proc_label: 'How It Works',
@@ -1477,6 +1494,7 @@
         port_sub:   'Negocios reales, resultados reales. Mira algunos de nuestros trabajos recientes.',
         port1_desc: 'Sitio web de consultoría profesional',
         port2_desc: 'Lavado a presión y limpieza exterior',
+        port3_desc: 'Sitio web de organización cultural española',
         port_visit: 'Ver Sitio',
 
         proc_label: 'Cómo Funciona',
