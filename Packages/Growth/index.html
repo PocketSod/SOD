@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Cocina de Mamá — Authentic Mexican Catering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta:   #C1470A;
+      --terra-dark:   #8B2F05;
+      --terra-light:  #E07040;
+      --choco:        #3D1A08;
+      --choco-mid:    #6B3518;
+      --cream:        #FDF5E8;
+      --cream-dark:   #F0E4CC;
+      --gold:         #D4A017;
+      --gold-light:   #ECC84A;
+      --text:         #2A1205;
+      --text-mid:     #6B3A20;
+      --text-light:   #A0725A;
+      --border:       #E8D4B8;
+      --white:        #FFFDF8;
+      --shadow-sm:    0 2px 10px rgba(61,26,8,0.10);
+      --shadow-md:    0 8px 32px rgba(61,26,8,0.15);
+      --shadow-lg:    0 20px 60px rgba(61,26,8,0.20);
+      --radius:       10px;
+      --radius-lg:    20px;
+      --t:            0.28s ease;
+      --font-head:    'Playfair Display', 'Georgia', serif;
+      --font-body:    'Lora', 'Georgia', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--text); line-height: 1.7; }
+
+    /* ── DEMO BANNER ── */
+    .demo-banner {
+      background: #2C6EAB;
+      color: #fff;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .demo-banner a { color: #a8d8ff; text-decoration: none; }
+    .demo-banner a:hover { text-decoration: underline; }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--choco);
+      border-radius: 50px;
+      padding: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      box-shadow: var(--shadow-md);
+      z-index: 200;
+    }
+    .lt-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.55);
+      transition: background var(--t), color var(--t);
+    }
+    .lt-btn.active { background: var(--terracotta); color: #fff; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--choco);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--terra-dark);
+    }
+    .nav-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-brand {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+    .nav-brand span { color: rgba(255,255,255,0.6); font-style: normal; font-size: 0.85rem; font-weight: 400; display: block; margin-top: -0.3rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      transition: color var(--t);
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--terracotta);
+      color: #fff !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      transition: background var(--t) !important;
+    }
+    .nav-cta:hover { background: var(--terra-light) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background:
+        radial-gradient(ellipse at 70% 50%, rgba(193,71,10,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(212,160,23,0.15) 0%, transparent 50%),
+        var(--choco);
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.015) 60px,
+        rgba(255,255,255,0.015) 61px
+      );
+    }
+    .hero-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 900;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .hl { color: var(--gold-light); font-style: normal; }
+    .hero-desc {
+      color: rgba(255,255,255,0.68);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-terra {
+      background: var(--terracotta);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background var(--t), transform var(--t);
+    }
+    .btn-terra:hover { background: var(--terra-light); transform: translateY(-2px); }
+    .btn-ghost {
+      background: none;
+      color: rgba(255,255,255,0.75);
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      transition: border-color var(--t), color var(--t);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+    /* Hero food showcase */
+    .hero-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .food-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem;
+      text-align: center;
+      animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+      backdrop-filter: blur(4px);
+    }
+    .food-card:nth-child(2) { animation-delay: 0.1s; margin-top: 1.5rem; }
+    .food-card:nth-child(3) { animation-delay: 0.2s; margin-top: -1rem; }
+    .food-card:nth-child(4) { animation-delay: 0.3s; }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .food-emoji { font-size: 2.5rem; display: block; margin-bottom: 0.4rem; }
+    .food-name {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+    .food-name-es {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 5rem 2rem; }
+    .container { max-width: 1140px; margin: 0 auto; }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.8rem;
+    }
+    .section-tag::before { content: '◆'; font-size: 0.5rem; }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--choco);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--text-mid);
+      font-size: 1rem;
+      max-width: 520px;
+      line-height: 1.75;
+    }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ── MENU ── */
+    .menu { background: var(--white); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .menu-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform var(--t), box-shadow var(--t);
+      background: var(--cream);
+    }
+    .menu-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .menu-img {
+      background: linear-gradient(135deg, var(--terra-dark) 0%, var(--terracotta) 50%, var(--gold) 100%);
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .menu-body { padding: 1.2rem 1.25rem; }
+    .menu-body h3 {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--choco);
+      margin-bottom: 0.15rem;
+    }
+    .menu-body .sub { font-style: italic; color: var(--text-light); font-size: 0.82rem; margin-bottom: 0.6rem; }
+    .menu-body p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+    .menu-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .menu-price span { font-family: var(--font-head); font-weight: 700; color: var(--terracotta); }
+    .menu-price a {
+      font-size: 0.78rem;
+      color: var(--choco-mid);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-weight: 600;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--cream-dark); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-content p { color: var(--text-mid); margin-bottom: 1rem; font-size: 0.97rem; }
+    .about-content blockquote {
+      border-left: 3px solid var(--terracotta);
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      background: rgba(193,71,10,0.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--choco-mid);
+      font-size: 1.05rem;
+    }
+    .social-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--choco-mid);
+      text-decoration: none;
+      transition: border-color var(--t), background var(--t);
+    }
+    .social-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: #fff; }
+    .about-visual {
+      background: linear-gradient(150deg, var(--choco) 0%, var(--terra-dark) 100%);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-stat {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .about-stat:last-child { border-bottom: none; }
+    .about-stat-num { font-family: var(--font-head); font-size: 1.8rem; font-weight: 900; color: var(--gold-light); }
+    .about-stat-label { color: rgba(255,255,255,0.65); font-size: 0.88rem; }
+
+    /* ── BLOG ── */
+    .blog { background: var(--white); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .blog-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--cream);
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .blog-thumb {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .blog-thumb.t1 { background: linear-gradient(135deg, #C1470A, #D4A017); }
+    .blog-thumb.t2 { background: linear-gradient(135deg, #3D1A08, #C1470A); }
+    .blog-thumb.t3 { background: linear-gradient(135deg, #8B2F05, #E07040); }
+    .blog-body { padding: 1.2rem; }
+    .blog-cat {
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.5rem;
+    }
+    .blog-body h3 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--choco);
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+    .blog-body p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+    .blog-footer {
+      padding: 0.75rem 1.2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .blog-date { font-size: 0.75rem; color: var(--text-light); font-style: italic; }
+    .read-more { font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; color: var(--terracotta); text-decoration: none; }
+
+    /* ── QUOTE FORM ── */
+    .quote { background: var(--choco); padding: 5rem 2rem; }
+    .quote-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .quote .section-tag { color: var(--gold); }
+    .quote .section-tag::before { color: var(--gold); }
+    .quote .section-title { color: #fff; }
+    .quote .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 2.5rem; }
+    .quote-form {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      text-align: left;
+    }
+    .qf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .qf-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .qf-group label {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+    }
+    .qf-group input,
+    .qf-group select,
+    .qf-group textarea {
+      padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: #fff;
+      outline: none;
+      transition: border-color var(--t);
+    }
+    .qf-group input::placeholder,
+    .qf-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .qf-group input:focus,
+    .qf-group select:focus,
+    .qf-group textarea:focus { border-color: var(--terracotta); }
+    .qf-group select option { background: var(--choco); color: #fff; }
+    .qf-group textarea { min-height: 100px; resize: vertical; }
+    .btn-quote {
+      background: var(--terracotta);
+      color: #fff;
+      padding: 0.9rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0 auto;
+      display: block;
+      transition: background var(--t), transform var(--t);
+    }
+    .btn-quote:hover { background: var(--terra-light); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1A0A03;
+      color: rgba(255,255,255,0.55);
+      padding: 3.5rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-brand {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+    .footer-about { font-size: 0.88rem; line-height: 1.7; }
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color var(--t); }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-ps a { color: rgba(193,71,10,0.6); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-showcase { display: none; }
+      .menu-grid, .blog-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+      .qf-row { grid-template-columns: 1fr; }
+    }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- DEMO BANNER -->
+  <div class="demo-banner">
+    PocketSod — <strong>Growth Package</strong> Demo &nbsp;|&nbsp; $1,000–$2,500 &nbsp;·&nbsp; Up to 6 pages &nbsp;·&nbsp; Bilingual EN/ES &nbsp;·&nbsp; Blog &nbsp;·&nbsp; Quote form &nbsp;|&nbsp; <a href="https://www.pocketsod.com">Get this for your business →</a>
+  </div>
+
+  <!-- LANG TOGGLE -->
+  <div class="lang-toggle">
+    <button class="lt-btn active" onclick="setLang('en')" data-lang="en">EN</button>
+    <button class="lt-btn" onclick="setLang('es')" data-lang="es">ES</button>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        La Cocina de Mamá
+        <span data-i18n="nav_tagline">Authentic Mexican Catering</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#blog" data-i18n="nav_blog">Blog</a></li>
+        <li><a href="#quote" class="nav-cta" data-i18n="nav_cta">Book Catering</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow" data-i18n="hero_eyebrow">Indianapolis, Indiana</div>
+        <h1 data-i18n-html="hero_h1"><em>Taste the</em><br><span class="hl">Heart of Mexico</span><br><em>at Your Table</em></h1>
+        <p class="hero-desc" data-i18n="hero_desc">Authentic family recipes passed down through three generations. From intimate dinners to corporate events — we bring the flavors of home to you.</p>
+        <div class="hero-actions">
+          <a href="#quote" class="btn-terra" data-i18n="hero_cta1">Request a Quote</a>
+          <a href="#menu" class="btn-ghost" data-i18n="hero_cta2">View Our Menu</a>
+        </div>
+      </div>
+      <div class="hero-showcase">
+        <div class="food-card">
+          <span class="food-emoji">🌮</span>
+          <div class="food-name" data-i18n="food1_en">Tacos al Pastor</div>
+          <div class="food-name-es" data-i18n="food1_es">Tacos al Pastor</div>
+        </div>
+        <div class="food-card">
+          <span class="food-emoji">🫔</span>
+          <div class="food-name" data-i18n="food2_en">Tamales</div>
+          <div class="food-name-es" data-i18n="food2_es">Tamales</div>
+        </div>
+        <div class="food-card">
+          <span class="food-emoji">🍲</span>
+          <div class="food-name" data-i18n="food3_en">Pozole</div>
+          <div class="food-name-es" data-i18n="food3_es">Pozole</div>
+        </div>
+        <div class="food-card">
+          <span class="food-emoji">🎂</span>
+          <div class="food-name" data-i18n="food4_en">Tres Leches</div>
+          <div class="food-name-es" data-i18n="food4_es">Tres Leches</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu section" id="menu">
+    <div class="container">
+      <div class="reveal text-center">
+        <span class="section-tag" data-i18n="menu_label">Our Menu</span>
+        <h2 class="section-title" data-i18n="menu_title">Family Recipes,<br>Made Fresh Daily</h2>
+        <p class="section-sub" data-i18n="menu_sub">Every dish is prepared from scratch using traditional ingredients. Customizable for any event size or dietary need.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-img">🌮</div>
+          <div class="menu-body">
+            <h3 data-i18n="dish1_name">Taco Bar Package</h3>
+            <div class="sub" data-i18n="dish1_sub">Al pastor, carnitas, lengua</div>
+            <p data-i18n="dish1_desc">Full taco station with housemade salsas, pickled onions, fresh cilantro, and warm handmade tortillas. Serves up to 50 guests.</p>
+            <div class="menu-price">
+              <span data-i18n="dish1_price">From $12/person</span>
+              <a href="#quote" data-i18n="menu_inquire">Inquire →</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-img">🫔</div>
+          <div class="menu-body">
+            <h3 data-i18n="dish2_name">Tamale Fiesta</h3>
+            <div class="sub" data-i18n="dish2_sub">Pork, chicken, cheese & jalapeño, sweet</div>
+            <p data-i18n="dish2_desc">Handmade tamales in four varieties, steamed to order. Perfect for holidays, quinceañeras, and family celebrations.</p>
+            <div class="menu-price">
+              <span data-i18n="dish2_price">$4/tamale (min. 24)</span>
+              <a href="#quote" data-i18n="menu_inquire">Inquire →</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-img">🍽️</div>
+          <div class="menu-body">
+            <h3 data-i18n="dish3_name">Full Buffet</h3>
+            <div class="sub" data-i18n="dish3_sub">5-course experience</div>
+            <p data-i18n="dish3_desc">From sopa azteca to the main course and housemade horchata. Complete setup, serving staff, and cleanup included.</p>
+            <div class="menu-price">
+              <span data-i18n="dish3_price">From $22/person</span>
+              <a href="#quote" data-i18n="menu_inquire">Inquire →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-content reveal">
+          <span class="section-tag" data-i18n="about_label">Our Story</span>
+          <h2 class="section-title" data-i18n="about_title">Three Generations<br>of Flavor</h2>
+          <p data-i18n="about_p1">My grandmother, Mamá Rosa, learned to cook in a small kitchen in Oaxaca. She brought those recipes with her when she came to the US in 1978 — and every event we cater carries a little piece of that kitchen with it.</p>
+          <p data-i18n="about_p2">Today, my family and I serve over 200 events a year across the Indianapolis area, from backyard birthdays to corporate lunches for hundreds. Every dish is made by hand, with the same care Mamá Rosa taught us.</p>
+          <blockquote data-i18n="about_quote">"Food is how we love people. Everything else is just details."<br>— Elena Morales, Founder</blockquote>
+          <div class="social-row">
+            <a href="#" class="social-btn">📷 Instagram</a>
+            <a href="#" class="social-btn">📘 Facebook</a>
+            <a href="#" class="social-btn">🎵 TikTok</a>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="about-stat">
+            <div>
+              <div class="about-stat-num">200+</div>
+              <div class="about-stat-label" data-i18n="stat1">Events per year</div>
+            </div>
+          </div>
+          <div class="about-stat">
+            <div>
+              <div class="about-stat-num">3 Gen</div>
+              <div class="about-stat-label" data-i18n="stat2">Family recipes</div>
+            </div>
+          </div>
+          <div class="about-stat">
+            <div>
+              <div class="about-stat-num">4.8★</div>
+              <div class="about-stat-label" data-i18n="stat3">Average Google rating</div>
+            </div>
+          </div>
+          <div class="about-stat">
+            <div>
+              <div class="about-stat-num">Since</div>
+              <div class="about-stat-num">2009</div>
+              <div class="about-stat-label" data-i18n="stat4">Serving Indianapolis</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="blog section" id="blog">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-tag" data-i18n="blog_label">From the Kitchen</span>
+        <h2 class="section-title" data-i18n="blog_title">Recipes & Stories</h2>
+        <p class="section-sub" data-i18n="blog_sub">Tips, traditions, and a little taste of home — straight from Elena's kitchen.</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card reveal">
+          <div class="blog-thumb t1">🌶️</div>
+          <div class="blog-body">
+            <div class="blog-cat" data-i18n="post1_cat">Recipe</div>
+            <h3 data-i18n="post1_title">The Secret to Mamá Rosa's Mole Rojo</h3>
+            <p data-i18n="post1_desc">It starts with three dried chiles, a charred tomato, and a lot of patience. Here's the recipe we've never shared before.</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-date" data-i18n="post1_date">March 14, 2025</span>
+            <a href="#" class="read-more" data-i18n="read_more">Read →</a>
+          </div>
+        </div>
+        <div class="blog-card reveal">
+          <div class="blog-thumb t2">🎉</div>
+          <div class="blog-body">
+            <div class="blog-cat" data-i18n="post2_cat">Event Tips</div>
+            <h3 data-i18n="post2_title">How to Plan a Quinceañera Menu (Without the Stress)</h3>
+            <p data-i18n="post2_desc">After 15 years of catering quinceañeras, here's what we've learned about feeding a crowd and keeping traditions alive.</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-date" data-i18n="post2_date">Feb 28, 2025</span>
+            <a href="#" class="read-more" data-i18n="read_more">Read →</a>
+          </div>
+        </div>
+        <div class="blog-card reveal">
+          <div class="blog-thumb t3">🫔</div>
+          <div class="blog-body">
+            <div class="blog-cat" data-i18n="post3_cat">Tradition</div>
+            <h3 data-i18n="post3_title">Why We Still Make Tamales by Hand</h3>
+            <p data-i18n="post3_desc">Every December, our family gathers to make thousands of tamales together. Here's why we'll never use a machine.</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-date" data-i18n="post3_date">Dec 18, 2024</span>
+            <a href="#" class="read-more" data-i18n="read_more">Read →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section class="quote" id="quote">
+    <div class="quote-inner">
+      <div class="reveal">
+        <span class="section-tag" data-i18n="quote_label">Book Now</span>
+        <h2 class="section-title" data-i18n="quote_title">Request a Catering Quote</h2>
+        <p class="section-sub" data-i18n="quote_sub">Tell us about your event and we'll send a custom quote within 24 hours. No commitment required.</p>
+      </div>
+      <form class="quote-form reveal" onsubmit="handleSubmit(event)">
+        <div class="qf-row">
+          <div class="qf-group">
+            <label data-i18n="qf_name">Your Name</label>
+            <input type="text" data-i18n-placeholder="qf_name_ph" placeholder="Full name" required>
+          </div>
+          <div class="qf-group">
+            <label data-i18n="qf_phone">Phone</label>
+            <input type="tel" data-i18n-placeholder="qf_phone_ph" placeholder="(317) 555-0000">
+          </div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-group">
+            <label data-i18n="qf_event">Event Type</label>
+            <select>
+              <option data-i18n-opt="opt_wedding">Wedding</option>
+              <option data-i18n-opt="opt_birthday">Birthday / Quinceañera</option>
+              <option data-i18n-opt="opt_corp">Corporate Event</option>
+              <option data-i18n-opt="opt_other">Other</option>
+            </select>
+          </div>
+          <div class="qf-group">
+            <label data-i18n="qf_guests">Est. Guest Count</label>
+            <input type="number" placeholder="50" min="10">
+          </div>
+        </div>
+        <div class="qf-group">
+          <label data-i18n="qf_date">Event Date</label>
+          <input type="date">
+        </div>
+        <div class="qf-group">
+          <label data-i18n="qf_notes">Notes</label>
+          <textarea data-i18n-placeholder="qf_notes_ph" placeholder="Dietary needs, theme, location..."></textarea>
+        </div>
+        <button type="submit" class="btn-quote" data-i18n="qf_submit">Send My Quote Request →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">La Cocina de Mamá</div>
+        <p class="footer-about" data-i18n="footer_about">Authentic Mexican catering for Indianapolis and surrounding areas. Family recipes, made with love since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_nav">Navigation</h4>
+        <ul>
+          <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#blog" data-i18n="nav_blog">Blog</a></li>
+          <li><a href="#quote" data-i18n="nav_cta">Book Catering</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact">Contact</h4>
+        <ul>
+          <li><a href="tel:3175550198">(317) 555-0198</a></li>
+          <li><a href="mailto:elena@lacocinademama.com">elena@lacocinademama.com</a></li>
+          <li><a href="#">Indianapolis, IN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 La Cocina de Mamá · <span data-i18n="footer_rights">All rights reserved</span></div>
+      <div class="footer-ps" style="margin-top:0.5rem">Website by <a href="https://www.pocketsod.com">PocketSod</a> — Growth Package</div>
+    </div>
+  </footer>
+
+  <script>
+    const T = {
+      en: {
+        nav_tagline:    'Authentic Mexican Catering',
+        nav_menu:       'Menu',
+        nav_about:      'About',
+        nav_blog:       'Blog',
+        nav_cta:        'Book Catering',
+        hero_eyebrow:   'Indianapolis, Indiana',
+        hero_h1:        '<em>Taste the</em><br><span class="hl">Heart of Mexico</span><br><em>at Your Table</em>',
+        hero_desc:      'Authentic family recipes passed down through three generations. From intimate dinners to corporate events — we bring the flavors of home to you.',
+        hero_cta1:      'Request a Quote',
+        hero_cta2:      'View Our Menu',
+        food1_en: 'Tacos al Pastor', food1_es: 'Tacos al Pastor',
+        food2_en: 'Tamales',         food2_es: 'Tamales',
+        food3_en: 'Pozole',          food3_es: 'Pozole',
+        food4_en: 'Tres Leches',     food4_es: 'Tres Leches',
+        menu_label:     'Our Menu',
+        menu_title:     'Family Recipes, Made Fresh Daily',
+        menu_sub:       'Every dish is prepared from scratch using traditional ingredients. Customizable for any event size or dietary need.',
+        dish1_name:     'Taco Bar Package',
+        dish1_sub:      'Al pastor, carnitas, lengua',
+        dish1_desc:     'Full taco station with housemade salsas, pickled onions, fresh cilantro, and warm handmade tortillas. Serves up to 50 guests.',
+        dish1_price:    'From $12/person',
+        dish2_name:     'Tamale Fiesta',
+        dish2_sub:      'Pork, chicken, cheese & jalapeño, sweet',
+        dish2_desc:     'Handmade tamales in four varieties, steamed to order. Perfect for holidays, quinceañeras, and family celebrations.',
+        dish2_price:    '$4/tamale (min. 24)',
+        dish3_name:     'Full Buffet',
+        dish3_sub:      '5-course experience',
+        dish3_desc:     'From sopa azteca to the main course and housemade horchata. Complete setup, serving staff, and cleanup included.',
+        dish3_price:    'From $22/person',
+        menu_inquire:   'Inquire →',
+        about_label:    'Our Story',
+        about_title:    'Three Generations of Flavor',
+        about_p1:       'My grandmother, Mamá Rosa, learned to cook in a small kitchen in Oaxaca. She brought those recipes with her when she came to the US in 1978 — and every event we cater carries a little piece of that kitchen with it.',
+        about_p2:       'Today, my family and I serve over 200 events a year across the Indianapolis area, from backyard birthdays to corporate lunches for hundreds. Every dish is made by hand, with the same care Mamá Rosa taught us.',
+        about_quote:    '"Food is how we love people. Everything else is just details."<br>— Elena Morales, Founder',
+        stat1: 'Events per year', stat2: 'Family recipes', stat3: 'Average Google rating', stat4: 'Serving Indianapolis',
+        blog_label:     'From the Kitchen',
+        blog_title:     'Recipes & Stories',
+        blog_sub:       "Tips, traditions, and a little taste of home — straight from Elena's kitchen.",
+        post1_cat:  'Recipe',     post1_title: "The Secret to Mamá Rosa's Mole Rojo",
+        post1_desc: "It starts with three dried chiles, a charred tomato, and a lot of patience. Here's the recipe we've never shared before.",
+        post1_date: 'March 14, 2025',
+        post2_cat:  'Event Tips', post2_title: 'How to Plan a Quinceañera Menu (Without the Stress)',
+        post2_desc: "After 15 years of catering quinceañeras, here's what we've learned about feeding a crowd and keeping traditions alive.",
+        post2_date: 'Feb 28, 2025',
+        post3_cat:  'Tradition',  post3_title: 'Why We Still Make Tamales by Hand',
+        post3_desc: "Every December, our family gathers to make thousands of tamales together. Here's why we'll never use a machine.",
+        post3_date: 'Dec 18, 2024',
+        read_more:  'Read →',
+        quote_label:'Book Now',
+        quote_title:'Request a Catering Quote',
+        quote_sub:  "Tell us about your event and we'll send a custom quote within 24 hours. No commitment required.",
+        qf_name:    'Your Name',     qf_name_ph:  'Full name',
+        qf_phone:   'Phone',         qf_phone_ph: '(317) 555-0000',
+        qf_event:   'Event Type',
+        qf_guests:  'Est. Guest Count',
+        qf_date:    'Event Date',
+        qf_notes:   'Notes',         qf_notes_ph: 'Dietary needs, theme, location...',
+        qf_submit:  'Send My Quote Request →',
+        opt_wedding: 'Wedding', opt_birthday: 'Birthday / Quinceañera', opt_corp: 'Corporate Event', opt_other: 'Other',
+        footer_about:   'Authentic Mexican catering for Indianapolis and surrounding areas. Family recipes, made with love since 2009.',
+        footer_nav:     'Navigation',
+        footer_contact: 'Contact',
+        footer_rights:  'All rights reserved',
+      },
+      es: {
+        nav_tagline:    'Catering Mexicano Auténtico',
+        nav_menu:       'Menú',
+        nav_about:      'Nosotros',
+        nav_blog:       'Blog',
+        nav_cta:        'Reservar Catering',
+        hero_eyebrow:   'Indianápolis, Indiana',
+        hero_h1:        '<em>Saborea el</em><br><span class="hl">Corazón de México</span><br><em>en tu Mesa</em>',
+        hero_desc:      'Recetas familiares auténticas pasadas por tres generaciones. Desde cenas íntimas hasta eventos corporativos — llevamos los sabores del hogar a ti.',
+        hero_cta1:      'Pedir Cotización',
+        hero_cta2:      'Ver el Menú',
+        food1_en: 'Tacos al Pastor', food1_es: 'Tacos al Pastor',
+        food2_en: 'Tamales',         food2_es: 'Tamales',
+        food3_en: 'Pozole',          food3_es: 'Pozole',
+        food4_en: 'Tres Leches',     food4_es: 'Tres Leches',
+        menu_label:     'Nuestro Menú',
+        menu_title:     'Recetas Familiares, Preparadas Cada Día',
+        menu_sub:       'Cada platillo se prepara desde cero con ingredientes tradicionales. Personalizable para cualquier evento.',
+        dish1_name:     'Paquete de Tacos',
+        dish1_sub:      'Al pastor, carnitas, lengua',
+        dish1_desc:     'Estación de tacos completa con salsas caseras, cebolla curtida, cilantro fresco y tortillas artesanales calientes. Para hasta 50 invitados.',
+        dish1_price:    'Desde $12/persona',
+        dish2_name:     'Fiesta de Tamales',
+        dish2_sub:      'Puerco, pollo, queso y jalapeño, dulce',
+        dish2_desc:     'Tamales artesanales en cuatro variedades, cocidos al momento. Perfectos para fiestas, quinceañeras y celebraciones familiares.',
+        dish2_price:    '$4/tamal (mín. 24)',
+        dish3_name:     'Buffet Completo',
+        dish3_sub:      'Experiencia de 5 tiempos',
+        dish3_desc:     'Desde sopa azteca hasta el plato principal y horchata casera. Montaje completo, meseros y limpieza incluidos.',
+        dish3_price:    'Desde $22/persona',
+        menu_inquire:   'Consultar →',
+        about_label:    'Nuestra Historia',
+        about_title:    'Tres Generaciones de Sabor',
+        about_p1:       'Mi abuela, Mamá Rosa, aprendió a cocinar en una pequeña cocina en Oaxaca. Trajo sus recetas cuando llegó a EE.UU. en 1978 — y cada evento que atendemos lleva un pedacito de esa cocina.',
+        about_p2:       'Hoy, mi familia y yo servimos más de 200 eventos al año en el área de Indianápolis. Cada platillo se hace a mano, con el mismo cariño que nos enseñó Mamá Rosa.',
+        about_quote:    '"La comida es como amamos a la gente. Todo lo demás son detalles."<br>— Elena Morales, Fundadora',
+        stat1: 'Eventos por año', stat2: 'Recetas familiares', stat3: 'Calificación promedio Google', stat4: 'Sirviendo Indianápolis',
+        blog_label:     'Desde la Cocina',
+        blog_title:     'Recetas e Historias',
+        blog_sub:       'Consejos, tradiciones y un poco del sabor de casa — directo desde la cocina de Elena.',
+        post1_cat:  'Receta',      post1_title: 'El Secreto del Mole Rojo de Mamá Rosa',
+        post1_desc: 'Todo empieza con tres chiles secos, un jitomate tatemado y mucha paciencia. Aquí la receta que nunca habíamos compartido.',
+        post1_date: '14 de marzo, 2025',
+        post2_cat:  'Consejos',    post2_title: 'Cómo Planear el Menú de una Quinceañera (Sin Estrés)',
+        post2_desc: 'Después de 15 años catering quinceañeras, esto es lo que aprendimos sobre dar de comer a una multitud.',
+        post2_date: '28 de febrero, 2025',
+        post3_cat:  'Tradición',   post3_title: 'Por Qué Seguimos Haciendo Tamales a Mano',
+        post3_desc: 'Cada diciembre, la familia se reúne a hacer miles de tamales juntos. Por qué nunca usaremos una máquina.',
+        post3_date: '18 de diciembre, 2024',
+        read_more:  'Leer →',
+        quote_label:'Reservar',
+        quote_title:'Solicitar Cotización de Catering',
+        quote_sub:  'Cuéntanos sobre tu evento y te enviamos una cotización personalizada en 24 horas. Sin compromiso.',
+        qf_name:    'Tu Nombre',   qf_name_ph:  'Nombre completo',
+        qf_phone:   'Teléfono',    qf_phone_ph: '(317) 555-0000',
+        qf_event:   'Tipo de Evento',
+        qf_guests:  'Número de Invitados (aprox.)',
+        qf_date:    'Fecha del Evento',
+        qf_notes:   'Notas',       qf_notes_ph: 'Necesidades dietéticas, tema, ubicación...',
+        qf_submit:  'Enviar Mi Solicitud →',
+        opt_wedding: 'Boda', opt_birthday: 'Cumpleaños / Quinceañera', opt_corp: 'Evento Corporativo', opt_other: 'Otro',
+        footer_about:   'Catering mexicano auténtico para Indianápolis y alrededores. Recetas familiares hechas con amor desde 2009.',
+        footer_nav:     'Navegación',
+        footer_contact: 'Contacto',
+        footer_rights:  'Todos los derechos reservados',
+      }
+    };
+
+    function setLang(lang) {
+      const t = T[lang];
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.dataset.i18n; if (t[k] !== undefined) el.textContent = t[k];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const k = el.dataset.i18nHtml; if (t[k] !== undefined) el.innerHTML = t[k];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const k = el.dataset.i18nPlaceholder; if (t[k] !== undefined) el.placeholder = t[k];
+      });
+      document.querySelectorAll('[data-i18n-opt]').forEach(el => {
+        const k = el.dataset.i18nOpt; if (t[k] !== undefined) el.textContent = t[k];
+      });
+      document.querySelectorAll('.lt-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      document.documentElement.lang = lang;
+      try { localStorage.setItem('lcm_lang', lang); } catch(e) {}
+    }
+
+    // Auto-init
+    (function() {
+      let saved; try { saved = localStorage.getItem('lcm_lang'); } catch(e) {}
+      const def = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+      setLang(saved || def);
+    })();
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-quote');
+      const lang = document.documentElement.lang || 'en';
+      btn.textContent = lang === 'es' ? '✓ ¡Enviado!' : '✓ Sent!';
+      btn.style.background = '#2D4A22';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = T[lang].qf_submit;
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
