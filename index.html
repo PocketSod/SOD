@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://www.pocketsod.com/">
 
   <!-- ── SECURITY ── -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; frame-src https://www.google.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src https://api.emailjs.com; frame-src https://www.google.com;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
@@ -1296,7 +1296,7 @@
         </div>
       </div>
       <div class="contact-form reveal">
-        <form onsubmit="handleSubmit(event)">
+        <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="name" data-i18n="form_name_label">Your Name</label>
@@ -1696,21 +1696,72 @@
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
+    // ── EMAILJS CONFIG ────────────────────────────────────────────────────────
+    // Replace these three values after setting up your EmailJS account:
+    //   1. Go to https://www.emailjs.com and create a free account
+    //   2. Add Gmail as a service → copy the Service ID below
+    //   3. Create an email template → copy the Template ID below
+    //      Template variables to use: {{from_name}}, {{from_email}},
+    //      {{phone}}, {{business}}, {{package}}, {{message}}
+    //   4. Go to Account → API Keys → copy your Public Key below
+    const EMAILJS_SERVICE_ID  = 'service_7kn5as8';   // e.g. 'service_abc123'
+    const EMAILJS_TEMPLATE_ID = 'template_y9k5v6h';  // e.g. 'template_xyz789'
+    const EMAILJS_PUBLIC_KEY  = '4TE29YSnWASHvziGU';   // e.g. 'aBcDeFgHiJkLmNoP'
+
     // ── FORM SUBMIT ───────────────────────────────────────────────────────────
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type=submit]');
+      const form = e.target;
+      const btn  = form.querySelector('button[type=submit]');
       const lang = document.documentElement.lang || 'en';
-      btn.textContent = T[lang].form_sent || '✓ Sent!';
-      btn.style.background = 'var(--green)';
+
+      // Basic validation
+      const email = form.querySelector('#email').value.trim();
+      const name  = form.querySelector('#name').value.trim();
+      if (!name || !email) return;
+
+      // Loading state
+      btn.textContent = lang === 'es' ? 'Enviando...' : 'Sending...';
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = T[lang].form_submit || 'Send My Request →';
-        btn.style.background = '';
-        btn.disabled = false;
-        e.target.reset();
-      }, 4000);
+      btn.style.opacity = '0.7';
+
+      const templateParams = {
+        from_name:  name,
+        from_email: email,
+        phone:      form.querySelector('#phone').value.trim()    || 'Not provided',
+        business:   form.querySelector('#business').value.trim() || 'Not provided',
+        package:    form.querySelector('#package').value         || 'Not specified',
+        message:    form.querySelector('#message').value.trim()  || 'No message',
+        reply_to:   email,
+      };
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+        .then(() => {
+          btn.textContent = T[lang].form_sent || '✓ Sent!';
+          btn.style.background = 'var(--green)';
+          btn.style.opacity = '1';
+          form.reset();
+          setTimeout(() => {
+            btn.textContent = T[lang].form_submit || 'Send My Request →';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        })
+        .catch((err) => {
+          console.error('EmailJS error:', err);
+          btn.textContent = lang === 'es' ? '✗ Error — intenta de nuevo' : '✗ Error — please try again';
+          btn.style.background = '#c0392b';
+          btn.style.opacity = '1';
+          btn.disabled = false;
+          setTimeout(() => {
+            btn.textContent = T[lang].form_submit || 'Send My Request →';
+            btn.style.background = '';
+          }, 4000);
+        });
     }
   </script>
+
+  <!-- EmailJS SDK — loads last so it doesn't block page render -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>
