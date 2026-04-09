@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pocketsod Web Pages | Small Business Web Design</title>
+  <meta name="description" content="Pocketsod Web Pages — Veteran-owned web design for small businesses. Affordable custom websites, SEO, and ongoing support. Serving all 50 states.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── ROOT & RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #5B9BD5;
+      --blue-dark:   #3A7BBF;
+      --blue-deeper: #1B4F8A;
+      --blue-light:  #EBF3FB;
+      --blue-mid:    #4A8FD4;
+      --navy:        #1B2D5E;
+      --navy-mid:    #263D74;
+      --white:       #FFFFFF;
+      --off-white:   #F5F8FC;
+      --light:       #EEF3FA;
+      --text:        #1B2D5E;
+      --muted:       #607898;
+      --border:      #D4E4F4;
+
+      --font-head: 'Nunito', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow:    0 4px 20px rgba(27,45,94,0.08);
+      --shadow-md: 0 8px 32px rgba(27,45,94,0.12);
+      --shadow-lg: 0 16px 56px rgba(27,45,94,0.16);
+      --t: 0.28s ease;
+      --radius: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.65; }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 5%; }
+    .section    { padding: 96px 0; }
+
+    .label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 900;
+      line-height: 1.12;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--blue); }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.72;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all var(--t);
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+    }
+    .btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .btn-navy:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-ghost-blue {
+      background: transparent;
+      color: var(--blue);
+      border-color: var(--border);
+    }
+    .btn-ghost-blue:hover { border-color: var(--blue); background: var(--blue-light); }
+
+    /* ── VERSION TOGGLE ──────────────────────────────── */
+    .version-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      align-items: stretch;
+      background: var(--navy);
+      border: 1px solid rgba(91,155,213,0.35);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(27,45,94,0.35);
+    }
+    .vt-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      padding: 0 0.85rem;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid rgba(91,155,213,0.2);
+    }
+    .vt-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      transition: background var(--t);
+    }
+    .vt-btn.active { background: var(--blue); }
+    .vt-btn:not(.active):hover { background: rgba(255,255,255,0.07); }
+    .vt-num {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .vt-name {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    .vt-btn.active .vt-name { color: rgba(255,255,255,0.8); }
+    .vt-divider { width: 1px; background: rgba(91,155,213,0.2); }
+
+    /* ── NAVBAR ─────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: all var(--t);
+      padding: 0.9rem 0;
+    }
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { height: 50px; transition: height var(--t); }
+    .navbar.scrolled .nav-logo img { height: 38px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+      transition: color var(--t);
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.35rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span { width: 26px; height: 2.5px; background: var(--navy); border-radius: 2px; transition: all var(--t); }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      padding: 0.9rem 5%;
+      border-bottom: 1px solid var(--light);
+    }
+    .mobile-menu.open { display: flex; }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 80px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-left {
+      background: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 5% 5% 5% 8%;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(91,155,213,0.1);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(91,155,213,0.2);
+      border: 1px solid rgba(91,155,213,0.4);
+      color: #90CAF9;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '★'; font-size: 0.65rem; }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 .hl { color: var(--blue); }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 2rem;
+      line-height: 1.75;
+      max-width: 420px;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-right {
+      background: var(--off-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      position: relative;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: 60px;
+      right: 40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,155,213,0.12) 0%, transparent 70%);
+    }
+    .hero-logo-wrap {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .hero-logo-wrap img { width: 280px; max-width: 90%; margin: 0 auto; }
+    .hero-tagline {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+    .hero-trust {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .trust-chip {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      padding: 0.35rem 0.85rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* ── STATS ──────────────────────────────────────── */
+    .stats {
+      background: var(--light);
+      padding: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── ABOUT ──────────────────────────────────────── */
+    .about { background: var(--white); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 2.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(91,155,213,0.15);
+    }
+    .about-card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(91,155,213,0.2);
+      border: 1px solid rgba(91,155,213,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .about-card blockquote {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.25rem;
+    }
+    .about-card cite {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .about-content .label { display: block; }
+    .about-checklist {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .about-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .check-dot {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      border: 2px solid var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--blue-dark);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* ── PACKAGES ───────────────────────────────────── */
+    .packages { background: var(--off-white); }
+    .packages-header { text-align: center; margin-bottom: 3rem; }
+    .packages-header .section-sub { margin: 0 auto; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      transition: all var(--t);
+      position: relative;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .card.featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px rgba(91,155,213,0.3), var(--shadow-lg);
+    }
+    .card-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 1.1rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .card-emoji {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .card h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .card-price {
+      font-family: var(--font-head);
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: 1.25rem;
+      line-height: 1;
+    }
+    .card-price span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .card-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+    .card-features li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .card-features li .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+    .card .btn { width: 100%; justify-content: center; }
+
+    /* ── ADD-ONS ────────────────────────────────────── */
+    .addons { background: var(--white); }
+    .addons-header { text-align: center; margin-bottom: 3rem; }
+    .addons-header .section-sub { margin: 0 auto; }
+    .addon-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .addon-card {
+      background: var(--off-white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: all var(--t);
+    }
+    .addon-card:hover { background: var(--blue-light); border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .addon-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 1.25rem;
+      transition: background var(--t);
+    }
+    .addon-card:hover .addon-icon { background: var(--white); }
+    .addon-card h4 {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .addon-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .addon-price {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    /* ── PORTFOLIO ──────────────────────────────────── */
+    .portfolio { background: var(--off-white); }
+    .portfolio-header { text-align: center; margin-bottom: 3rem; }
+    .portfolio-header .section-sub { margin: 0 auto; }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .portfolio-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all var(--t);
+    }
+    .portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .browser-bar {
+      background: var(--light);
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF6B6B; }
+    .dot-y { background: #FFCC00; }
+    .dot-g { background: #66BB6A; }
+    .browser-url {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-left: 0.5rem;
+    }
+    .portfolio-thumb {
+      background: linear-gradient(135deg, var(--blue-light) 0%, var(--light) 100%);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--blue-deeper);
+    }
+    .portfolio-info {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .portfolio-info h4 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .portfolio-info p { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+    .portfolio-link {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+      transition: color var(--t);
+    }
+    .portfolio-link:hover { color: var(--blue-dark); }
+    .portfolio-link::after { content: '→'; }
+
+    /* ── PROCESS ────────────────────────────────────── */
+    .process { background: var(--white); }
+    .process-header { text-align: center; margin-bottom: 3.5rem; }
+    .process-header .section-sub { margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: calc(12.5% + 16px);
+      right: calc(12.5% + 16px);
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      border: 2px solid var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin: 0 auto 1.25rem;
+      transition: all var(--t);
+    }
+    .process-step:hover .step-circle { background: var(--blue); transform: scale(1.1); }
+    .process-step h4 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .process-step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACT ────────────────────────────────────── */
+    .contact { background: var(--off-white); }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info .label { display: block; }
+    .contact-info .section-title { margin-bottom: 1rem; }
+    .contact-info .section-sub { margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      box-shadow: var(--shadow);
+    }
+    .contact-item strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+    .contact-item a, .contact-item span {
+      font-size: 0.95rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+    .contact-item a:hover { color: var(--blue); }
+    .contact-form {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--off-white);
+      transition: border-color var(--t), background var(--t);
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px rgba(91,155,213,0.12); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { width: 100%; border-radius: 50px; }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    .footer {
+      background: var(--navy);
+      padding: 3.5rem 0 1.5rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand img { height: 56px; margin-bottom: 1rem; }
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 300px;
+    }
+    .footer-col h5 {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+      transition: color var(--t);
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+    .vet-badge {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid rgba(91,155,213,0.35);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    /* ── SCROLL REVEAL ──────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { min-height: 70vh; padding: 6rem 5% 4rem; }
+      .hero-right { min-height: auto; padding: 3rem 5%; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .addon-cards { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .section { padding: 64px 0; }
+      .hero h1 { font-size: 2.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .version-toggle { bottom: 14px; right: 14px; }
+      .hero-trust { gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VERSION TOGGLE -->
+  <div class="version-toggle">
+    <div class="vt-label">Design</div>
+    <a href="index.html" class="vt-btn">
+      <span class="vt-num">V1</span>
+      <span class="vt-name">Grass</span>
+    </a>
+    <div class="vt-divider"></div>
+    <a href="index2.html" class="vt-btn active">
+      <span class="vt-num">V2</span>
+      <span class="vt-name">Flower</span>
+    </a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="brand_assests/PSlogo2.png" alt="Pocketsod Web Pages">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#about"     onclick="closeMobile()">About</a>
+        <a href="#packages"  onclick="closeMobile()">Packages</a>
+        <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+        <a href="#process"   onclick="closeMobile()">Process</a>
+        <a href="#contact"   onclick="closeMobile()">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <div class="hero-content">
+        <div class="hero-badge">Veteran-Owned &amp; Operated</div>
+        <h1>Your Business<br>Deserves a <span class="hl">Great Website</span></h1>
+        <p class="hero-sub">Professional web design built for small businesses — fast, affordable, and backed by someone who actually cares. All 50 states.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+          <a href="#packages" class="btn btn-outline-white">See Packages</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-logo-wrap reveal">
+        <img src="brand_assests/PSlogo2.png" alt="Pocketsod Web Pages">
+        <p class="hero-tagline">Small Business Web Design</p>
+        <div class="hero-trust">
+          <span class="trust-chip">★ Veteran Owned</span>
+          <span class="trust-chip">All 50 States</span>
+          <span class="trust-chip">Fast Turnaround</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item reveal">
+          <div class="stat-number">★ Vet</div>
+          <div class="stat-label">Veteran Owned</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">50</div>
+          <div class="stat-label">States Served</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">14</div>
+          <div class="stat-label">Day Avg Launch</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Satisfaction Focus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container about-inner">
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <div class="about-card-icon">🎖️</div>
+          <blockquote>"We build websites the same way we served — with discipline, attention to detail, and no excuses."</blockquote>
+          <cite>— Pocketsod Web Pages, Veteran-Owned</cite>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <span class="label">About Us</span>
+        <h2 class="section-title">Websites That <span>Work for You</span></h2>
+        <p class="section-sub">We specialize in affordable, professional web design for small businesses across all 50 states. No bloated agencies, no confusing contracts — just results.</p>
+        <ul class="about-checklist">
+          <li><span class="check-dot">✓</span> Responsive design that works on every device</li>
+          <li><span class="check-dot">✓</span> Built-in SEO so customers can find you on Google</li>
+          <li><span class="check-dot">✓</span> Plain-language communication — no tech jargon</li>
+          <li><span class="check-dot">✓</span> Ongoing support and maintenance plans available</li>
+          <li><span class="check-dot">✓</span> Bilingual (EN/ES) options on Growth and Premium</li>
+          <li><span class="check-dot">✓</span> Veteran-owned: disciplined, accountable, mission-focused</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages section" id="packages">
+    <div class="container">
+      <div class="packages-header reveal">
+        <span class="label">Pricing</span>
+        <h2 class="section-title">Simple, <span>Transparent</span> Packages</h2>
+        <p class="section-sub">Pick the package that fits your business. No hidden fees, no surprises.</p>
+      </div>
+      <div class="cards">
+        <div class="card reveal">
+          <span class="card-emoji">🌱</span>
+          <h3>Starter</h3>
+          <div class="card-price">$500–$1,000 <span>one-time</span></div>
+          <ul class="card-features">
+            <li><span class="dot"></span>Up to 3 pages</li>
+            <li><span class="dot"></span>Contact form</li>
+            <li><span class="dot"></span>Mobile responsive</li>
+            <li><span class="dot"></span>Basic SEO setup</li>
+            <li><span class="dot"></span>Google Maps integration</li>
+            <li><span class="dot"></span>1 revision round</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost-blue">Get Started</a>
+        </div>
+        <div class="card featured reveal">
+          <div class="card-badge">Most Popular</div>
+          <span class="card-emoji">🌿</span>
+          <h3>Growth</h3>
+          <div class="card-price">$1,000–$2,500 <span>one-time</span></div>
+          <ul class="card-features">
+            <li><span class="dot"></span>Up to 6 pages</li>
+            <li><span class="dot"></span>Blog setup</li>
+            <li><span class="dot"></span>Bilingual EN/ES option</li>
+            <li><span class="dot"></span>Quote &amp; lead forms</li>
+            <li><span class="dot"></span>SEO foundations</li>
+            <li><span class="dot"></span>Social media links</li>
+            <li><span class="dot"></span>Maintenance-ready</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="card reveal">
+          <span class="card-emoji">🏆</span>
+          <h3>Premium</h3>
+          <div class="card-price">$2,500+ <span>one-time</span></div>
+          <ul class="card-features">
+            <li><span class="dot"></span>Unlimited pages</li>
+            <li><span class="dot"></span>Custom design &amp; branding</li>
+            <li><span class="dot"></span>Advanced SEO</li>
+            <li><span class="dot"></span>Hosting mgmt included</li>
+            <li><span class="dot"></span>Ongoing edits</li>
+            <li><span class="dot"></span>Analytics dashboard</li>
+            <li><span class="dot"></span>Priority support</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost-blue">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section class="addons section" id="addons">
+    <div class="container">
+      <div class="addons-header reveal">
+        <span class="label">Add-Ons</span>
+        <h2 class="section-title">Keep Growing with <span>Monthly Services</span></h2>
+        <p class="section-sub">Add ongoing support to any package. We handle it so you can focus on running your business.</p>
+      </div>
+      <div class="addon-cards">
+        <div class="addon-card reveal">
+          <div class="addon-icon">🛠️</div>
+          <h4>Monthly Maintenance</h4>
+          <p>Content updates, security patches, plugin management, and uptime monitoring.</p>
+          <div class="addon-price">$50–$200 / month</div>
+        </div>
+        <div class="addon-card reveal">
+          <div class="addon-icon">☁️</div>
+          <h4>Hosting Management</h4>
+          <p>We handle your domain, SSL certificate, server, backups, and renewals.</p>
+          <div class="addon-price">$20–$50 / month</div>
+        </div>
+        <div class="addon-card reveal">
+          <div class="addon-icon">📈</div>
+          <h4>SEO Management</h4>
+          <p>Ongoing keyword tracking, local SEO, Google Business optimization, and monthly reporting.</p>
+          <div class="addon-price">$100–$500 / month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio section" id="portfolio">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <span class="label">Portfolio</span>
+        <h2 class="section-title">Sites We've <span>Built</span></h2>
+        <p class="section-sub">Real businesses, real results. Take a look at some of our recent work.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card reveal">
+          <div class="browser-bar">
+            <div class="browser-dot dot-r"></div>
+            <div class="browser-dot dot-y"></div>
+            <div class="browser-dot dot-g"></div>
+            <div class="browser-url">delara.pocketsod.com</div>
+          </div>
+          <div class="portfolio-thumb">DeLara Consulting</div>
+          <div class="portfolio-info">
+            <div>
+              <h4>DeLara Consulting</h4>
+              <p>Professional consulting services</p>
+            </div>
+            <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link">Visit Site</a>
+          </div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="browser-bar">
+            <div class="browser-dot dot-r"></div>
+            <div class="browser-dot dot-y"></div>
+            <div class="browser-dot dot-g"></div>
+            <div class="browser-url">azpowerwash.pocketsod.com</div>
+          </div>
+          <div class="portfolio-thumb">AZ Powerwash</div>
+          <div class="portfolio-info">
+            <div>
+              <h4>AZ Powerwash</h4>
+              <p>Pressure washing &amp; exterior cleaning</p>
+            </div>
+            <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link">Visit Site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process section" id="process">
+    <div class="container">
+      <div class="process-header reveal">
+        <span class="label">How It Works</span>
+        <h2 class="section-title">From Idea to <span>Live Site</span></h2>
+        <p class="section-sub">Our straightforward 4-step process gets your site launched fast.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-circle">💬</div>
+          <h4>Consult</h4>
+          <p>Free call to understand your business, goals, and what pages you need.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">🎨</div>
+          <h4>Design</h4>
+          <p>We build your site with your brand — logo, colors, content, and photos.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">🚀</div>
+          <h4>Launch</h4>
+          <p>After your approval and revisions, we go live — fast and stress-free.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">🛡️</div>
+          <h4>Support</h4>
+          <p>Ongoing maintenance, hosting, and SEO plans keep your site running strong.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container contact-inner">
+      <div class="contact-info reveal">
+        <span class="label">Contact</span>
+        <h2 class="section-title">Let's Build Your <span>Website</span></h2>
+        <p class="section-sub">Ready to get started or just have questions? Reach out — we respond fast.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:3173480539">(317) 348-0539</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🗺️</div>
+            <div>
+              <strong>Service Area</strong>
+              <span>All 50 States — Remote &amp; Nationwide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="business">Business Name</label>
+              <input type="text" id="business" name="business" placeholder="Smith Plumbing Co.">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="package">Interested In</label>
+            <select id="package" name="package">
+              <option value="">Select a package...</option>
+              <option value="starter">Starter — $500–$1,000</option>
+              <option value="growth">Growth — $1,000–$2,500</option>
+              <option value="premium">Premium — $2,500+</option>
+              <option value="addon">Add-On Services Only</option>
+              <option value="unsure">Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Business</label>
+            <textarea id="message" name="message" placeholder="What does your business do? What pages do you need? Any specific goals?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-navy form-submit">Send My Request →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="brand_assests/PSlogo2.png" alt="Pocketsod Web Pages">
+          <p>Veteran-owned web design for small businesses. Professional sites, fair prices, and support that doesn't disappear after launch.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#addons">Add-Ons</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Process</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:3173480539">(317) 348-0539</a></li>
+            <li><a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a></li>
+            <li><a href="#contact">Get a Free Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Pocketsod LLC. All rights reserved.</p>
+        <span class="vet-badge">★ Veteran Owned &amp; Operated</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = '#4CAF50';
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = 'Send My Request →'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 4000);
+    }
+  </script>
+</body>
+</html>

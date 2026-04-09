@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PocketSod | Small Business Web Site Design</title>
+  <meta name="description" content="PocketSod LLC — Veteran-owned web design for small businesses. Affordable custom websites, SEO, and ongoing support. Serving all 50 states.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── ROOT & RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #2C6EAB;
+      --blue-dark:   #1A4E80;
+      --blue-mid:    #3A7FBD;
+      --blue-light:  #EBF4FC;
+      --green:       #4CAF50;
+      --green-dark:  #388E3C;
+      --green-light: #E8F5E9;
+      --dark:        #1A3356;
+      --dark-mid:    #24456E;
+      --cream:       #F8F5F0;
+      --cream-dark:  #EDE9E1;
+      --white:       #FFFFFF;
+      --text:        #1E2D3D;
+      --muted:       #5A6E85;
+      --border:      #D0E0EE;
+
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow:    0 4px 20px rgba(44,110,171,0.10);
+      --shadow-md: 0 8px 32px rgba(44,110,171,0.14);
+      --shadow-lg: 0 16px 56px rgba(44,110,171,0.18);
+      --t: 0.28s ease;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--cream); line-height: 1.65; }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 5%; }
+    .section    { padding: 96px 0; }
+
+    .label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.6rem;
+    }
+    .label.blue { color: var(--blue); }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    .section-title span.green { color: var(--green); }
+    .section-title span.blue  { color: var(--blue); }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all var(--t);
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+    }
+    .btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+
+    /* ── VERSION TOGGLE ──────────────────────────────── */
+    .version-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      align-items: stretch;
+      background: var(--dark);
+      border: 1px solid var(--blue-mid);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(26,51,86,0.35);
+    }
+    .vt-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      padding: 0 0.85rem;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid rgba(74,143,189,0.25);
+    }
+    .vt-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      transition: background var(--t);
+    }
+    .vt-btn.active { background: var(--blue); }
+    .vt-btn:not(.active):hover { background: rgba(255,255,255,0.07); }
+    .vt-num {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .vt-name {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    .vt-btn.active .vt-name { color: rgba(255,255,255,0.75); }
+    .vt-divider { width: 1px; background: rgba(74,143,189,0.25); }
+
+    /* ── NAVBAR ─────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(248,245,240,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: all var(--t);
+      padding: 0.9rem 0;
+    }
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { height: 48px; transition: height var(--t); }
+    .navbar.scrolled .nav-logo img { height: 38px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      transition: color var(--t);
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span { width: 26px; height: 2px; background: var(--dark); border-radius: 2px; transition: all var(--t); }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 0;
+    }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 0.85rem 5%;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu.open { display: flex; }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-mid) 50%, var(--blue-dark) 100%);
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(76,175,80,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(44,110,171,0.18) 0%, transparent 60%);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(76,175,80,0.15);
+      border: 1px solid rgba(76,175,80,0.4);
+      color: #81C784;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '★'; font-size: 0.65rem; }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 .hl-green { color: #66BB6A; }
+    .hero h1 .hl-blue  { color: #64B5F6; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-logo-wrap img {
+      width: 360px;
+      max-width: 100%;
+      filter:
+        drop-shadow(0 2px 6px rgba(255,255,255,0.18))
+        drop-shadow(0 12px 40px rgba(44,110,171,0.55));
+      animation: logo-float 5s ease-in-out infinite;
+    }
+    @keyframes logo-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ── STATS ──────────────────────────────────────── */
+    .stats {
+      background: var(--blue);
+      padding: 0;
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── ABOUT ──────────────────────────────────────── */
+    .about { background: var(--white); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-quote {
+      background: var(--dark);
+      border-radius: var(--radius);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-quote::before {
+      content: '"';
+      position: absolute;
+      top: -1rem;
+      left: 1.5rem;
+      font-family: var(--font-head);
+      font-size: 10rem;
+      font-weight: 800;
+      color: rgba(76,175,80,0.15);
+      line-height: 1;
+    }
+    .about-quote blockquote {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.5rem;
+    }
+    .about-quote cite {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      font-style: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .about-content .label { display: block; }
+    .about-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .about-list li::before {
+      content: '✓';
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ── PACKAGES ───────────────────────────────────── */
+    .packages { background: var(--cream); }
+    .packages-header { text-align: center; margin-bottom: 3rem; }
+    .packages-header .section-sub { margin: 0 auto; text-align: center; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      transition: all var(--t);
+      position: relative;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .card.featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue), var(--shadow-lg);
+    }
+    .card-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-icon.blue-bg  { background: var(--blue-light); }
+    .card-icon.green-bg { background: var(--green-light); }
+    .card-icon.dark-bg  { background: var(--dark); }
+    .card h3 {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .card-price {
+      font-family: var(--font-head);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+    .card-price span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .card-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+    .card-features li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card-features li::before {
+      content: '→';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .card .btn { width: 100%; justify-content: center; }
+    .btn-blue { background: var(--blue); color: var(--white) !important; border-color: var(--blue); }
+    .btn-blue:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-ghost { background: transparent; color: var(--blue) !important; border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--blue); background: var(--blue-light); }
+
+    /* ── ADD-ONS ────────────────────────────────────── */
+    .addons { background: var(--white); }
+    .addons-header { text-align: center; margin-bottom: 3rem; }
+    .addons-header .section-sub { margin: 0 auto; }
+    .addon-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .addon-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: all var(--t);
+    }
+    .addon-card:hover { background: var(--blue-light); border-color: var(--blue); transform: translateY(-2px); }
+    .addon-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .addon-card:hover .addon-icon { background: var(--white); }
+    .addon-card h4 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+    .addon-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 0.5rem;
+    }
+    .addon-price {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    /* ── PORTFOLIO ──────────────────────────────────── */
+    .portfolio { background: var(--cream); }
+    .portfolio-header { text-align: center; margin-bottom: 3rem; }
+    .portfolio-header .section-sub { margin: 0 auto; }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .portfolio-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all var(--t);
+    }
+    .portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .browser-bar {
+      background: var(--cream-dark);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF6B6B; }
+    .dot-y { background: #FFCC00; }
+    .dot-g { background: var(--green); }
+    .browser-url {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-left: 0.5rem;
+    }
+    .portfolio-thumb {
+      background: linear-gradient(135deg, var(--blue-light) 0%, var(--cream) 100%);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+    }
+    .portfolio-info {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .portfolio-info h4 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .portfolio-info p { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+    .portfolio-link {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color var(--t);
+    }
+    .portfolio-link:hover { color: var(--green); }
+    .portfolio-link::after { content: '→'; }
+
+    /* ── PROCESS ────────────────────────────────────── */
+    .process { background: var(--dark); }
+    .process-header { text-align: center; margin-bottom: 3.5rem; }
+    .process-header .section-title { color: var(--white); }
+    .process-header .section-sub   { color: rgba(255,255,255,0.55); margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--green));
+      z-index: 0;
+    }
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--dark-mid);
+      border: 2px solid var(--blue-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin: 0 auto 1.25rem;
+      transition: all var(--t);
+    }
+    .process-step:nth-child(4) .step-num { border-color: var(--green); }
+    .process-step:hover .step-num { background: var(--blue); border-color: var(--blue); transform: scale(1.08); }
+    .step-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .process-step h4 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .process-step p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.55; }
+
+    /* ── CONTACT ────────────────────────────────────── */
+    .contact { background: var(--white); }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info .label { display: block; }
+    .contact-info .section-title { margin-bottom: 1rem; }
+    .contact-info .section-sub { margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+    .contact-item a, .contact-item span {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .contact-item a:hover { color: var(--blue); }
+    .contact-form {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color var(--t);
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(44,110,171,0.1); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { width: 100%; }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    .footer {
+      background: var(--dark);
+      padding: 3.5rem 0 1.5rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand img { height: 52px; margin-bottom: 1rem; }
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      max-width: 300px;
+    }
+    .footer-col h5 {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      transition: color var(--t);
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-bottom .vet-badge {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      border: 1px solid rgba(76,175,80,0.35);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    /* ── SCROLL REVEAL ──────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-logo-wrap { display: none; }
+      .hero-actions { justify-content: center; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .addon-cards { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .section { padding: 64px 0; }
+      .hero h1 { font-size: 2.2rem; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .version-toggle { bottom: 14px; right: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VERSION TOGGLE -->
+  <div class="version-toggle">
+    <div class="vt-label">Design</div>
+    <a href="index.html" class="vt-btn active">
+      <span class="vt-num">V1</span>
+      <span class="vt-name">Grass</span>
+    </a>
+    <div class="vt-divider"></div>
+    <a href="index2.html" class="vt-btn">
+      <span class="vt-num">V2</span>
+      <span class="vt-name">Flower</span>
+    </a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="brand_assests/PSlogo6.png" alt="PocketSod">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#about"     onclick="closeMobile()">About</a>
+        <a href="#packages"  onclick="closeMobile()">Packages</a>
+        <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+        <a href="#process"   onclick="closeMobile()">Process</a>
+        <a href="#contact"   onclick="closeMobile()">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Veteran-Owned &amp; Operated</div>
+        <h1>Your Business.<br><span class="hl-green">Online.</span><br><span class="hl-blue">Affordable.</span></h1>
+        <p class="hero-sub">PocketSod builds professional websites that help small businesses grow — fast turnaround, fair prices, and support you can count on. All 50 states.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+          <a href="#packages" class="btn btn-outline">See Packages</a>
+        </div>
+      </div>
+      <div class="hero-logo-wrap">
+        <img src="brand_assests/PSlogo6.png" alt="PocketSod — Small Business Web Site Design">
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item reveal">
+          <div class="stat-number">★ Vet</div>
+          <div class="stat-label">Veteran Owned</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">50</div>
+          <div class="stat-label">States Served</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">14</div>
+          <div class="stat-label">Day Avg Launch</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Satisfaction Focus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container about-inner">
+      <div class="about-quote reveal">
+        <blockquote>"We build websites the same way we served — with discipline, attention to detail, and no excuses."</blockquote>
+        <cite>— PocketSod LLC, Veteran-Owned</cite>
+      </div>
+      <div class="about-content reveal">
+        <span class="label">About Us</span>
+        <h2 class="section-title">Small Business Websites, <span class="green">Done Right</span></h2>
+        <p class="section-sub">We specialize in affordable, professional web design for small businesses across all 50 states. No bloated agencies, no confusing contracts — just results.</p>
+        <ul class="about-list">
+          <li>Responsive design that works on every device and screen size</li>
+          <li>Built-in SEO so customers can find you on Google</li>
+          <li>Plain-language communication — no tech jargon</li>
+          <li>Ongoing support and maintenance plans available</li>
+          <li>Bilingual (EN/ES) options on Growth and Premium tiers</li>
+          <li>Veteran-owned: disciplined, accountable, mission-focused</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages section" id="packages">
+    <div class="container">
+      <div class="packages-header reveal">
+        <span class="label blue">Pricing</span>
+        <h2 class="section-title">Simple, <span class="blue">Transparent</span> Packages</h2>
+        <p class="section-sub">Pick the package that fits your business. No hidden fees, no surprises.</p>
+      </div>
+      <div class="cards">
+        <div class="card reveal">
+          <div class="card-icon blue-bg">🌱</div>
+          <h3>Starter</h3>
+          <div class="card-price">$500–$1,000 <span>one-time</span></div>
+          <ul class="card-features">
+            <li>Up to 3 pages</li>
+            <li>Contact form</li>
+            <li>Mobile responsive</li>
+            <li>Basic SEO setup</li>
+            <li>Google Maps integration</li>
+            <li>1 revision round</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost">Get Started</a>
+        </div>
+        <div class="card featured reveal">
+          <div class="card-badge">Most Popular</div>
+          <div class="card-icon green-bg">🌿</div>
+          <h3>Growth</h3>
+          <div class="card-price">$1,000–$2,500 <span>one-time</span></div>
+          <ul class="card-features">
+            <li>Up to 6 pages</li>
+            <li>Blog setup</li>
+            <li>Bilingual EN/ES option</li>
+            <li>Quote &amp; lead forms</li>
+            <li>SEO foundations</li>
+            <li>Social media links</li>
+            <li>Maintenance-ready</li>
+          </ul>
+          <a href="#contact" class="btn btn-blue">Get Started</a>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon dark-bg">🏆</div>
+          <h3>Premium</h3>
+          <div class="card-price">$2,500+ <span>one-time</span></div>
+          <ul class="card-features">
+            <li>Unlimited pages</li>
+            <li>Custom design &amp; branding</li>
+            <li>Advanced SEO</li>
+            <li>Hosting mgmt included</li>
+            <li>Ongoing edits</li>
+            <li>Analytics dashboard</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section class="addons section" id="addons">
+    <div class="container">
+      <div class="addons-header reveal">
+        <span class="label">Add-Ons</span>
+        <h2 class="section-title">Keep Growing with <span class="green">Monthly Services</span></h2>
+        <p class="section-sub">Add ongoing support to any package. We handle it so you can focus on running your business.</p>
+      </div>
+      <div class="addon-cards">
+        <div class="addon-card reveal">
+          <div class="addon-icon">🛠️</div>
+          <div>
+            <h4>Monthly Maintenance</h4>
+            <p>Content updates, security patches, plugin management, and uptime monitoring.</p>
+            <div class="addon-price">$50–$200 / month</div>
+          </div>
+        </div>
+        <div class="addon-card reveal">
+          <div class="addon-icon">☁️</div>
+          <div>
+            <h4>Hosting Management</h4>
+            <p>We handle your domain, SSL certificate, server, backups, and renewals.</p>
+            <div class="addon-price">$20–$50 / month</div>
+          </div>
+        </div>
+        <div class="addon-card reveal">
+          <div class="addon-icon">📈</div>
+          <div>
+            <h4>SEO Management</h4>
+            <p>Ongoing keyword tracking, local SEO, Google Business optimization, and monthly reporting.</p>
+            <div class="addon-price">$100–$500 / month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio section" id="portfolio">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <span class="label blue">Portfolio</span>
+        <h2 class="section-title">Sites We've <span class="blue">Built</span></h2>
+        <p class="section-sub">Real businesses, real results. Take a look at some of our recent work.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card reveal">
+          <div class="browser-bar">
+            <div class="browser-dot dot-r"></div>
+            <div class="browser-dot dot-y"></div>
+            <div class="browser-dot dot-g"></div>
+            <div class="browser-url">delara.pocketsod.com</div>
+          </div>
+          <div class="portfolio-thumb">DeLara Consulting</div>
+          <div class="portfolio-info">
+            <div>
+              <h4>DeLara Consulting</h4>
+              <p>Professional consulting services website</p>
+            </div>
+            <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link">Visit Site</a>
+          </div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="browser-bar">
+            <div class="browser-dot dot-r"></div>
+            <div class="browser-dot dot-y"></div>
+            <div class="browser-dot dot-g"></div>
+            <div class="browser-url">azpowerwash.pocketsod.com</div>
+          </div>
+          <div class="portfolio-thumb">AZ Powerwash</div>
+          <div class="portfolio-info">
+            <div>
+              <h4>AZ Powerwash</h4>
+              <p>Pressure washing &amp; exterior cleaning</p>
+            </div>
+            <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link">Visit Site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process section" id="process">
+    <div class="container">
+      <div class="process-header reveal">
+        <span class="label">How It Works</span>
+        <h2 class="section-title">From Idea to <span class="green">Live Site</span></h2>
+        <p class="section-sub">Our straightforward 4-step process gets your site launched fast.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">01</div>
+          <div class="step-icon">💬</div>
+          <h4>Consult</h4>
+          <p>Free call to understand your business, goals, and what pages you need.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">02</div>
+          <div class="step-icon">🎨</div>
+          <h4>Design</h4>
+          <p>We build your site with your brand — logo, colors, content, and photos.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">03</div>
+          <div class="step-icon">🚀</div>
+          <h4>Launch</h4>
+          <p>After your approval and revisions, we go live — fast and stress-free.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">04</div>
+          <div class="step-icon">🛡️</div>
+          <h4>Support</h4>
+          <p>Ongoing maintenance, hosting, and SEO plans keep your site running strong.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container contact-inner">
+      <div class="contact-info reveal">
+        <span class="label blue">Contact</span>
+        <h2 class="section-title">Let's Build Your <span class="blue">Website</span></h2>
+        <p class="section-sub">Ready to get started or just have questions? Reach out — we respond fast.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:3173480539">(317) 348-0539</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🗺️</div>
+            <div>
+              <strong>Service Area</strong>
+              <span>All 50 States — Remote &amp; Nationwide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="business">Business Name</label>
+              <input type="text" id="business" name="business" placeholder="Smith Plumbing Co.">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="package">Interested In</label>
+            <select id="package" name="package">
+              <option value="">Select a package...</option>
+              <option value="starter">Starter — $500–$1,000</option>
+              <option value="growth">Growth — $1,000–$2,500</option>
+              <option value="premium">Premium — $2,500+</option>
+              <option value="addon">Add-On Services Only</option>
+              <option value="unsure">Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Business</label>
+            <textarea id="message" name="message" placeholder="What does your business do? What pages do you need? Any specific goals?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-blue form-submit">Send My Request →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="brand_assests/PSlogo6.png" alt="PocketSod">
+          <p>Veteran-owned web design for small businesses. Professional sites, fair prices, and support that doesn't disappear after launch.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#addons">Add-Ons</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Process</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:3173480539">(317) 348-0539</a></li>
+            <li><a href="mailto:pocketsod@gmail.com">pocketsod@gmail.com</a></li>
+            <li><a href="#contact">Get a Free Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 PocketSod LLC. All rights reserved.</p>
+        <span class="vet-badge">★ Veteran Owned &amp; Operated</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = 'var(--green)';
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = 'Send My Request →'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 4000);
+    }
+  </script>
+</body>
+</html>
