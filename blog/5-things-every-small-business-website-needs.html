@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>5 Things Every Small Business Website Needs | PocketSod</title>
+  <meta name="description" content="Before you launch your small business website, make sure it has these 5 essentials. From mobile design to local SEO, here's what actually moves the needle.">
+  <meta name="author" content="PocketSod LLC">
+  <link rel="canonical" href="https://www.pocketsod.com/blog/5-things-every-small-business-website-needs.html">
+
+  <meta property="og:type"        content="article">
+  <meta property="og:url"         content="https://www.pocketsod.com/blog/5-things-every-small-business-website-needs.html">
+  <meta property="og:title"       content="5 Things Every Small Business Website Needs">
+  <meta property="og:description" content="Before you launch your small business website, make sure it has these 5 essentials. From mobile design to local SEO, here's what actually moves the needle.">
+  <meta property="og:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+  <meta property="og:site_name"   content="PocketSod LLC">
+
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="5 Things Every Small Business Website Needs">
+  <meta name="twitter:description" content="From mobile design to local SEO — the 5 essentials your small business site can't skip.">
+  <meta name="twitter:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+
+  <link rel="icon" type="image/png" href="../brand_assests/favicon.png">
+  <link rel="apple-touch-icon"      href="../brand_assests/favicon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "5 Things Every Small Business Website Needs",
+    "description": "Before you launch your small business website, make sure it has these 5 essentials.",
+    "author": { "@type": "Organization", "name": "PocketSod LLC", "url": "https://www.pocketsod.com" },
+    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://www.pocketsod.com/brand_assests/PSlogo6.png" } },
+    "datePublished": "2026-04-10",
+    "url": "https://www.pocketsod.com/blog/5-things-every-small-business-website-needs.html"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #2C6EAB;
+      --blue-dark:  #1A4E80;
+      --green:      #4CAF50;
+      --green-dark: #388E3C;
+      --dark:       #1A3356;
+      --cream:      #F8F5F0;
+      --cream-dark: #EDE9E1;
+      --white:      #FFFFFF;
+      --text:       #1E2D3D;
+      --muted:      #5A6E85;
+      --border:     #D0E0EE;
+
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Lora', serif;
+      --t: 0.25s ease;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--cream); line-height: 1.75; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--dark);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-logo span {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .nav-back {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--t);
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-back::before { content: '←'; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      padding: 72px 5% 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(44,110,171,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 30%, rgba(76,175,80,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.25rem;
+    }
+    .hero-tag::before, .hero-tag::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--green);
+      opacity: 0.5;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero-meta {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 5% 96px;
+    }
+
+    .intro {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── ITEMS ── */
+    .item {
+      margin-bottom: 3.5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .item:last-of-type { border-bottom: none; }
+
+    .item-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .item-num {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.2rem;
+      box-shadow: 0 4px 18px rgba(26,51,86,0.2);
+    }
+    .item-num.green { background: var(--green); }
+    .item-num.blue  { background: var(--blue); }
+
+    .item-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .item p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .item p:last-child { margin-bottom: 0; }
+
+    .item em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .callout {
+      background: var(--blue);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      color: var(--white) !important;
+      font-size: 0.95rem !important;
+      margin: 0 !important;
+    }
+    .callout strong { color: #A8D8F0; }
+
+    .tip {
+      border-left: 3px solid var(--green);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .tip p {
+      color: var(--muted) !important;
+      font-size: 0.95rem !important;
+      font-style: italic;
+      margin: 0 !important;
+    }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(44,110,171,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-block-inner { position: relative; }
+    .cta-block .label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+    .cta-block h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .cta-block h2 span { color: var(--green); }
+    .cta-block p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.9rem 2.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform var(--t), box-shadow var(--t), background var(--t);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(76,175,80,0.3);
+    }
+
+    /* ── FOOTER ── */
+    .foot {
+      background: var(--dark);
+      text-align: center;
+      padding: 2rem 5%;
+    }
+    .foot p {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .foot a { color: rgba(255,255,255,0.55); transition: color var(--t); }
+    .foot a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .item-header { gap: 1rem; }
+      .item-num { width: 44px; height: 44px; font-size: 1rem; }
+      .cta-block { padding: 2.25rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="https://www.pocketsod.com/">
+      <img src="../brand_assests/PSlogo6.png" alt="PocketSod">
+      <span>PocketSod</span>
+    </a>
+    <a class="nav-back" href="https://www.pocketsod.com/">Back to Home</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Small Business Guide</div>
+      <h1>5 Things Every Small Business<br><span>Website Needs</span></h1>
+      <p class="hero-meta">By PocketSod LLC &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 5 min read</p>
+    </div>
+  </header>
+
+  <!-- ARTICLE -->
+  <main class="article-wrap">
+
+    <p class="intro">
+      A lot of small business websites look like they were built in a hurry — and most of them were. The result is a site that doesn't rank on Google, doesn't work on phones, and doesn't convert visitors into customers. Here are the five things that actually matter, based on what we've seen building sites for businesses across the country.
+    </p>
+
+    <!-- 1 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-num blue">01</div>
+        <h2 class="item-title">A Mobile-Responsive Design That Works on Every Screen</h2>
+      </div>
+      <p>More than 60% of web traffic comes from mobile devices. If your site doesn't look great on a phone, you're losing more than half your potential customers before they even read a word.</p>
+      <p>Mobile-responsive doesn't just mean "it loads on a phone." It means text is readable without zooming, buttons are easy to tap, images scale properly, and navigation doesn't break. Every page, every time.</p>
+      <div class="tip">
+        <p><strong>Quick test:</strong> Pull up your site on your phone right now. If you have to pinch to zoom or the text runs off the screen, that's a problem — and Google knows it too.</p>
+      </div>
+      <p>Google uses mobile-first indexing, which means it evaluates the mobile version of your site when deciding where you rank in search results. A site that's hard to use on a phone isn't just a UX problem — it's an SEO problem.</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-num green">02</div>
+        <h2 class="item-title">A Clear Call to Action on Every Page</h2>
+      </div>
+      <p>Visitors won't figure out what you want them to do next on their own. Every page needs one clear answer to the question: <em>"What should I do now?"</em></p>
+      <p>For most small businesses, that means a phone number, a contact form, or a "Get a Quote" button — visible without scrolling, repeated at the bottom of the page, and easy to find on mobile.</p>
+      <div class="callout">
+        <p><strong>The rule of thumb:</strong> A visitor should be able to contact you within 10 seconds of landing on any page. If they have to hunt for it, they'll leave.</p>
+      </div>
+      <p>A contact form beats a raw email address. It's easier to fill out, works on any device, and sends you a clean message you can act on. Forms also let you capture structured info — name, phone, what they need — so you're not playing phone tag to get basic details.</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-num blue">03</div>
+        <h2 class="item-title">Local SEO Basics — So Google Can Find You</h2>
+      </div>
+      <p>Most small businesses serve a local or regional area. That means when someone searches "pressure washing near me" or "web design Indianapolis," you want to show up. That doesn't happen automatically.</p>
+      <p>At minimum, your site needs: your business name, address (or service area), phone number, and hours — consistent and crawlable on every page. Add a Google Maps embed, a Google Business Profile that matches your site, and a sitemap submitted to Google Search Console.</p>
+      <div class="tip">
+        <p><strong>Pro tip:</strong> The single biggest local SEO move most small businesses skip is claiming and filling out their Google Business Profile completely. It's free and it directly affects whether you show up in map searches.</p>
+      </div>
+      <p>Page titles and meta descriptions also matter. "Home | My Business" is wasted SEO real estate. "Affordable Pressure Washing in Noblesville, IN | AZ Powerwash" tells Google exactly what you do and where you do it.</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-num green">04</div>
+        <h2 class="item-title">Fast Load Times — Especially on Mobile</h2>
+      </div>
+      <p>53% of mobile visitors leave a page that takes more than 3 seconds to load. That's not a design problem — it's a revenue problem.</p>
+      <p>The most common culprits are oversized images, too many third-party scripts, and cheap hosting. A 4MB hero image that looks fine on your desktop is crushing your load time on a phone over LTE.</p>
+      <div class="callout">
+        <p><strong>Easy wins:</strong> Compress every image before uploading (tools like Squoosh are free), use a CDN for fonts and scripts, and avoid loading plugins or widgets you don't actually need.</p>
+      </div>
+      <p>Google's Core Web Vitals are now a ranking factor. Sites that load fast and feel responsive get a measurable boost in search results over slow competitors. Speed is no longer just a user experience issue — it's directly tied to how much organic traffic you get.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-num blue">05</div>
+        <h2 class="item-title">A Design That Reflects Your Brand — Not a Template</h2>
+      </div>
+      <p>Visitors form an opinion about your business within 50 milliseconds of landing on your site. Before they read a single word, they've already decided whether you look trustworthy and professional.</p>
+      <p>A generic template — especially one that looks like a hundred other businesses — undercuts that first impression. Your site should feel like <em>you</em>: your colors, your logo, your voice, your photos. Not the default stock imagery that comes with a website builder theme.</p>
+      <div class="tip">
+        <p><strong>Real talk:</strong> Customers compare you to your competitors online before they ever call. If your site looks like it was built in 2012, that comparison isn't going in your favor — even if your actual work is excellent.</p>
+      </div>
+      <p>This doesn't mean expensive or complicated. A well-built single-page site with your real logo, real photos, and brand colors will outperform a bloated template every time. Consistency between your business cards, social profiles, and website also builds the kind of trust that converts browsers into customers.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div class="cta-block-inner">
+        <span class="label">Veteran-Owned · All 50 States</span>
+        <h2>Need a Site That Has <span>All Five?</span></h2>
+        <p>PocketSod builds affordable, professional websites for small businesses — mobile-ready, SEO-optimized, and built to convert. Starting at $500.</p>
+        <a href="https://www.pocketsod.com/#contact" class="btn btn-primary">Get a Free Quote →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <p>© 2026 PocketSod LLC · <a href="https://www.pocketsod.com/">pocketsod.com</a> · Veteran-Owned Small Business Web Design</p>
+  </footer>
+
+</body>
+</html>
