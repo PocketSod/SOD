@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Get a Free Quote | PocketSod — Small Business Web Design</title>
+  <meta name="description" content="Tell us about your business and what you need. We'll get back to you within 24 hours with a free quote.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://www.pocketsod.com/start.html">
+
+  <link rel="icon" type="image/png" href="brand_assests/favicon.png">
+  <link rel="apple-touch-icon" href="brand_assests/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #2C6EAB;
+      --blue-dark:   #1A4E80;
+      --blue-mid:    #3A7FBD;
+      --blue-light:  rgba(44,110,171,0.12);
+      --green:       #4CAF50;
+      --green-dark:  #388E3C;
+      --green-light: rgba(76,175,80,0.12);
+      --dark:        #1A3356;
+      --dark-mid:    #24456E;
+      --cream:       #F8F5F0;
+      --white:       #FFFFFF;
+      --text:        #1E2D3D;
+      --muted:       #5A6E85;
+      --border:      rgba(255,255,255,0.1);
+      --input-bg:    rgba(255,255,255,0.06);
+      --input-focus: rgba(44,110,171,0.35);
+
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --t: 0.25s ease;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; height: 100%; }
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      color: var(--white);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── BACKGROUND ── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(44,110,171,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 90% 80%, rgba(76,175,80,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(26,51,86,0.8) 0%, transparent 80%);
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: relative;
+      z-index: 10;
+      padding: 1.25rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-logo img { height: 34px; width: auto; }
+    .nav-logo span {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .nav-back {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--t);
+    }
+    .nav-back::before { content: '←'; }
+    .nav-back:hover { color: var(--white); }
+
+    /* ── MAIN ── */
+    .main {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 5% 5rem;
+    }
+
+    .wizard {
+      width: 100%;
+      max-width: 580px;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-wrap {
+      margin-bottom: 2.5rem;
+    }
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    .progress-label {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      transition: color var(--t);
+    }
+    .progress-label.active { color: var(--green); }
+    .progress-label.done   { color: rgba(255,255,255,0.5); }
+    .progress-track {
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue-mid), var(--green));
+      border-radius: 99px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+    }
+
+    /* ── STEPS ── */
+    .steps-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .step {
+      display: none;
+      animation: stepIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .step.active { display: block; }
+    .step.exit {
+      display: block;
+      animation: stepOut 0.28s ease forwards;
+    }
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateX(32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes stepOut {
+      from { opacity: 1; transform: translateX(0); }
+      to   { opacity: 0; transform: translateX(-32px); }
+    }
+
+    .step-heading {
+      margin-bottom: 2rem;
+    }
+    .step-eyebrow {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+    .step-title span { color: var(--green); }
+    .step-sub {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* ── FIELDS ── */
+    .field { margin-bottom: 1.25rem; }
+    .field label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.5rem;
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color var(--t), background var(--t), box-shadow var(--t);
+      -webkit-appearance: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--blue-mid);
+      background: rgba(44,110,171,0.12);
+      box-shadow: 0 0 0 3px var(--input-focus);
+    }
+    .field textarea { resize: vertical; min-height: 110px; }
+    .field select option { background: var(--dark); color: var(--white); }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* ── PACKAGE CARDS ── */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .pkg-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 0.85rem;
+      cursor: pointer;
+      transition: border-color var(--t), background var(--t), transform var(--t);
+      text-align: center;
+      position: relative;
+    }
+    .pkg-card:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+    }
+    .pkg-card.selected {
+      border-color: var(--green);
+      background: var(--green-light);
+    }
+    .pkg-card.selected .pkg-check { opacity: 1; }
+    .pkg-check {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--green);
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+    .pkg-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .pkg-name {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .pkg-price {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    .tl-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      cursor: pointer;
+      transition: border-color var(--t), background var(--t);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .tl-card:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
+    .tl-card.selected { border-color: var(--blue-mid); background: var(--blue-light); }
+    .tl-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.25);
+      flex-shrink: 0;
+      transition: border-color var(--t), background var(--t);
+    }
+    .tl-card.selected .tl-dot { border-color: var(--blue-mid); background: var(--blue-mid); }
+    .tl-label {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--t), box-shadow var(--t), background var(--t), opacity var(--t);
+    }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; }
+    .btn-next {
+      background: var(--green);
+      color: var(--white);
+      margin-left: auto;
+    }
+    .btn-next:not(:disabled):hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(76,175,80,0.3);
+    }
+    .btn-back {
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      padding-left: 0;
+    }
+    .btn-back:hover { color: var(--white); }
+    .btn-back::before { content: '←'; margin-right: 0.3rem; }
+    .btn-submit {
+      background: var(--green);
+      color: var(--white);
+      margin-left: auto;
+      min-width: 200px;
+      justify-content: center;
+    }
+    .btn-submit:not(:disabled):hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(76,175,80,0.3);
+    }
+    .btn-submit.loading { opacity: 0.7; pointer-events: none; }
+
+    /* ── SUCCESS ── */
+    .success {
+      display: none;
+      text-align: center;
+      padding: 3rem 0;
+      animation: stepIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .success.show { display: block; }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--green-light);
+      border: 2px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.8rem;
+    }
+    .success h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+    .success h2 span { color: var(--green); }
+    .success p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+    }
+    .success-detail {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.04em;
+    }
+    .trust-item span { font-size: 0.85rem; }
+
+    /* ── FOOTER ── */
+    .foot {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 1.5rem 5%;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .foot p {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+    }
+    .foot a { color: rgba(255,255,255,0.4); transition: color var(--t); }
+    .foot a:hover { color: rgba(255,255,255,0.7); }
+
+    @media (max-width: 540px) {
+      .pkg-grid { grid-template-columns: 1fr; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+      .btn-row { flex-direction: column-reverse; align-items: stretch; }
+      .btn-next, .btn-submit { margin-left: 0; text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="https://www.pocketsod.com/">
+      <img src="brand_assests/PSlogo6.png" alt="PocketSod">
+      <span>PocketSod</span>
+    </a>
+    <a class="nav-back" href="https://www.pocketsod.com/">Back to Home</a>
+  </nav>
+
+  <!-- WIZARD -->
+  <main class="main">
+    <div class="wizard">
+
+      <!-- Progress -->
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-labels">
+          <span class="progress-label active" id="lbl1">Your Business</span>
+          <span class="progress-label"        id="lbl2">What You Need</span>
+          <span class="progress-label"        id="lbl3">Contact Info</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="steps-container" id="stepsContainer">
+
+        <!-- STEP 1: About your business -->
+        <div class="step active" id="step1">
+          <div class="step-heading">
+            <div class="step-eyebrow">Step 1 of 3</div>
+            <h1 class="step-title">Tell us about<br><span>your business</span></h1>
+            <p class="step-sub">A little context helps us give you an accurate quote fast.</p>
+          </div>
+
+          <div class="field">
+            <label for="bizName">Business Name</label>
+            <input type="text" id="bizName" placeholder="e.g. Smith Plumbing Co." autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="bizType">Type of Business</label>
+            <select id="bizType">
+              <option value="" disabled selected>Select your industry…</option>
+              <option>Home Services (plumbing, HVAC, cleaning, etc.)</option>
+              <option>Food & Restaurant</option>
+              <option>Health & Wellness</option>
+              <option>Retail / E-commerce</option>
+              <option>Professional Services (law, consulting, finance)</option>
+              <option>Construction & Real Estate</option>
+              <option>Automotive</option>
+              <option>Nonprofit / Community Org</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bizDesc">What does your business do? <em style="text-transform:none;font-weight:400;letter-spacing:0">(optional)</em></label>
+            <textarea id="bizDesc" placeholder="e.g. We do residential and commercial pressure washing in the Indianapolis area…"></textarea>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-next" id="next1" onclick="goTo(2)">
+              Continue →
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: What you need -->
+        <div class="step" id="step2">
+          <div class="step-heading">
+            <div class="step-eyebrow">Step 2 of 3</div>
+            <h1 class="step-title">What do<br><span>you need?</span></h1>
+            <p class="step-sub">Pick the package that sounds right — we'll help you finalize it on the call.</p>
+          </div>
+
+          <div class="field">
+            <label>Package</label>
+            <div class="pkg-grid">
+              <div class="pkg-card" onclick="selectPkg(this, 'Starter')" data-pkg="Starter">
+                <span class="pkg-check">✓</span>
+                <div class="pkg-icon">🌱</div>
+                <div class="pkg-name">Starter</div>
+                <div class="pkg-price">$500–$1,000</div>
+              </div>
+              <div class="pkg-card" onclick="selectPkg(this, 'Growth')" data-pkg="Growth">
+                <span class="pkg-check">✓</span>
+                <div class="pkg-icon">🌿</div>
+                <div class="pkg-name">Growth</div>
+                <div class="pkg-price">$1,000–$2,500</div>
+              </div>
+              <div class="pkg-card" onclick="selectPkg(this, 'Premium')" data-pkg="Premium">
+                <span class="pkg-check">✓</span>
+                <div class="pkg-icon">🏆</div>
+                <div class="pkg-name">Premium</div>
+                <div class="pkg-price">$2,500+</div>
+              </div>
+            </div>
+            <div class="pkg-card" style="grid-column:1/-1;text-align:left;display:flex;align-items:center;gap:0.75rem;padding:0.9rem 1rem;" onclick="selectPkg(this, 'Not sure yet')" data-pkg="Not sure yet">
+              <span class="pkg-check">✓</span>
+              <span style="font-size:1.2rem">🤔</span>
+              <div>
+                <div class="pkg-name" style="text-align:left">Not sure yet</div>
+                <div class="pkg-price">We'll help you figure it out</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:1.5rem">
+            <label>When do you need this?</label>
+            <div class="timeline-grid">
+              <div class="tl-card" onclick="selectTimeline(this, 'ASAP — within 2 weeks')">
+                <div class="tl-dot"></div>
+                <span class="tl-label">ASAP — within 2 weeks</span>
+              </div>
+              <div class="tl-card" onclick="selectTimeline(this, '1 month')">
+                <div class="tl-dot"></div>
+                <span class="tl-label">Within a month</span>
+              </div>
+              <div class="tl-card" onclick="selectTimeline(this, '2–3 months')">
+                <div class="tl-dot"></div>
+                <span class="tl-label">2–3 months</span>
+              </div>
+              <div class="tl-card" onclick="selectTimeline(this, 'No rush, just exploring')">
+                <div class="tl-dot"></div>
+                <span class="tl-label">No rush, just exploring</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-back" onclick="goTo(1)">Back</button>
+            <button class="btn btn-next" id="next2" onclick="goTo(3)" disabled>Continue →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Contact info -->
+        <div class="step" id="step3">
+          <div class="step-heading">
+            <div class="step-eyebrow">Step 3 of 3</div>
+            <h1 class="step-title">How do we<br><span>reach you?</span></h1>
+            <p class="step-sub">We respond within 24 hours — usually much faster.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="(317) 555-0100" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@yourbusiness.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="extra">Anything else we should know? <em style="text-transform:none;font-weight:400;letter-spacing:0">(optional)</em></label>
+            <textarea id="extra" placeholder="Logo files, domain info, inspiration sites, special requests…" style="min-height:80px"></textarea>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-back" onclick="goTo(2)">Back</button>
+            <button class="btn btn-submit" id="submitBtn" onclick="submitForm()" disabled>
+              Send My Request →
+            </button>
+          </div>
+
+          <div id="formError" style="display:none;margin-top:1rem;padding:0.75rem 1rem;background:rgba(220,50,50,0.12);border:1px solid rgba(220,50,50,0.3);border-radius:8px;font-size:0.85rem;color:#ff8a8a;">
+            Something went wrong. Please try again or email us directly at <a href="mailto:contact@pocketsod.com" style="color:#ff8a8a;text-decoration:underline">contact@pocketsod.com</a>.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success" id="successScreen">
+        <div class="success-icon">✓</div>
+        <h2>You're all set — <span>we'll be in touch!</span></h2>
+        <p>Thanks for reaching out. We'll review your request and get back to you within 24 hours (usually much sooner).</p>
+        <div class="success-detail">
+          <span>📬</span> Confirmation sent to your email
+        </div>
+      </div>
+
+      <!-- Trust bar -->
+      <div class="trust" id="trustBar">
+        <div class="trust-item"><span>⭐</span> Veteran Owned</div>
+        <div class="trust-item"><span>🇺🇸</span> All 50 States</div>
+        <div class="trust-item"><span>⚡</span> 14-Day Launch</div>
+        <div class="trust-item"><span>💬</span> Free Consultation</div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>© 2026 PocketSod LLC · <a href="https://www.pocketsod.com/">pocketsod.com</a> · <a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ── EmailJS config (same as main site) ──
+    const EMAILJS_SERVICE_ID  = 'service_7kn5as8';
+    const EMAILJS_TEMPLATE_ID = 'template_y9k5v6h';
+    const EMAILJS_PUBLIC_KEY  = '4TE29YSnWASHvziGU';
+
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    // ── State ──
+    let currentStep = 1;
+    let selectedPkg = '';
+    let selectedTimeline = '';
+
+    const FILLS = { 1: '16%', 2: '50%', 3: '85%' };
+
+    function goTo(n) {
+      const from = document.getElementById('step' + currentStep);
+      const to   = document.getElementById('step' + n);
+
+      from.classList.add('exit');
+      setTimeout(() => {
+        from.classList.remove('active', 'exit');
+        to.classList.add('active');
+        currentStep = n;
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 260);
+    }
+
+    function updateProgress() {
+      document.getElementById('progressFill').style.width = FILLS[currentStep];
+      ['lbl1','lbl2','lbl3'].forEach((id, i) => {
+        const el = document.getElementById(id);
+        el.classList.remove('active','done');
+        if (i + 1 === currentStep) el.classList.add('active');
+        if (i + 1 <  currentStep) el.classList.add('done');
+      });
+    }
+
+    function selectPkg(el, name) {
+      document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedPkg = name;
+      checkStep2();
+    }
+
+    function selectTimeline(el, val) {
+      document.querySelectorAll('.tl-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedTimeline = val;
+      checkStep2();
+    }
+
+    function checkStep2() {
+      document.getElementById('next2').disabled = !(selectedPkg && selectedTimeline);
+    }
+
+    // Enable submit when name + email filled
+    ['name','email'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        const name  = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        document.getElementById('submitBtn').disabled = !(name && email.includes('@'));
+      });
+    });
+
+    function submitForm() {
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending…';
+      btn.classList.add('loading');
+      document.getElementById('formError').style.display = 'none';
+
+      const params = {
+        from_name: document.getElementById('name').value.trim(),
+        from_email: document.getElementById('email').value.trim(),
+        phone:    document.getElementById('phone').value.trim(),
+        business: document.getElementById('bizName').value.trim(),
+        package:  selectedPkg + (selectedTimeline ? ' | Timeline: ' + selectedTimeline : ''),
+        message:  [
+          'Business Type: ' + document.getElementById('bizType').value,
+          'Description: '   + document.getElementById('bizDesc').value.trim(),
+          'Timeline: '      + selectedTimeline,
+          'Extra notes: '   + document.getElementById('extra').value.trim(),
+        ].join('\n'),
+        reply_to: document.getElementById('email').value.trim(),
+      };
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params, EMAILJS_PUBLIC_KEY)
+        .then(() => {
+          document.getElementById('progressWrap').style.display = 'none';
+          document.getElementById('stepsContainer').style.display = 'none';
+          document.getElementById('trustBar').style.display = 'none';
+          document.getElementById('successScreen').classList.add('show');
+        })
+        .catch(() => {
+          btn.textContent = 'Send My Request →';
+          btn.classList.remove('loading');
+          document.getElementById('formError').style.display = 'block';
+        });
+    }
+
+    // Init progress
+    updateProgress();
+  </script>
+</body>
+</html>
