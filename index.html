@@ -668,16 +668,19 @@
       margin-left: 0.5rem;
     }
     .portfolio-thumb {
-      background: linear-gradient(135deg, var(--blue-light) 0%, var(--cream) 100%);
       height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--blue);
-      letter-spacing: 0.05em;
+      overflow: hidden;
+    }
+    .portfolio-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .portfolio-card:hover .portfolio-thumb img {
+      transform: scale(1.04);
     }
     .portfolio-info {
       padding: 1.25rem 1.5rem;
@@ -704,6 +707,79 @@
     }
     .portfolio-link:hover { color: var(--green); }
     .portfolio-link::after { content: '→'; }
+
+    /* ── TESTIMONIALS ───────────────────────────────── */
+    .testimonials { background: var(--dark); }
+    .testimonials-header { text-align: center; margin-bottom: 3rem; }
+    .testimonials-header .section-title { color: var(--white); }
+    .testimonials-header .section-sub   { color: rgba(255,255,255,0.55); margin: 0 auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+    .testi-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem;
+      right: 1.25rem;
+      font-family: Georgia, serif;
+      font-size: 7rem;
+      line-height: 1;
+      color: rgba(76,175,80,0.12);
+      pointer-events: none;
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+      border-left-color: var(--blue-mid);
+    }
+    .testi-stars { display: flex; gap: 3px; }
+    .testi-stars span { color: #F5C842; font-size: 0.9rem; }
+    .testi-quote {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.8);
+      flex: 1;
+    }
+    .testi-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+    .testi-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .testi-name {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .testi-biz {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--green);
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 860px) {
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    }
 
     /* ── PROCESS ────────────────────────────────────── */
     .process { background: var(--dark); }
@@ -1185,7 +1261,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">delara.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb">DeLara Consulting</div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-delara.png" alt="DeLara Consulting website"></div>
           <div class="portfolio-info">
             <div>
               <h4>DeLara Consulting</h4>
@@ -1201,7 +1277,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">azpowerwash.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb">AZ Powerwash</div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-azpowerwash.png" alt="AZ Powerwash website"></div>
           <div class="portfolio-info">
             <div>
               <h4>AZ Powerwash</h4>
@@ -1217,7 +1293,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">casaespanaindiana.org</div>
           </div>
-          <div class="portfolio-thumb">Casa España Indiana</div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-casaespana.png" alt="Casa España Indiana website"></div>
           <div class="portfolio-info">
             <div>
               <h4>Casa España Indiana</h4>
@@ -1226,6 +1302,56 @@
             <a href="https://casaespanaindiana.org/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <span class="label" data-i18n="testi_label">Client Stories</span>
+        <h2 class="section-title" data-i18n-html="testi_title">What Our <span class="green">Clients Say</span></h2>
+        <p class="section-sub" data-i18n="testi_sub">Real feedback from real business owners we've worked with.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testi-quote" data-i18n="testi1_quote">"PocketSod created an attractive and highly effective bilingual website for DeLara LLC Consulting that perfectly matched our logo and branding. They took the time to understand our business and built a site that looks professional, feels polished, and clearly communicates our services in both English and Spanish. We have received great feedback from clients and are extremely happy with the final product."</p>
+          <div class="testi-divider"></div>
+          <div class="testi-author">
+            <span class="testi-name" data-i18n="testi1_name">Lara D.</span>
+            <span class="testi-biz">DeLara Consulting</span>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testi-quote" data-i18n="testi2_quote">"PocketSod did an amazing job creating an attractive, professional website for my business and got me up and running much faster than I expected. They found smart ways to cut my costs while still making the site look great and helped improve my visibility online. I would highly recommend PocketSod to any small business looking for an affordable, effective website solution."</p>
+          <div class="testi-divider"></div>
+          <div class="testi-author">
+            <span class="testi-name" data-i18n="testi2_name">Alex Z.</span>
+            <span class="testi-biz">AZ Powerwash</span>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testi-quote" data-i18n="testi3_quote">"PocketSod created a gorgeous bilingual website for Casa De España en Indiana that truly reflects our organization and community. They also added an amazing daily-updating news feed that keeps our members informed and our website feeling fresh. The entire process was smooth, professional, and affordable. We could not be happier with the final result."</p>
+          <div class="testi-divider"></div>
+          <div class="testi-author">
+            <span class="testi-name" data-i18n="testi3_name">Maria W.</span>
+            <span class="testi-biz">Casa España Indiana</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1459,6 +1585,16 @@
         port3_desc: 'Spanish cultural organization website',
         port_visit: 'Visit Site',
 
+        testi_label: 'Client Stories',
+        testi_title: 'What Our <span class="green">Clients Say</span>',
+        testi_sub:   'Real feedback from real business owners we\'ve worked with.',
+        testi1_quote: '"PocketSod created an attractive and highly effective bilingual website for DeLara LLC Consulting that perfectly matched our logo and branding. They took the time to understand our business and built a site that looks professional, feels polished, and clearly communicates our services in both English and Spanish. We have received great feedback from clients and are extremely happy with the final product."',
+        testi1_name:  'Lara D.',
+        testi2_quote: '"PocketSod did an amazing job creating an attractive, professional website for my business and got me up and running much faster than I expected. They found smart ways to cut my costs while still making the site look great and helped improve my visibility online. I would highly recommend PocketSod to any small business looking for an affordable, effective website solution."',
+        testi2_name:  'Alex Z.',
+        testi3_quote: '"PocketSod created a gorgeous bilingual website for Casa De España en Indiana that truly reflects our organization and community. They also added an amazing daily-updating news feed that keeps our members informed and our website feeling fresh. The entire process was smooth, professional, and affordable. We could not be happier with the final result."',
+        testi3_name:  'Maria W.',
+
         proc_label: 'How It Works',
         proc_title: 'From Idea to <span class="green">Live Site</span>',
         proc_sub:   'Our straightforward 4-step process gets your site launched fast.',
@@ -1584,6 +1720,16 @@
         port2_desc: 'Lavado a presión y limpieza exterior',
         port3_desc: 'Sitio web de organización cultural española',
         port_visit: 'Ver Sitio',
+
+        testi_label: 'Testimonios',
+        testi_title: 'Lo Que Dicen Nuestros <span class="green">Clientes</span>',
+        testi_sub:   'Opiniones reales de dueños de negocios con quienes hemos trabajado.',
+        testi1_quote: '"PocketSod creó un sitio web bilingüe atractivo y altamente efectivo para DeLara LLC Consulting que coincidió perfectamente con nuestro logo y marca. Se tomaron el tiempo de entender nuestro negocio y construyeron un sitio que se ve profesional, se siente pulido y comunica claramente nuestros servicios en inglés y español. Hemos recibido excelentes comentarios de clientes y estamos muy satisfechos con el producto final."',
+        testi1_name:  'Lara D.',
+        testi2_quote: '"PocketSod hizo un trabajo increíble creando un sitio web atractivo y profesional para mi negocio, y me puso en marcha mucho más rápido de lo esperado. Encontraron formas inteligentes de reducir mis costos sin sacrificar la calidad del diseño, y me ayudaron a mejorar mi visibilidad en línea. Recomiendo ampliamente PocketSod a cualquier pequeño negocio que busque una solución web accesible y efectiva."',
+        testi2_name:  'Alex Z.',
+        testi3_quote: '"PocketSod creó un hermoso sitio web bilingüe para Casa De España en Indiana que refleja verdaderamente nuestra organización y comunidad. También agregaron un increíble feed de noticias de actualización diaria que mantiene a nuestros miembros informados y el sitio siempre fresco. Todo el proceso fue fluido, profesional y accesible. No podríamos estar más contentos con el resultado final."',
+        testi3_name:  'Maria W.',
 
         proc_label: 'Cómo Funciona',
         proc_title: 'De la Idea al <span class="green">Sitio en Vivo</span>',
