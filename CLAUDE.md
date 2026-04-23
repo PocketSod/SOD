@@ -26,8 +26,9 @@ Static site for DeLara Consulting LLC, deployed to GitHub Pages at `https://pock
 
 ## Local Server
 - **Always serve on localhost** — never screenshot a `file:///` URL
-- Start: `node serve.mjs` (background) — serves project root at `http://localhost:3000`
-- Do not start a second instance if already running
+- Start: `node serve.mjs [port]` — serves project root; default port 3000
+- **Port conflict**: the CLJ project (`clj.pocketsod.com`) runs on port 3000. Use `node serve.mjs 3001` for PocketSod when CLJ is running.
+- Do not start a second instance if already running on the target port
 
 ## Screenshot Workflow
 - `screenshot.mjs` uses **WSL2 + Windows Edge headless** (`/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe`) — must be run from WSL2, not native Windows shell

@@ -634,7 +634,7 @@
     .portfolio-header .section-sub { margin: 0 auto; }
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 2rem;
     }
     .portfolio-card {
@@ -1304,6 +1304,22 @@
             <a href="https://casaespanaindiana.org/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
+        <div class="portfolio-card reveal">
+          <div class="browser-bar">
+            <div class="browser-dot dot-r"></div>
+            <div class="browser-dot dot-y"></div>
+            <div class="browser-dot dot-g"></div>
+            <div class="browser-url">clj.pocketsod.com</div>
+          </div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-clj.png" alt="Center for Language Justice website"></div>
+          <div class="portfolio-info">
+            <div>
+              <h4>Center for Language Justice</h4>
+              <p data-i18n="port4_desc">Worker-owned language services cooperative</p>
+            </div>
+            <a href="http://clj.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1596,6 +1612,7 @@
         port1_desc: 'Professional consulting services website',
         port2_desc: 'Pressure washing & exterior cleaning',
         port3_desc: 'Spanish cultural organization website',
+        port4_desc: 'Worker-owned language services cooperative',
         port_visit: 'Visit Site',
 
         testi_label: 'Client Stories',
@@ -1735,6 +1752,7 @@
         port1_desc: 'Sitio web de consultoría profesional',
         port2_desc: 'Lavado a presión y limpieza exterior',
         port3_desc: 'Sitio web de organización cultural española',
+        port4_desc: 'Cooperativa de servicios lingüísticos de propiedad de sus trabajadores',
         port_visit: 'Ver Sitio',
 
         testi_label: 'Testimonios',
