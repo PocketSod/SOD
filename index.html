@@ -65,6 +65,9 @@
   }
   </script>
 
+  <!-- LCP preload — must be before stylesheets -->
+  <link rel="preload" as="image" href="brand_assests/PSlogo.png" fetchpriority="high">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -101,6 +104,22 @@
 
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); color: var(--text); background: var(--cream); line-height: 1.65; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 8px;
+      z-index: 9999;
+      padding: 8px 20px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .skip-link:focus { left: 8px; }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
@@ -186,7 +205,7 @@
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.72);
       padding: 0 0.85rem;
       display: flex;
       align-items: center;
@@ -244,8 +263,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-logo img { height: 48px; transition: height var(--t); }
-    .navbar.scrolled .nav-logo img { height: 38px; }
+    .nav-logo img { height: 48px; width: auto; transition: height var(--t); }
+    .navbar.scrolled .nav-logo img { height: 38px; width: auto; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -273,8 +292,11 @@
       gap: 5px;
       cursor: pointer;
       padding: 4px;
+      background: none;
+      border: none;
     }
-    .nav-hamburger span { width: 26px; height: 2px; background: var(--dark); border-radius: 2px; transition: all var(--t); }
+    .nav-hamburger:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+    .nav-hamburger span { width: 26px; height: 2px; background: var(--dark); border-radius: 2px; transition: transform var(--t), opacity var(--t); }
     .mobile-menu {
       display: none;
       flex-direction: column;
@@ -362,6 +384,7 @@
     }
     .hero-logo-wrap img {
       width: 360px;
+      height: auto;
       max-width: 100%;
       filter:
         drop-shadow(0 2px 6px rgba(255,255,255,0.18))
@@ -402,7 +425,7 @@
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.88);
     }
 
     /* ── ABOUT ──────────────────────────────────────── */
@@ -608,7 +631,7 @@
       flex-shrink: 0;
     }
     .addon-card:hover .addon-icon { background: var(--white); }
-    .addon-card h4 {
+    .addon-card h3 {
       font-family: var(--font-head);
       font-size: 1rem;
       font-weight: 700;
@@ -688,7 +711,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    .portfolio-info h4 {
+    .portfolio-info h3 {
       font-family: var(--font-head);
       font-size: 1rem;
       font-weight: 700;
@@ -826,7 +849,7 @@
     .process-step:nth-child(4) .step-num { border-color: var(--green); }
     .process-step:hover .step-num { background: var(--blue); border-color: var(--blue); transform: scale(1.08); }
     .step-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .process-step h4 {
+    .process-step h3 {
       font-family: var(--font-head);
       font-size: 1rem;
       font-weight: 700;
@@ -930,20 +953,20 @@
       padding-bottom: 2.5rem;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .footer-brand img { height: 52px; margin-bottom: 1rem; }
+    .footer-brand img { height: 52px; width: auto; margin-bottom: 1rem; }
     .footer-brand p {
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.72);
       line-height: 1.65;
       max-width: 300px;
     }
-    .footer-col h5 {
+    .footer-col h3 {
       font-family: var(--font-head);
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.65);
       margin-bottom: 1rem;
     }
     .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
@@ -963,7 +986,7 @@
     }
     .footer-bottom p {
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.65);
     }
     .footer-bottom .vet-badge {
       font-family: var(--font-head);
@@ -1039,6 +1062,7 @@
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- LANGUAGE TOGGLE -->
   <div class="lang-toggle">
@@ -1058,7 +1082,7 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="#" class="nav-logo">
-        <img src="brand_assests/PSlogo.png" alt="PocketSod">
+        <img src="brand_assests/PSlogo.png" alt="PocketSod" width="676" height="369">
       </a>
       <ul class="nav-links">
         <li><a href="#about" data-i18n="nav_about">About</a></li>
@@ -1068,9 +1092,9 @@
         <li><a href="#process" data-i18n="nav_process">Process</a></li>
         <li><a href="start.html" class="nav-cta" data-i18n="nav_cta">Get a Quote</a></li>
       </ul>
-      <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <button class="nav-hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
     <div class="container">
       <div class="mobile-menu" id="mobileMenu">
@@ -1083,6 +1107,8 @@
       </div>
     </div>
   </nav>
+
+  <main id="main-content">
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -1097,7 +1123,7 @@
         </div>
       </div>
       <div class="hero-logo-wrap">
-        <img src="brand_assests/PSlogo.png" alt="PocketSod — Small Business Web Site Design">
+        <img src="brand_assests/PSlogo.png" alt="PocketSod — Small Business Web Site Design" width="676" height="369" fetchpriority="high" decoding="sync" loading="eager">
       </div>
     </div>
   </section>
@@ -1222,7 +1248,7 @@
         <div class="addon-card reveal">
           <div class="addon-icon">🛠️</div>
           <div>
-            <h4 data-i18n="addon1_title">Monthly Maintenance</h4>
+            <h3 data-i18n="addon1_title">Monthly Maintenance</h3>
             <p data-i18n="addon1_desc">Content updates, security patches, plugin management, and uptime monitoring.</p>
             <div class="addon-price" data-i18n="addon1_price">$50–$200 / month</div>
           </div>
@@ -1230,7 +1256,7 @@
         <div class="addon-card reveal">
           <div class="addon-icon">☁️</div>
           <div>
-            <h4 data-i18n="addon2_title">Hosting Management</h4>
+            <h3 data-i18n="addon2_title">Hosting Management</h3>
             <p data-i18n="addon2_desc">We handle your domain, SSL certificate, server, backups, and renewals.</p>
             <div class="addon-price" data-i18n="addon2_price">$20–$50 / month</div>
           </div>
@@ -1238,7 +1264,7 @@
         <div class="addon-card reveal">
           <div class="addon-icon">📈</div>
           <div>
-            <h4 data-i18n="addon3_title">SEO Management</h4>
+            <h3 data-i18n="addon3_title">SEO Management</h3>
             <p data-i18n="addon3_desc">Ongoing keyword tracking, local SEO, Google Business optimization, and monthly reporting.</p>
             <div class="addon-price" data-i18n="addon3_price">$100–$500 / month</div>
           </div>
@@ -1263,10 +1289,10 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">azpowerwash.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-azpowerwash.png" alt="AZ Powerwash website"></div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-azpowerwash.png" alt="AZ Powerwash website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
-              <h4>AZ Powerwash</h4>
+              <h3>AZ Powerwash</h3>
               <p data-i18n="port2_desc">Pressure washing &amp; exterior cleaning</p>
             </div>
             <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
@@ -1279,10 +1305,10 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">casaespanaindiana.org</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-casaespana.png" alt="Casa España Indiana website"></div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-casaespana.png" alt="Casa España Indiana website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
-              <h4>Casa España Indiana</h4>
+              <h3>Casa España Indiana</h3>
               <p data-i18n="port3_desc">Spanish cultural organization website</p>
             </div>
             <a href="https://casaespanaindiana.org/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
@@ -1295,10 +1321,10 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">clj.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-clj.png" alt="Center for Language Justice website"></div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-clj.png" alt="Center for Language Justice website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
-              <h4>Center for Language Justice</h4>
+              <h3>Center for Language Justice</h3>
               <p data-i18n="port4_desc">Worker-owned language services cooperative</p>
             </div>
             <a href="http://clj.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
@@ -1311,10 +1337,10 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">toolsandtable.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-toolsandtable.png" alt="Tools & Table website"></div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-toolsandtable.png" alt="Tools &amp; Table website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
-              <h4>Tools &amp; Table</h4>
+              <h3>Tools &amp; Table</h3>
               <p data-i18n="port5_desc">Food &amp; cooking community website</p>
             </div>
             <a href="https://toolsandtable.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
@@ -1327,10 +1353,10 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">delara.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-delara.png" alt="DeLara Consulting website"></div>
+          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-delara.png" alt="DeLara Consulting website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
-              <h4>DeLara Consulting</h4>
+              <h3>DeLara Consulting</h3>
               <p data-i18n="port1_desc">Professional consulting services website</p>
             </div>
             <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
@@ -1402,25 +1428,25 @@
         <div class="process-step reveal">
           <div class="step-num">01</div>
           <div class="step-icon">💬</div>
-          <h4 data-i18n="proc_step1_title">Consult</h4>
+          <h3 data-i18n="proc_step1_title">Consult</h3>
           <p data-i18n="proc_step1_desc">Free call to understand your business, goals, and what pages you need.</p>
         </div>
         <div class="process-step reveal">
           <div class="step-num">02</div>
           <div class="step-icon">🎨</div>
-          <h4 data-i18n="proc_step2_title">Design</h4>
+          <h3 data-i18n="proc_step2_title">Design</h3>
           <p data-i18n="proc_step2_desc">We build your site with your brand — logo, colors, content, and photos.</p>
         </div>
         <div class="process-step reveal">
           <div class="step-num">03</div>
           <div class="step-icon">🚀</div>
-          <h4 data-i18n="proc_step3_title">Launch</h4>
+          <h3 data-i18n="proc_step3_title">Launch</h3>
           <p data-i18n="proc_step3_desc">After your approval and revisions, we go live — fast and stress-free.</p>
         </div>
         <div class="process-step reveal">
           <div class="step-num">04</div>
           <div class="step-icon">🛡️</div>
-          <h4 data-i18n="proc_step4_title">Support</h4>
+          <h3 data-i18n="proc_step4_title">Support</h3>
           <p data-i18n="proc_step4_desc">Ongoing maintenance, hosting, and SEO plans keep your site running strong.</p>
         </div>
       </div>
@@ -1501,16 +1527,18 @@
     </div>
   </section>
 
+  </main><!-- /#main-content -->
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="brand_assests/PSlogo.png" alt="PocketSod">
+          <img src="brand_assests/PSlogo.png" alt="PocketSod" width="676" height="369">
           <p data-i18n="footer_brand_desc">Veteran-owned web design for small businesses. Professional sites, fair prices, and support that doesn't disappear after launch.</p>
         </div>
         <div class="footer-col">
-          <h5 data-i18n="footer_nav_heading">Navigation</h5>
+          <h3 data-i18n="footer_nav_heading">Navigation</h3>
           <ul>
             <li><a href="#about" data-i18n="nav_about">About</a></li>
             <li><a href="#packages" data-i18n="nav_packages">Packages</a></li>
@@ -1521,13 +1549,13 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h5 data-i18n="footer_blog_heading">Blog</h5>
+          <h3 data-i18n="footer_blog_heading">Blog</h3>
           <ul>
             <li><a href="blog/5-things-every-small-business-website-needs.html" data-i18n="footer_blog_post1">5 Things Every Small Business Website Needs</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5 data-i18n="contact_label">Contact</h5>
+          <h3 data-i18n="contact_label">Contact</h3>
           <ul>
             <li><a href="tel:3173480539">(317) 348-0539</a></li>
             <li><a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></li>
@@ -1889,8 +1917,16 @@
     // ── MOBILE MENU ───────────────────────────────────────────────────────────
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    function closeMobile() { mobileMenu.classList.remove('open'); }
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    }
 
     // ── SCROLL REVEAL ─────────────────────────────────────────────────────────
     const reveals = document.querySelectorAll('.reveal');
