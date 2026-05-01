@@ -639,6 +639,10 @@
             <textarea id="extra" placeholder="Logo files, domain info, inspiration sites, special requests…" style="min-height:80px"></textarea>
           </div>
 
+          <div style="position:absolute;left:-9999px;height:0;overflow:hidden;pointer-events:none" aria-hidden="true">
+            <label for="hp_field">Leave this blank</label>
+            <input type="text" id="hp_field" name="hp_field" tabindex="-1" autocomplete="off">
+          </div>
           <div class="btn-row">
             <button class="btn btn-back" onclick="goTo(2)">Back</button>
             <button class="btn btn-submit" id="submitBtn" onclick="submitForm()" disabled>
@@ -736,17 +740,26 @@
       document.getElementById('next2').disabled = !(selectedPkg && selectedTimeline);
     }
 
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     // Enable submit when name + email filled
     ['name','email'].forEach(id => {
       document.getElementById(id).addEventListener('input', () => {
         const name  = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
-        document.getElementById('submitBtn').disabled = !(name && email.includes('@'));
+        document.getElementById('submitBtn').disabled = !(name && EMAIL_RE.test(email));
       });
     });
 
     function submitForm() {
       const btn = document.getElementById('submitBtn');
+
+      // Honeypot + re-validate before sending
+      if (document.getElementById('hp_field').value) return;
+      const nameVal  = document.getElementById('name').value.trim();
+      const emailVal = document.getElementById('email').value.trim();
+      if (!nameVal || !EMAIL_RE.test(emailVal)) return;
+
       btn.textContent = 'Sending…';
       btn.classList.add('loading');
       document.getElementById('formError').style.display = 'none';

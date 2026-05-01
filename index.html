@@ -35,9 +35,8 @@
   <meta name="twitter:description" content="Veteran-owned web design for small businesses. Custom websites starting at $500, bilingual EN/ES support. All 50 states.">
   <meta name="twitter:image"        content="https://www.pocketsod.com/brand_assests/OG.png">
 
-  <!-- ── FAVICON (inline SVG) ── -->
+  <!-- ── FAVICON ── -->
   <link rel="icon" type="image/png" href="brand_assests/favicon.png">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="brand_assests/favicon.png">
 
   <!-- ── SCHEMA MARKUP — LocalBusiness ── -->
@@ -1295,7 +1294,7 @@
               <h3>AZ Powerwash</h3>
               <p data-i18n="port2_desc">Pressure washing &amp; exterior cleaning</p>
             </div>
-            <a href="http://azpowerwash.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
+            <a href="https://azpowerwash.pocketsod.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
         <div class="portfolio-card reveal">
@@ -1311,7 +1310,7 @@
               <h3>Casa España Indiana</h3>
               <p data-i18n="port3_desc">Spanish cultural organization website</p>
             </div>
-            <a href="https://casaespanaindiana.org/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
+            <a href="https://casaespanaindiana.org/" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
         <div class="portfolio-card reveal">
@@ -1327,7 +1326,7 @@
               <h3>Center for Language Justice</h3>
               <p data-i18n="port4_desc">Worker-owned language services cooperative</p>
             </div>
-            <a href="http://clj.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
+            <a href="https://clj.pocketsod.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
         <div class="portfolio-card reveal">
@@ -1343,7 +1342,7 @@
               <h3>Tools &amp; Table</h3>
               <p data-i18n="port5_desc">Food &amp; cooking community website</p>
             </div>
-            <a href="https://toolsandtable.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
+            <a href="https://toolsandtable.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
         <div class="portfolio-card reveal">
@@ -1359,7 +1358,7 @@
               <h3>DeLara Consulting</h3>
               <p data-i18n="port1_desc">Professional consulting services website</p>
             </div>
-            <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
+            <a href="https://delara.pocketsod.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="port_visit">Visit Site</a>
           </div>
         </div>
       </div>
@@ -1521,6 +1520,11 @@
             <label for="message" data-i18n="form_msg_label">Tell Us About Your Business</label>
             <textarea id="message" name="message" data-i18n-placeholder="form_msg_ph" placeholder="What does your business do? What pages do you need? Any specific goals?"></textarea>
           </div>
+          <div style="position:absolute;left:-9999px;height:0;overflow:hidden;pointer-events:none" aria-hidden="true">
+            <label for="website_url">Website URL</label>
+            <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+          </div>
+          <div id="formValidationError" role="alert" style="display:none;color:#c0392b;font-size:0.875rem;margin-bottom:0.75rem;padding:0.5rem 0.75rem;background:rgba(192,57,43,0.08);border-radius:6px;"></div>
           <button type="submit" class="btn btn-blue form-submit" data-i18n="form_submit">Send My Request →</button>
         </form>
       </div>
@@ -1560,9 +1564,9 @@
             <li><a href="tel:3173480539">(317) 348-0539</a></li>
             <li><a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></li>
             <li><a href="#contact" data-i18n="hero_cta_primary">Get a Free Quote</a></li>
-            <li><a href="http://linkedin.com/company/pocketsod" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="https://www.facebook.com/profile.php?id=61573347643482" target="_blank" rel="noopener">Facebook</a></li>
-            <li><a href="https://www.instagram.com/psllc2026/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/pocketsod" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61573347643482" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://www.instagram.com/psllc2026/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           </ul>
         </div>
       </div>
@@ -1954,10 +1958,26 @@
       const btn  = form.querySelector('button[type=submit]');
       const lang = document.documentElement.lang || 'en';
 
-      // Basic validation
-      const email = form.querySelector('#email').value.trim();
-      const name  = form.querySelector('#name').value.trim();
-      if (!name || !email) return;
+      // Honeypot + validation
+      const honeypot = form.querySelector('#website_url').value;
+      if (honeypot) return;
+
+      const email  = form.querySelector('#email').value.trim();
+      const name   = form.querySelector('#name').value.trim();
+      const errEl  = document.getElementById('formValidationError');
+      errEl.style.display = 'none';
+
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!name) {
+        errEl.textContent = lang === 'es' ? 'Por favor ingresa tu nombre.' : 'Please enter your name.';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (!email || !emailRe.test(email)) {
+        errEl.textContent = lang === 'es' ? 'Por favor ingresa un correo electrónico válido.' : 'Please enter a valid email address.';
+        errEl.style.display = 'block';
+        return;
+      }
 
       // Loading state
       btn.textContent = lang === 'es' ? 'Enviando...' : 'Sending...';
@@ -1976,6 +1996,7 @@
 
       emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
         .then(() => {
+          document.getElementById('formValidationError').style.display = 'none';
           btn.textContent = T[lang].form_sent || '✓ Sent!';
           btn.style.background = 'var(--green)';
           btn.style.opacity = '1';
