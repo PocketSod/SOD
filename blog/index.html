@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Blog | PocketSod — Web Design for Small Businesses</title>
+  <meta name="description" content="Practical web design advice for small business owners. No fluff — just what actually works.">
+  <meta name="author" content="PocketSod LLC">
+  <link rel="canonical" href="https://www.pocketsod.com/blog/">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://www.pocketsod.com/blog/">
+  <meta property="og:title"       content="Blog | PocketSod">
+  <meta property="og:description" content="Practical web design advice for small business owners. No fluff — just what actually works.">
+  <meta property="og:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+  <meta property="og:site_name"   content="PocketSod LLC">
+
+  <link rel="icon" type="image/png" href="../brand_assests/favicon.png">
+  <link rel="apple-touch-icon"      href="../brand_assests/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #2C6EAB;
+      --blue-dark:  #1A4E80;
+      --green:      #4CAF50;
+      --dark:       #1A3356;
+      --cream:      #F8F5F0;
+      --cream-dark: #EDE9E1;
+      --white:      #FFFFFF;
+      --text:       #1E2D3D;
+      --muted:      #5A6E85;
+      --border:     #D0E0EE;
+
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Lora', serif;
+      --t: 0.25s ease;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--cream); line-height: 1.75; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--dark);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-logo span {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .nav-home {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--t);
+    }
+    .nav-home:hover { color: var(--white); }
+    .nav-home::before { content: '←'; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      padding: 64px 5% 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(44,110,171,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 80% 30%, rgba(44,110,171,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
+    .hero-label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(44,110,171,0.15);
+      border: 1px solid rgba(44,110,171,0.3);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── ARTICLES GRID ── */
+    .articles {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 5% 80px;
+    }
+
+    .articles-count {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--t);
+    }
+    .article-card:first-of-type { padding-top: 0; }
+    .article-card:hover { transform: translateX(4px); }
+    .article-card:hover .card-title { color: var(--blue); }
+    .article-card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
+
+    .card-body { min-width: 0; }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .card-tag {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(44,110,171,0.1);
+      border-radius: 100px;
+      padding: 0.2rem 0.65rem;
+    }
+    .card-date {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .card-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      margin-bottom: 0.65rem;
+      transition: color var(--t);
+    }
+
+    .card-desc {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .card-read {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .card-arrow {
+      font-size: 1.4rem;
+      color: var(--blue);
+      opacity: 0.3;
+      transition: opacity var(--t), transform var(--t);
+      padding-top: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--dark);
+      padding: 60px 5%;
+      text-align: center;
+    }
+    .cta-inner { max-width: 520px; margin: 0 auto; }
+    .cta h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .cta p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.75rem;
+    }
+    .btn {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+    }
+    .btn-blue {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(44,110,171,0.35);
+    }
+    .btn-blue:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(44,110,171,0.4);
+    }
+    .btn-blue:active { transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    .foot {
+      background: var(--cream-dark);
+      padding: 1.5rem 5%;
+      text-align: center;
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .foot a { color: var(--blue); }
+    .foot a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 540px) {
+      .article-card { grid-template-columns: 1fr; }
+      .card-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">
+      <img src="../brand_assests/PSlogo.png" alt="PocketSod" width="676" height="369">
+      <span>PocketSod</span>
+    </a>
+    <a href="../index.html" class="nav-home">Back to Home</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">PocketSod Blog</div>
+      <h1>Web Design Insights<br>for Small Businesses</h1>
+      <p>Straight talk on websites, pricing, and what actually helps small businesses grow online.</p>
+    </div>
+  </header>
+
+  <!-- ARTICLES -->
+  <main class="articles">
+    <div class="articles-count">2 Articles</div>
+
+    <a class="article-card" href="how-much-does-a-small-business-website-cost-2026.html">
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-tag">Pricing</span>
+          <span class="card-date">April 30, 2026</span>
+        </div>
+        <div class="card-title">How Much Does a Small Business Website Cost in 2026?</div>
+        <p class="card-desc">The honest breakdown — from $0 DIY builders to $50K+ agency builds. Find out what you actually need and what you'll pay.</p>
+        <span class="card-read">Read article →</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="article-card" href="5-things-every-small-business-website-needs.html">
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-tag">Essentials</span>
+          <span class="card-date">April 10, 2026</span>
+        </div>
+        <div class="card-title">5 Things Every Small Business Website Needs</div>
+        <p class="card-desc">Before you launch, make sure your site has these 5 essentials. From mobile design to local SEO — here's what actually moves the needle.</p>
+        <span class="card-read">Read article →</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+  </main>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <h2>Ready for a site that works?</h2>
+      <p>Veteran-owned. Custom-built. Starting at $500. We'll have it live in 14 days.</p>
+      <a href="../start.html" class="btn btn-blue">Get a Free Quote →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <p>© 2026 PocketSod LLC · <a href="../index.html">pocketsod.com</a> · <a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></p>
+  </footer>
+
+</body>
+</html>
