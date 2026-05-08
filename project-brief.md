@@ -55,9 +55,9 @@ A marketing landing page that presents PocketSod's service packages clearly, bui
 | Client | URL |
 |--------|-----|
 | DeLara Consulting | https://delara.pocketsod.com/ |
-| AZ Powerwash | http://azpowerwash.pocketsod.com/ |
+| AZ Powerwash | https://azpowerwash.pocketsod.com/ |
 | Casa España Indiana | https://casaespanaindiana.org/ |
-| Center for Language Justice | http://clj.pocketsod.com/ |
+| Center for Language Justice | https://clj.pocketsod.com/ |
 
 ---
 
