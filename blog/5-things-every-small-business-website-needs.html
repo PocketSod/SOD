@@ -1,25 +1,34 @@
-<!DOCTYPE html>
+﻿﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW8Y6YTRZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CW8Y6YTRZY');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>5 Things Every Small Business Website Needs | PocketSod</title>
   <meta name="description" content="Before you launch your small business website, make sure it has these 5 essentials. From mobile design to local SEO, here's what actually moves the needle.">
   <meta name="author" content="PocketSod LLC">
-  <link rel="canonical" href="https://www.pocketsod.com/blog/5-things-every-small-business-website-needs.html">
+  <link rel="canonical" href="https://pocketsod.com/blog/5-things-every-small-business-website-needs.html">
 
   <meta property="og:type"        content="article">
-  <meta property="og:url"         content="https://www.pocketsod.com/blog/5-things-every-small-business-website-needs.html">
+  <meta property="og:url"         content="https://pocketsod.com/blog/5-things-every-small-business-website-needs.html">
   <meta property="og:title"       content="5 Things Every Small Business Website Needs">
   <meta property="og:description" content="Before you launch your small business website, make sure it has these 5 essentials. From mobile design to local SEO, here's what actually moves the needle.">
-  <meta property="og:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+  <meta property="og:image"       content="https://pocketsod.com/brand_assests/OG.png">
   <meta property="og:site_name"   content="PocketSod LLC">
 
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="5 Things Every Small Business Website Needs">
-  <meta name="twitter:description" content="From mobile design to local SEO — the 5 essentials your small business site can't skip.">
-  <meta name="twitter:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+  <meta name="twitter:description" content="Mobile design, local SEO, and the rest of the 5 essentials your small business site can't skip.">
+  <meta name="twitter:image"       content="https://pocketsod.com/brand_assests/OG.png">
 
   <link rel="icon" type="image/png" href="../brand_assests/favicon.png">
   <link rel="apple-touch-icon"      href="../brand_assests/favicon.png">
@@ -30,10 +39,10 @@
     "@type": "BlogPosting",
     "headline": "5 Things Every Small Business Website Needs",
     "description": "Before you launch your small business website, make sure it has these 5 essentials.",
-    "author": { "@type": "Organization", "name": "PocketSod LLC", "url": "https://www.pocketsod.com" },
-    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://www.pocketsod.com/brand_assests/PSlogo.png" } },
+    "author": { "@type": "Organization", "name": "PocketSod LLC", "url": "https://pocketsod.com" },
+    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://pocketsod.com/brand_assests/PSlogo.png" } },
     "datePublished": "2026-04-10",
-    "url": "https://www.pocketsod.com/blog/5-things-every-small-business-website-needs.html"
+    "url": "https://pocketsod.com/blog/5-things-every-small-business-website-needs.html"
   }
   </script>
 
@@ -341,117 +350,189 @@
     .foot a { color: rgba(255,255,255,0.55); transition: color var(--t); }
     .foot a:hover { color: var(--white); }
 
+    /* ── LANGUAGE TOGGLE ─────────────────────────────── */
+    .lang-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      align-items: stretch;
+      background: var(--dark);
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(26,51,86,0.35);
+    }
+    .lt-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      padding: 0 0.85rem;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid rgba(44,110,171,0.25);
+    }
+    .lt-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: background var(--t);
+    }
+    .lt-btn.active { background: var(--blue); }
+    .lt-btn:not(.active):hover { background: rgba(255,255,255,0.07); }
+    .lt-code {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .lt-name {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    .lt-btn.active .lt-name { color: rgba(255,255,255,0.75); }
+    .lt-divider { width: 1px; background: rgba(44,110,171,0.25); }
+
     @media (max-width: 600px) {
       .item-header { gap: 1rem; }
       .item-num { width: 44px; height: 44px; font-size: 1rem; }
       .cta-block { padding: 2.25rem 1.5rem; }
+      .lang-toggle { bottom: 14px; right: 14px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle">
+    <div class="lt-label">Lang</div>
+    <button onclick="setLang('en')" class="lt-btn active" data-lang="en">
+      <span class="lt-code">EN</span>
+      <span class="lt-name">English</span>
+    </button>
+    <div class="lt-divider"></div>
+    <button onclick="setLang('es')" class="lt-btn" data-lang="es">
+      <span class="lt-code">ES</span>
+      <span class="lt-name">Español</span>
+    </button>
+  </div>
+
   <!-- NAV -->
   <nav class="nav">
-    <a class="nav-logo" href="https://www.pocketsod.com/">
+    <a class="nav-logo" href="https://pocketsod.com/">
       <img src="../brand_assests/PSlogo.png" alt="PocketSod">
       <span>PocketSod</span>
     </a>
-    <a class="nav-back" href="https://www.pocketsod.com/">Back to Home</a>
+    <a class="nav-back" href="https://pocketsod.com/" data-i18n="nav_back">Back to Home</a>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="hero-inner">
-      <div class="hero-tag">Small Business Guide</div>
-      <h1>5 Things Every Small Business<br><span>Website Needs</span></h1>
-      <p class="hero-meta">By PocketSod LLC &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 5 min read</p>
+      <div class="hero-tag" data-i18n="hero_tag">Small Business Guide</div>
+      <h1 data-i18n-html="hero_h1">5 Things Every Small Business<br><span>Website Needs</span></h1>
+      <p class="hero-meta" data-i18n-html="hero_meta">By PocketSod LLC &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 5 min read</p>
     </div>
   </header>
 
   <!-- ARTICLE -->
   <main class="article-wrap">
 
-    <p class="intro">
-      A lot of small business websites look like they were built in a hurry — and most of them were. The result is a site that doesn't rank on Google, doesn't work on phones, and doesn't convert visitors into customers. Here are the five things that actually matter, based on what we've seen building sites for businesses across the country.
+    <p class="intro" data-i18n="intro">
+      A lot of small business websites look like they were thrown together fast, because they were. They don't show up on Google, don't load right on a phone, and send visitors away before those visitors ever reach for the phone. These five things make the biggest difference, based on what we've seen building sites for businesses across the country.
     </p>
 
     <!-- 1 -->
     <div class="item">
       <div class="item-header">
         <div class="item-num blue">01</div>
-        <h2 class="item-title">A Mobile-Responsive Design That Works on Every Screen</h2>
+        <h2 class="item-title" data-i18n="item1_title">A Mobile-Responsive Design That Works on Every Screen</h2>
       </div>
-      <p>More than 60% of web traffic comes from mobile devices. If your site doesn't look great on a phone, you're losing more than half your potential customers before they even read a word.</p>
-      <p>Mobile-responsive doesn't just mean "it loads on a phone." It means text is readable without zooming, buttons are easy to tap, images scale properly, and navigation doesn't break. Every page, every time.</p>
+      <p data-i18n="item1_p1">More than 60% of web traffic comes from mobile devices. If your site doesn't look great on a phone, you're losing more than half your potential customers before they even read a word.</p>
+      <p data-i18n="item1_p2">Mobile-responsive means more than "it loads on a phone." The text should be readable without zooming, the buttons big enough to tap with a thumb, the images sized right, and the navigation should hold up no matter which page you land on.</p>
       <div class="tip">
-        <p><strong>Quick test:</strong> Pull up your site on your phone right now. If you have to pinch to zoom or the text runs off the screen, that's a problem — and Google knows it too.</p>
+        <p data-i18n-html="item1_tip"><strong>Quick test:</strong> Pull up your site on your phone right now. If you have to pinch to zoom, or the text runs off the edge of the screen, Google notices the same thing you do.</p>
       </div>
-      <p>Google uses mobile-first indexing, which means it evaluates the mobile version of your site when deciding where you rank in search results. A site that's hard to use on a phone isn't just a UX problem — it's an SEO problem.</p>
+      <p data-i18n="item1_p3">Google uses mobile-first indexing: the mobile version of your site is the one search results are built on. A clunky mobile experience costs you rankings as much as it costs you visitors.</p>
     </div>
 
     <!-- 2 -->
     <div class="item">
       <div class="item-header">
         <div class="item-num green">02</div>
-        <h2 class="item-title">A Clear Call to Action on Every Page</h2>
+        <h2 class="item-title" data-i18n="item2_title">A Clear Call to Action on Every Page</h2>
       </div>
-      <p>Visitors won't figure out what you want them to do next on their own. Every page needs one clear answer to the question: <em>"What should I do now?"</em></p>
-      <p>For most small businesses, that means a phone number, a contact form, or a "Get a Quote" button — visible without scrolling, repeated at the bottom of the page, and easy to find on mobile.</p>
+      <p data-i18n-html="item2_p1">Visitors won't figure out what you want them to do next on their own. Every page needs one clear answer to the question: <em>"What should I do now?"</em></p>
+      <p data-i18n="item2_p2">For most small businesses, that's a phone number, a contact form, or a "Get a Quote" button. Put it where visitors see it without scrolling, repeat it at the bottom of the page, and make sure it's easy to tap on a phone.</p>
       <div class="callout">
-        <p><strong>The rule of thumb:</strong> A visitor should be able to contact you within 10 seconds of landing on any page. If they have to hunt for it, they'll leave.</p>
+        <p data-i18n-html="item2_callout"><strong>The rule of thumb:</strong> A visitor should be able to contact you within 10 seconds of landing on any page. If they have to hunt for it, they'll leave.</p>
       </div>
-      <p>A contact form beats a raw email address. It's easier to fill out, works on any device, and sends you a clean message you can act on. Forms also let you capture structured info — name, phone, what they need — so you're not playing phone tag to get basic details.</p>
+      <p data-i18n="item2_p3">A contact form beats a raw email address. It's easier to fill out, works on any device, and lands in your inbox as a message you can act on right away. Forms also capture the basics up front (name, phone, what the visitor needs) so you're not stuck playing phone tag just to get started.</p>
     </div>
 
     <!-- 3 -->
     <div class="item">
       <div class="item-header">
         <div class="item-num blue">03</div>
-        <h2 class="item-title">Local SEO Basics — So Google Can Find You</h2>
+        <h2 class="item-title" data-i18n="item3_title">Local SEO Basics: So Google Can Find You</h2>
       </div>
-      <p>Most small businesses serve a local or regional area. That means when someone searches "pressure washing near me" or "web design Indianapolis," you want to show up. That doesn't happen automatically.</p>
-      <p>At minimum, your site needs: your business name, address (or service area), phone number, and hours — consistent and crawlable on every page. Add a Google Maps embed, a Google Business Profile that matches your site, and a sitemap submitted to Google Search Console.</p>
+      <p data-i18n="item3_p1">Most small businesses serve a local or regional area. That means when someone searches "pressure washing near me" or "web design Indianapolis," you want to show up. That doesn't happen on its own.</p>
+      <p data-i18n="item3_p2">At minimum, put your business name, address (or service area), phone number, and hours on every page, written the same way each time so Google can read them. Then add a Google Maps embed, a Google Business Profile that matches your site, and a sitemap submitted through Google Search Console.</p>
       <div class="tip">
-        <p><strong>Pro tip:</strong> The single biggest local SEO move most small businesses skip is claiming and filling out their Google Business Profile completely. It's free and it directly affects whether you show up in map searches.</p>
+        <p data-i18n-html="item3_tip"><strong>Pro tip:</strong> The single biggest local SEO move most small businesses skip is claiming and filling out their Google Business Profile in full. It's free, and it shapes whether you show up in map searches.</p>
       </div>
-      <p>Page titles and meta descriptions also matter. "Home | My Business" is wasted SEO real estate. "Affordable Pressure Washing in Noblesville, IN | AZ Powerwash" tells Google exactly what you do and where you do it.</p>
+      <p data-i18n="item3_p3">Page titles and meta descriptions matter too. "Home | My Business" wastes the slot. "Affordable Pressure Washing in Noblesville, IN | AZ Powerwash" tells Google what you do and where you do it, in the words your customers are already searching.</p>
     </div>
 
     <!-- 4 -->
     <div class="item">
       <div class="item-header">
         <div class="item-num green">04</div>
-        <h2 class="item-title">Fast Load Times — Especially on Mobile</h2>
+        <h2 class="item-title" data-i18n="item4_title">Fast Load Times: Especially on Mobile</h2>
       </div>
-      <p>53% of mobile visitors leave a page that takes more than 3 seconds to load. That's not a design problem — it's a revenue problem.</p>
-      <p>The most common culprits are oversized images, too many third-party scripts, and cheap hosting. A 4MB hero image that looks fine on your desktop is crushing your load time on a phone over LTE.</p>
+      <p data-i18n="item4_p1">53% of mobile visitors leave a page that takes more than 3 seconds to load. Every extra second is a customer closing the tab and calling your competitor instead.</p>
+      <p data-i18n="item4_p2">The most common culprits are oversized images, too many third-party scripts, and cheap hosting. A 4MB hero image that looks fine on your desktop is crushing your load time on a phone over LTE.</p>
       <div class="callout">
-        <p><strong>Easy wins:</strong> Compress every image before uploading (tools like Squoosh are free), use a CDN for fonts and scripts, and avoid loading plugins or widgets you don't actually need.</p>
+        <p data-i18n-html="item4_callout"><strong>Easy wins:</strong> Compress every image before uploading (tools like Squoosh are free), use a CDN for fonts and scripts, and skip plugins or widgets you don't really need.</p>
       </div>
-      <p>Google's Core Web Vitals are now a ranking factor. Sites that load fast and feel responsive get a measurable boost in search results over slow competitors. Speed is no longer just a user experience issue — it's directly tied to how much organic traffic you get.</p>
+      <p data-i18n="item4_p3">Google's Core Web Vitals are a ranking factor now. Fast, responsive sites show up higher in search results than slow ones. Speed shapes how much organic traffic actually reaches your site.</p>
     </div>
 
     <!-- 5 -->
     <div class="item">
       <div class="item-header">
         <div class="item-num blue">05</div>
-        <h2 class="item-title">A Design That Reflects Your Brand — Not a Template</h2>
+        <h2 class="item-title" data-i18n="item5_title">A Design That Looks Like You, Not a Template</h2>
       </div>
-      <p>Visitors form an opinion about your business within 50 milliseconds of landing on your site. Before they read a single word, they've already decided whether you look trustworthy and professional.</p>
-      <p>A generic template — especially one that looks like a hundred other businesses — undercuts that first impression. Your site should feel like <em>you</em>: your colors, your logo, your voice, your photos. Not the default stock imagery that comes with a website builder theme.</p>
+      <p data-i18n="item5_p1">Visitors form an opinion about your business within 50 milliseconds of landing on your site. Before they read a single word, they've already decided whether you look trustworthy and professional.</p>
+      <p data-i18n-html="item5_p2">A generic template, especially one that looks like a hundred other businesses, works against that first impression. Your site should feel like <em>you</em>: your colors, your logo, your voice, your photos, instead of the stock imagery baked into a website builder theme.</p>
       <div class="tip">
-        <p><strong>Real talk:</strong> Customers compare you to your competitors online before they ever call. If your site looks like it was built in 2012, that comparison isn't going in your favor — even if your actual work is excellent.</p>
+        <p data-i18n-html="item5_tip"><strong>Worth knowing:</strong> Customers size you up against your competitors online before they ever pick up the phone. A site that looks like it was built in 2012 loses that comparison, even when your work is the best in town.</p>
       </div>
-      <p>This doesn't mean expensive or complicated. A well-built single-page site with your real logo, real photos, and brand colors will outperform a bloated template every time. Consistency between your business cards, social profiles, and website also builds the kind of trust that converts browsers into customers.</p>
+      <p data-i18n="item5_p3">None of this calls for a big budget or a complicated build. A simple, well-built site with your real logo, real photos, and your actual brand colors will beat a bloated template most days of the week. And when your business cards, social profiles, and website all match, that consistency builds the kind of trust that turns browsers into customers.</p>
     </div>
 
     <!-- CTA -->
     <div class="cta-block">
       <div class="cta-block-inner">
-        <span class="label">Veteran-Owned · All 50 States</span>
-        <h2>Need a Site That Has <span>All Five?</span></h2>
-        <p>PocketSod builds affordable, professional websites for small businesses — mobile-ready, SEO-optimized, and built to convert. Starting at $500.</p>
-        <a href="https://www.pocketsod.com/#contact" class="btn btn-primary">Get a Free Quote →</a>
+        <span class="label" data-i18n="cta_label">Veteran-Owned · All 50 States</span>
+        <h2 data-i18n-html="cta_h2">Need a Site That Has <span>All Five?</span></h2>
+        <p data-i18n="cta_sub">PocketSod builds affordable, professional websites for small businesses: mobile-ready, SEO-optimized, and built to bring in customers. Plans start at $500.</p>
+        <a href="https://pocketsod.com/#contact" class="btn btn-primary" data-i18n="cta_btn">Get a Free Quote →</a>
       </div>
     </div>
 
@@ -459,8 +540,120 @@
 
   <!-- FOOTER -->
   <footer class="foot">
-    <p>© 2026 PocketSod LLC · <a href="https://www.pocketsod.com/">pocketsod.com</a> · Veteran-Owned Small Business Web Design</p>
+    <p><span data-i18n="footer_copy">© 2026 PocketSod LLC</span> · <a href="https://pocketsod.com/">pocketsod.com</a> · <span data-i18n="footer_tag">Veteran-Owned Small Business Web Design</span></p>
   </footer>
+
+  <script>
+    const T = {
+      en: {
+        nav_back: 'Back to Home',
+        hero_tag: 'Small Business Guide',
+        hero_h1: '5 Things Every Small Business<br><span>Website Needs</span>',
+        hero_meta: 'By PocketSod LLC &nbsp;&middot;&nbsp; April 2026 &nbsp;&middot;&nbsp; 5 min read',
+        intro: "A lot of small business websites look like they were thrown together fast, because they were. They don't show up on Google, don't load right on a phone, and send visitors away before those visitors ever reach for the phone. These five things make the biggest difference, based on what we've seen building sites for businesses across the country.",
+        item1_title: 'A Mobile-Responsive Design That Works on Every Screen',
+        item1_p1: "More than 60% of web traffic comes from mobile devices. If your site doesn't look great on a phone, you're losing more than half your potential customers before they even read a word.",
+        item1_p2: 'Mobile-responsive means more than "it loads on a phone." The text should be readable without zooming, the buttons big enough to tap with a thumb, the images sized right, and the navigation should hold up no matter which page you land on.',
+        item1_tip: '<strong>Quick test:</strong> Pull up your site on your phone right now. If you have to pinch to zoom, or the text runs off the edge of the screen, Google notices the same thing you do.',
+        item1_p3: "Google uses mobile-first indexing: the mobile version of your site is the one search results are built on. A clunky mobile experience costs you rankings as much as it costs you visitors.",
+        item2_title: 'A Clear Call to Action on Every Page',
+        item2_p1: 'Visitors won\'t figure out what you want them to do next on their own. Every page needs one clear answer to the question: <em>"What should I do now?"</em>',
+        item2_p2: 'For most small businesses, that\'s a phone number, a contact form, or a "Get a Quote" button. Put it where visitors see it without scrolling, repeat it at the bottom of the page, and make sure it\'s easy to tap on a phone.',
+        item2_callout: '<strong>The rule of thumb:</strong> A visitor should be able to contact you within 10 seconds of landing on any page. If they have to hunt for it, they\'ll leave.',
+        item2_p3: "A contact form beats a raw email address. It's easier to fill out, works on any device, and lands in your inbox as a message you can act on right away. Forms also capture the basics up front (name, phone, what the visitor needs) so you're not stuck playing phone tag just to get started.",
+        item3_title: 'Local SEO Basics: So Google Can Find You',
+        item3_p1: 'Most small businesses serve a local or regional area. That means when someone searches "pressure washing near me" or "web design Indianapolis," you want to show up. That doesn\'t happen on its own.',
+        item3_p2: 'At minimum, put your business name, address (or service area), phone number, and hours on every page, written the same way each time so Google can read them. Then add a Google Maps embed, a Google Business Profile that matches your site, and a sitemap submitted through Google Search Console.',
+        item3_tip: "<strong>Pro tip:</strong> The single biggest local SEO move most small businesses skip is claiming and filling out their Google Business Profile in full. It's free, and it shapes whether you show up in map searches.",
+        item3_p3: 'Page titles and meta descriptions matter too. "Home | My Business" wastes the slot. "Affordable Pressure Washing in Noblesville, IN | AZ Powerwash" tells Google what you do and where you do it, in the words your customers are already searching.',
+        item4_title: 'Fast Load Times: Especially on Mobile',
+        item4_p1: '53% of mobile visitors leave a page that takes more than 3 seconds to load. Every extra second is a customer closing the tab and calling your competitor instead.',
+        item4_p2: 'The most common culprits are oversized images, too many third-party scripts, and cheap hosting. A 4MB hero image that looks fine on your desktop is crushing your load time on a phone over LTE.',
+        item4_callout: "<strong>Easy wins:</strong> Compress every image before uploading (tools like Squoosh are free), use a CDN for fonts and scripts, and skip plugins or widgets you don't really need.",
+        item4_p3: "Google's Core Web Vitals are a ranking factor now. Fast, responsive sites show up higher in search results than slow ones. Speed shapes how much organic traffic actually reaches your site.",
+        item5_title: 'A Design That Looks Like You, Not a Template',
+        item5_p1: "Visitors form an opinion about your business within 50 milliseconds of landing on your site. Before they read a single word, they've already decided whether you look trustworthy and professional.",
+        item5_p2: 'A generic template, especially one that looks like a hundred other businesses, works against that first impression. Your site should feel like <em>you</em>: your colors, your logo, your voice, your photos, instead of the stock imagery baked into a website builder theme.',
+        item5_tip: '<strong>Worth knowing:</strong> Customers size you up against your competitors online before they ever pick up the phone. A site that looks like it was built in 2012 loses that comparison, even when your work is the best in town.',
+        item5_p3: "None of this calls for a big budget or a complicated build. A simple, well-built site with your real logo, real photos, and your actual brand colors will beat a bloated template most days of the week. And when your business cards, social profiles, and website all match, that consistency builds the kind of trust that turns browsers into customers.",
+        cta_label: 'Veteran-Owned · All 50 States',
+        cta_h2: 'Need a Site That Has <span>All Five?</span>',
+        cta_sub: 'PocketSod builds affordable, professional websites for small businesses: mobile-ready, SEO-optimized, and built to bring in customers. Plans start at $500.',
+        cta_btn: 'Get a Free Quote →',
+        footer_copy: '© 2026 PocketSod LLC',
+        footer_tag: 'Veteran-Owned Small Business Web Design'
+      },
+      es: {
+        nav_back: 'Volver al Inicio',
+        hero_tag: 'Guía para Pequeños Negocios',
+        hero_h1: '5 Cosas que Todo Sitio Web de Negocio<br><span>Necesita</span>',
+        hero_meta: 'Por PocketSod LLC &nbsp;&middot;&nbsp; Abril de 2026 &nbsp;&middot;&nbsp; 5 min de lectura',
+        intro: 'Muchos sitios web de pequeños negocios parecen armados a las prisas, porque así fue. No aparecen en Google, no cargan bien en el teléfono y hacen que los visitantes se vayan antes de que esos visitantes lleguen siquiera a buscar el teléfono. Estas cinco cosas marcan la mayor diferencia, según lo que hemos visto al construir sitios para negocios de todo el país.',
+        item1_title: 'Un Diseño Responsivo que Funciona en Cualquier Pantalla',
+        item1_p1: 'Más del 60% del tráfico web proviene de dispositivos móviles. Si tu sitio no se ve bien en un teléfono, estás perdiendo a más de la mitad de tus clientes potenciales antes de que lean una sola palabra.',
+        item1_p2: 'Responsivo para móviles significa más que "carga en un teléfono". El texto debe leerse sin necesidad de hacer zoom, los botones deben ser lo bastante grandes para tocarlos con el pulgar, las imágenes deben tener el tamaño correcto, y la navegación debe funcionar sin importar en qué página caigas.',
+        item1_tip: '<strong>Prueba rápida:</strong> Abre tu sitio en tu teléfono ahora mismo. Si tienes que pellizcar la pantalla para hacer zoom, o el texto se sale del borde, Google nota lo mismo que tú.',
+        item1_p3: 'Google usa la indexación mobile-first: la versión móvil de tu sitio es la base sobre la que se construyen los resultados de búsqueda. Una experiencia móvil torpe te cuesta posiciones en los rankings tanto como te cuesta visitantes.',
+        item2_title: 'Una Llamada a la Acción Clara en Cada Página',
+        item2_p1: 'Los visitantes no van a adivinar por su cuenta qué quieres que hagan después. Cada página necesita una respuesta clara a la pregunta: <em>"¿Qué hago ahora?"</em>',
+        item2_p2: 'Para la mayoría de los pequeños negocios, eso es un número de teléfono, un formulario de contacto o un botón de "Solicitar Cotización". Colócalo donde los visitantes lo vean sin desplazarse, repítelo al final de la página y asegúrate de que sea fácil de tocar en un teléfono.',
+        item2_callout: '<strong>La regla general:</strong> un visitante debería poder contactarte en menos de 10 segundos desde que llega a cualquier página. Si tiene que buscarlo, se va.',
+        item2_p3: 'Un formulario de contacto le gana a una dirección de correo suelta. Es más fácil de llenar, funciona en cualquier dispositivo y llega a tu bandeja de entrada como un mensaje sobre el que puedes actuar de inmediato. Los formularios también capturan lo básico desde el principio (nombre, teléfono, qué necesita el visitante), así que no te quedas jugando al teléfono descompuesto solo para empezar.',
+        item3_title: 'Lo Básico del SEO Local: Para que Google Te Encuentre',
+        item3_p1: 'La mayoría de los pequeños negocios atienden a una zona local o regional. Eso significa que cuando alguien busca "lavado a presión cerca de mí" o "diseño web Indianapolis", quieres aparecer. Eso no pasa solo.',
+        item3_p2: 'Como mínimo, pon el nombre de tu negocio, dirección (o área de servicio), número de teléfono y horario en cada página, escritos siempre de la misma manera para que Google pueda leerlos. Luego añade un mapa de Google Maps incrustado, un Perfil de Negocio de Google que coincida con tu sitio, y un mapa del sitio enviado a través de Google Search Console.',
+        item3_tip: '<strong>Consejo de experto:</strong> el movimiento de SEO local más importante que la mayoría de los pequeños negocios pasa por alto es reclamar y completar por completo su Perfil de Negocio de Google. Es gratis, y define si apareces en las búsquedas de mapas.',
+        item3_p3: 'Los títulos de página y las meta descripciones también importan. "Inicio | Mi Negocio" desperdicia el espacio. "Lavado a Presión Económico en Noblesville, IN | AZ Powerwash" le dice a Google qué haces y dónde lo haces, con las palabras que tus clientes ya están buscando.',
+        item4_title: 'Tiempos de Carga Rápidos: Sobre Todo en el Móvil',
+        item4_p1: 'El 53% de los visitantes móviles abandona una página que tarda más de 3 segundos en cargar. Cada segundo extra es un cliente cerrando la pestaña y llamando a tu competencia.',
+        item4_p2: 'Los culpables más comunes son imágenes demasiado pesadas, demasiados scripts de terceros y hosting barato. Una imagen principal de 4MB que se ve bien en tu computadora está arruinando tu tiempo de carga en un teléfono con LTE.',
+        item4_callout: '<strong>Mejoras fáciles:</strong> comprime cada imagen antes de subirla (herramientas como Squoosh son gratis), usa una CDN para fuentes y scripts, y evita los plugins o widgets que en realidad no necesitas.',
+        item4_p3: 'Los Core Web Vitals de Google ya son un factor de posicionamiento. Los sitios rápidos y receptivos aparecen más arriba en los resultados de búsqueda que los lentos. La velocidad determina cuánto tráfico orgánico llega de verdad a tu sitio.',
+        item5_title: 'Un Diseño que se Vea Como Tú, No Como una Plantilla',
+        item5_p1: 'Los visitantes se forman una opinión de tu negocio en los primeros 50 milisegundos al llegar a tu sitio. Antes de leer una sola palabra, ya decidieron si te ves confiable y profesional.',
+        item5_p2: 'Una plantilla genérica, sobre todo una que se parece a la de cien negocios más, juega en contra de esa primera impresión. Tu sitio debería sentirse como <em>tú</em>: tus colores, tu logo, tu voz, tus fotos, en lugar de las imágenes de banco integradas en el tema de un creador de sitios web.',
+        item5_tip: '<strong>Vale la pena saberlo:</strong> los clientes te comparan con tu competencia en línea antes de siquiera levantar el teléfono. Un sitio que parece construido en 2012 pierde esa comparación, aunque tu trabajo sea el mejor de la ciudad.',
+        item5_p3: 'Nada de esto requiere un presupuesto enorme ni una construcción complicada. Un sitio simple y bien hecho, con tu logo real, tus fotos reales y los colores reales de tu marca, le ganará a una plantilla cargada la mayoría de los días. Y cuando tus tarjetas de presentación, tus perfiles sociales y tu sitio web combinan entre sí, esa consistencia construye el tipo de confianza que convierte curiosos en clientes.',
+        cta_label: 'Fundado por un Veterano · Los 50 Estados',
+        cta_h2: '¿Necesitas un Sitio que Tenga <span>las Cinco?</span>',
+        cta_sub: 'PocketSod construye sitios web asequibles y profesionales para pequeños negocios: listos para móviles, optimizados para SEO y hechos para atraer clientes. Los planes empiezan en $500.',
+        cta_btn: 'Pide una Cotización Gratis →',
+        footer_copy: '© 2026 PocketSod LLC',
+        footer_tag: 'Negocio de Diseño Web Fundado por un Veterano'
+      }
+    };
+
+    function setLang(lang) {
+      const t = T[lang];
+      if (!t) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      document.querySelectorAll('.lt-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.documentElement.lang = lang;
+
+      try { localStorage.setItem('ps_lang', lang); } catch(e) {}
+    }
+
+    (function() {
+      let saved;
+      try { saved = localStorage.getItem('ps_lang'); } catch(e) {}
+      const browserLang = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+      setLang(saved || browserLang);
+    })();
+  </script>
 
 </body>
 </html>
+

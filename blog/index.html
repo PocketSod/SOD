@@ -1,19 +1,28 @@
-<!DOCTYPE html>
+﻿﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW8Y6YTRZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CW8Y6YTRZY');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Blog | PocketSod — Web Design for Small Businesses</title>
-  <meta name="description" content="Practical web design advice for small business owners. No fluff — just what actually works.">
+  <meta name="description" content="Practical web design advice for small business owners. No fluff, just what actually works.">
   <meta name="author" content="PocketSod LLC">
-  <link rel="canonical" href="https://www.pocketsod.com/blog/">
+  <link rel="canonical" href="https://pocketsod.com/blog/">
 
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://www.pocketsod.com/blog/">
+  <meta property="og:url"         content="https://pocketsod.com/blog/">
   <meta property="og:title"       content="Blog | PocketSod">
-  <meta property="og:description" content="Practical web design advice for small business owners. No fluff — just what actually works.">
-  <meta property="og:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+  <meta property="og:description" content="Practical web design advice for small business owners. No fluff, just what actually works.">
+  <meta property="og:image"       content="https://pocketsod.com/brand_assests/OG.png">
   <meta property="og:site_name"   content="PocketSod LLC">
 
   <link rel="icon" type="image/png" href="../brand_assests/favicon.png">
@@ -286,14 +295,86 @@
     .foot a { color: var(--blue); }
     .foot a:hover { text-decoration: underline; }
 
+    /* ── LANGUAGE TOGGLE ─────────────────────────────── */
+    .lang-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      align-items: stretch;
+      background: var(--dark);
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(26,51,86,0.35);
+    }
+    .lt-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      padding: 0 0.85rem;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid rgba(44,110,171,0.25);
+    }
+    .lt-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: background var(--t);
+    }
+    .lt-btn.active { background: var(--blue); }
+    .lt-btn:not(.active):hover { background: rgba(255,255,255,0.07); }
+    .lt-code {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .lt-name {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    .lt-btn.active .lt-name { color: rgba(255,255,255,0.75); }
+    .lt-divider { width: 1px; background: rgba(44,110,171,0.25); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 540px) {
       .article-card { grid-template-columns: 1fr; }
       .card-arrow { display: none; }
+      .lang-toggle { bottom: 14px; right: 14px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle">
+    <div class="lt-label">Lang</div>
+    <button onclick="setLang('en')" class="lt-btn active" data-lang="en">
+      <span class="lt-code">EN</span>
+      <span class="lt-name">English</span>
+    </button>
+    <div class="lt-divider"></div>
+    <button onclick="setLang('es')" class="lt-btn" data-lang="es">
+      <span class="lt-code">ES</span>
+      <span class="lt-name">Español</span>
+    </button>
+  </div>
 
   <!-- NAV -->
   <nav class="nav">
@@ -301,31 +382,31 @@
       <img src="../brand_assests/PSlogo.png" alt="PocketSod" width="676" height="369">
       <span>PocketSod</span>
     </a>
-    <a href="../index.html" class="nav-home">Back to Home</a>
+    <a href="../index.html" class="nav-home" data-i18n="nav_home">Back to Home</a>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="hero-inner">
-      <div class="hero-label">PocketSod Blog</div>
-      <h1>Web Design Insights<br>for Small Businesses</h1>
-      <p>Straight talk on websites, pricing, and what actually helps small businesses grow online.</p>
+      <div class="hero-label" data-i18n="hero_label">PocketSod Blog</div>
+      <h1 data-i18n-html="hero_h1">Web Design Insights<br>for Small Businesses</h1>
+      <p data-i18n="hero_sub">Straight talk on websites, pricing, and what actually helps small businesses grow online.</p>
     </div>
   </header>
 
   <!-- ARTICLES -->
   <main class="articles">
-    <div class="articles-count">2 Articles</div>
+    <div class="articles-count" data-i18n="articles_count">2 Articles</div>
 
     <a class="article-card" href="how-much-does-a-small-business-website-cost-2026.html">
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-tag">Pricing</span>
-          <span class="card-date">April 30, 2026</span>
+          <span class="card-tag" data-i18n="card1_tag">Pricing</span>
+          <span class="card-date" data-i18n="card1_date">April 30, 2026</span>
         </div>
-        <div class="card-title">How Much Does a Small Business Website Cost in 2026?</div>
-        <p class="card-desc">The honest breakdown — from $0 DIY builders to $50K+ agency builds. Find out what you actually need and what you'll pay.</p>
-        <span class="card-read">Read article →</span>
+        <div class="card-title" data-i18n="card1_title">How Much Does a Small Business Website Cost in 2026?</div>
+        <p class="card-desc" data-i18n="card1_desc">The honest breakdown: $0 DIY builders, $50K+ agency builds, and everything between. What you actually need, and what you'll pay for it.</p>
+        <span class="card-read" data-i18n="card_read">Read article →</span>
       </div>
       <div class="card-arrow">→</div>
     </a>
@@ -333,12 +414,12 @@
     <a class="article-card" href="5-things-every-small-business-website-needs.html">
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-tag">Essentials</span>
-          <span class="card-date">April 10, 2026</span>
+          <span class="card-tag" data-i18n="card2_tag">Essentials</span>
+          <span class="card-date" data-i18n="card2_date">April 10, 2026</span>
         </div>
-        <div class="card-title">5 Things Every Small Business Website Needs</div>
-        <p class="card-desc">Before you launch, make sure your site has these 5 essentials. From mobile design to local SEO — here's what actually moves the needle.</p>
-        <span class="card-read">Read article →</span>
+        <div class="card-title" data-i18n="card2_title">5 Things Every Small Business Website Needs</div>
+        <p class="card-desc" data-i18n="card2_desc">Before you launch, check your site against these 5 essentials: mobile design, local SEO, and the rest of what actually moves the needle.</p>
+        <span class="card-read" data-i18n="card_read">Read article →</span>
       </div>
       <div class="card-arrow">→</div>
     </a>
@@ -347,16 +428,92 @@
   <!-- CTA -->
   <section class="cta">
     <div class="cta-inner">
-      <h2>Ready for a site that works?</h2>
-      <p>Veteran-owned. Custom-built. Starting at $500. We'll have it live in 14 days.</p>
-      <a href="../start.html" class="btn btn-blue">Get a Free Quote →</a>
+      <h2 data-i18n="cta_h2">Ready for a site that works?</h2>
+      <p data-i18n="cta_sub">Veteran-owned. Custom-built. Starting at $500. We'll have it live in 14 days.</p>
+      <a href="../start.html" class="btn btn-blue" data-i18n="cta_btn">Get a Free Quote →</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="foot">
-    <p>© 2026 PocketSod LLC · <a href="../index.html">pocketsod.com</a> · <a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></p>
+    <p><span data-i18n="footer_copy">© 2026 PocketSod LLC</span> · <a href="../index.html">pocketsod.com</a> · <a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></p>
   </footer>
+
+  <script>
+    const T = {
+      en: {
+        nav_home: 'Back to Home',
+        hero_label: 'PocketSod Blog',
+        hero_h1: 'Web Design Insights<br>for Small Businesses',
+        hero_sub: 'Straight talk on websites, pricing, and what actually helps small businesses grow online.',
+        articles_count: '2 Articles',
+        card1_tag: 'Pricing',
+        card1_date: 'April 30, 2026',
+        card1_title: 'How Much Does a Small Business Website Cost in 2026?',
+        card1_desc: "The honest breakdown: $0 DIY builders, $50K+ agency builds, and everything between. What you actually need, and what you'll pay for it.",
+        card2_tag: 'Essentials',
+        card2_date: 'April 10, 2026',
+        card2_title: '5 Things Every Small Business Website Needs',
+        card2_desc: 'Before you launch, check your site against these 5 essentials: mobile design, local SEO, and the rest of what actually moves the needle.',
+        card_read: 'Read article →',
+        cta_h2: 'Ready for a site that works?',
+        cta_sub: "Veteran-owned. Custom-built. Starting at $500. We'll have it live in 14 days.",
+        cta_btn: 'Get a Free Quote →',
+        footer_copy: '© 2026 PocketSod LLC'
+      },
+      es: {
+        nav_home: 'Volver al Inicio',
+        hero_label: 'Blog de PocketSod',
+        hero_h1: 'Ideas de Diseño Web<br>para Pequeños Negocios',
+        hero_sub: 'Consejos directos sobre sitios web, precios y lo que realmente ayuda a crecer a los pequeños negocios en línea.',
+        articles_count: '2 Artículos',
+        card1_tag: 'Precios',
+        card1_date: '30 de abril de 2026',
+        card1_title: '¿Cuánto Cuesta un Sitio Web para Pequeños Negocios en 2026?',
+        card1_desc: 'El desglose honesto: creadores DIY a $0, agencias de más de $50,000, y todo lo que hay entre medio. Lo que realmente necesitas y lo que vas a pagar por ello.',
+        card2_tag: 'Esenciales',
+        card2_date: '10 de abril de 2026',
+        card2_title: '5 Cosas que Todo Sitio Web de Negocio Necesita',
+        card2_desc: 'Antes de lanzar tu sitio, revísalo contra estos 5 esenciales: diseño para móviles, SEO local y el resto de lo que realmente marca la diferencia.',
+        card_read: 'Leer artículo →',
+        cta_h2: '¿Listo para un sitio que funcione?',
+        cta_sub: 'Fundado por un veterano. Construido a medida. Desde $500. Lo tendrás en línea en 14 días.',
+        cta_btn: 'Pide una Cotización Gratis →',
+        footer_copy: '© 2026 PocketSod LLC'
+      }
+    };
+
+    function setLang(lang) {
+      const t = T[lang];
+      if (!t) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      document.querySelectorAll('.lt-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.documentElement.lang = lang;
+
+      try { localStorage.setItem('ps_lang', lang); } catch(e) {}
+    }
+
+    (function() {
+      let saved;
+      try { saved = localStorage.getItem('ps_lang'); } catch(e) {}
+      const browserLang = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+      setLang(saved || browserLang);
+    })();
+  </script>
 
 </body>
 </html>
+

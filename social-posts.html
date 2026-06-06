@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PocketSod — Social Media Post Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:       #1A3356;
+      --navy-deep:  #111E30;
+      --blue:       #2C6EAB;
+      --green:      #4CAF50;
+      --green-dim:  rgba(76,175,80,0.15);
+      --green-mid:  rgba(76,175,80,0.35);
+      --cream:      #F8F5F0;
+      --cream-dim:  rgba(248,245,240,0.55);
+      --cream-faint:rgba(248,245,240,0.12);
+    }
+
+    /* ── PAGE CHROME ── */
+    body {
+      background: #0C1016;
+      font-family: 'Inter', sans-serif;
+      color: var(--cream);
+      padding: 52px 40px 100px;
+    }
+
+    .page-eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .page-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--cream);
+      letter-spacing: -0.025em;
+      margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+      font-size: 14px;
+      color: var(--cream-dim);
+      margin-bottom: 64px;
+      line-height: 1.6;
+    }
+
+    .post-section {
+      margin-bottom: 72px;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .post-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.18);
+    }
+
+    .platform-badge {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .badge-li { background: #0A66C2; color: #fff; }
+    .badge-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: #fff; }
+    .badge-fb { background: #1877F2; color: #fff; }
+
+    .post-title-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .post-dims {
+      margin-left: auto;
+      font-size: 11px;
+      color: rgba(255,255,255,0.22);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── CARD SCALING ──
+       Cards are authored at true social-media pixel dimensions.
+       CSS zoom: 0.6 shrinks them for comfortable gallery preview
+       while keeping px values readable and copy-pasteable.
+    */
+    .card-scale-landscape { zoom: 0.6; width: 1200px; }
+    .card-scale-square    { zoom: 0.6; width: 1080px; }
+
+    /* ── SHARED CARD BASE ── */
+    .card {
+      position: relative;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* SVG grain overlay on every card */
+    .grain {
+      position: absolute;
+      inset: 0;
+      z-index: 50;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* ════════════════════════════════════════════════
+       POST 1  ·  LinkedIn Launch  ·  1200 × 628
+    ════════════════════════════════════════════════ */
+    #p1 {
+      width: 1200px;
+      height: 628px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #p1 .glow-blue {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 700px 500px at 50% 50%, rgba(44,110,171,0.38) 0%, transparent 70%),
+        radial-gradient(ellipse 300px 200px at 80% 85%, rgba(76,175,80,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #p1 .corner-tl,
+    #p1 .corner-br {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    #p1 .corner-tl {
+      top: 0; left: 0;
+      border-top: 2px solid rgba(76,175,80,0.35);
+      border-left: 2px solid rgba(76,175,80,0.35);
+    }
+
+    #p1 .corner-br {
+      bottom: 0; right: 0;
+      border-bottom: 2px solid rgba(76,175,80,0.35);
+      border-right: 2px solid rgba(76,175,80,0.35);
+    }
+
+    #p1 .veteran-pill {
+      position: absolute;
+      top: 30px; right: 40px;
+      z-index: 10;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cream-dim);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 7px 16px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+
+    #p1 .inner {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      text-align: center;
+    }
+
+    #p1 .logo {
+      width: 170px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 12px 36px rgba(76,175,80,0.28));
+    }
+
+    #p1 .headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 66px;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    #p1 .rule {
+      width: 56px;
+      height: 3px;
+      background: var(--green);
+      border-radius: 2px;
+      margin-bottom: 22px;
+    }
+
+    #p1 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--cream-dim);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    #p1 .url {
+      position: absolute;
+      bottom: 28px; right: 40px;
+      z-index: 10;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.01em;
+    }
+
+    /* ════════════════════════════════════════════════
+       POST 2  ·  Instagram — More Than a Number  ·  1080 × 1080
+    ════════════════════════════════════════════════ */
+    #p2 {
+      width: 1080px;
+      height: 1080px;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+    }
+
+    #p2 .accent-bar {
+      height: 7px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+      flex-shrink: 0;
+    }
+
+    #p2 .glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 800px 600px at 50% 42%, rgba(44,110,171,0.28) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    #p2 .body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 72px 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p2 .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    #p2 .headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 66px;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    #p2 .comparison {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    #p2 .panel {
+      flex: 1;
+      border-radius: 14px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    #p2 .panel-no {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    #p2 .panel-yes {
+      background: var(--green-dim);
+      border: 1px solid var(--green-mid);
+    }
+
+    #p2 .panel-icon {
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    #p2 .panel-heading {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    #p2 .panel-no .panel-heading { color: rgba(248,245,240,0.38); }
+    #p2 .panel-yes .panel-heading { color: var(--cream); }
+
+    #p2 .panel-body {
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    #p2 .panel-no .panel-body  { color: rgba(248,245,240,0.28); }
+    #p2 .panel-yes .panel-body { color: var(--cream-dim); }
+
+    #p2 .footer {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 72px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 10;
+    }
+
+    #p2 .stats {
+      display: flex;
+      gap: 44px;
+    }
+
+    #p2 .stat { display: flex; flex-direction: column; gap: 3px; }
+
+    #p2 .stat-val {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    #p2 .stat-lbl {
+      font-size: 13px;
+      color: var(--cream-dim);
+    }
+
+    #p2 .logo-sm {
+      height: 52px;
+      filter: drop-shadow(0 4px 12px rgba(76,175,80,0.22));
+    }
+
+    /* ════════════════════════════════════════════════
+       POST 3  ·  Facebook Packages  ·  1200 × 628
+    ════════════════════════════════════════════════ */
+    #p3 {
+      width: 1200px;
+      height: 628px;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+    }
+
+    #p3 .glow {
+      position: absolute;
+      bottom: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(44,110,171,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #p3 .top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 32px 48px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p3 .top-left { display: flex; flex-direction: column; gap: 4px; }
+
+    #p3 .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    #p3 .title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    #p3 .logo-sm {
+      height: 50px;
+      filter: drop-shadow(0 4px 12px rgba(76,175,80,0.2));
+    }
+
+    #p3 .packages {
+      display: flex;
+      gap: 16px;
+      flex: 1;
+      padding: 20px 48px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p3 .pkg {
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 22px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+
+    #p3 .pkg.featured {
+      background: var(--green-dim);
+      border-color: var(--green-mid);
+    }
+
+    #p3 .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: #112210;
+      font-family: 'Poppins', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    #p3 .pkg-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    #p3 .pkg-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    #p3 .pkg-price sup {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    #p3 .pkg-price span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--cream-dim);
+    }
+
+    #p3 .pkg-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+
+    #p3 .feat-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    #p3 .feat-list li {
+      font-size: 13px;
+      color: var(--cream-dim);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.35;
+    }
+
+    #p3 .feat-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    #p3 .footer-bar {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 48px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    #p3 .footer-tag {
+      font-size: 13px;
+      color: var(--cream-dim);
+    }
+
+    #p3 .footer-url {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    /* ════════════════════════════════════════════════
+       POST 4  ·  Instagram Portfolio  ·  1080 × 1080
+    ════════════════════════════════════════════════ */
+    #p4 {
+      width: 1080px;
+      height: 1080px;
+      background: var(--navy-deep);
+      display: flex;
+      flex-direction: column;
+    }
+
+    #p4 .top {
+      padding: 48px 56px 28px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p4 .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+
+    #p4 .headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 54px;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+      line-height: 1.06;
+    }
+
+    #p4 .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      flex: 1;
+      padding: 0 56px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p4 .thumb {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(44,110,171,0.15);
+    }
+
+    #p4 .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #p4 .thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(17,30,48,0.92) 0%, rgba(17,30,48,0.1) 55%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 18px 20px;
+    }
+
+    #p4 .thumb-info { display: flex; flex-direction: column; gap: 3px; }
+
+    #p4 .thumb-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    #p4 .thumb-type {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    #p4 .bottom {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 56px 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p4 .cta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--cream-dim);
+    }
+
+    #p4 .cta strong {
+      color: var(--green);
+    }
+
+    #p4 .logo-sm {
+      height: 54px;
+      filter: drop-shadow(0 4px 14px rgba(76,175,80,0.25));
+    }
+
+    /* ════════════════════════════════════════════════
+       POST 5  ·  LinkedIn 5 Tips  ·  1200 × 628
+    ════════════════════════════════════════════════ */
+    #p5 {
+      width: 1200px;
+      height: 628px;
+      background: var(--navy);
+      display: flex;
+      overflow: hidden;
+    }
+
+    #p5 .glow {
+      position: absolute;
+      top: 50%;
+      right: -60px;
+      transform: translateY(-50%);
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(ellipse, rgba(76,175,80,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #p5 .left {
+      width: 390px;
+      flex-shrink: 0;
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      z-index: 10;
+    }
+
+    #p5 .left-top { display: flex; flex-direction: column; }
+
+    #p5 .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    #p5 .big-five {
+      font-family: 'Poppins', sans-serif;
+      font-size: 130px;
+      font-weight: 900;
+      color: rgba(76,175,80,0.12);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    #p5 .headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 29px;
+      font-weight: 800;
+      color: var(--cream);
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+    }
+
+    #p5 .logo-sm {
+      height: 44px;
+      filter: drop-shadow(0 4px 12px rgba(76,175,80,0.18));
+    }
+
+    #p5 .right {
+      flex: 1;
+      padding: 44px 48px 44px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p5 .tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    #p5 .tip-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green-dim);
+      border: 1.5px solid var(--green-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    #p5 .tip-body {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-top: 4px;
+    }
+
+    #p5 .tip-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    #p5 .tip-sub {
+      font-size: 13px;
+      color: var(--cream-dim);
+      line-height: 1.45;
+    }
+
+    #p5 .url {
+      position: absolute;
+      bottom: 26px;
+      right: 38px;
+      z-index: 10;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+
+    /* ════════════════════════════════════════════════
+       POST 6  ·  Instagram/Facebook — Spanish Audience  ·  1080 × 1080
+    ════════════════════════════════════════════════ */
+    #p6 {
+      width: 1080px;
+      height: 1080px;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+    }
+
+    #p6 .accent-bar {
+      height: 7px;
+      background: linear-gradient(90deg, var(--green) 0%, var(--blue) 100%);
+      flex-shrink: 0;
+    }
+
+    #p6 .glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 700px 520px at 30% 38%, rgba(44,110,171,0.32) 0%, transparent 65%),
+        radial-gradient(ellipse 380px 280px at 82% 72%, rgba(76,175,80,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    #p6 .top {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 52px 72px 36px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #p6 .lang-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 9px 22px;
+      margin-bottom: 36px;
+      width: fit-content;
+    }
+
+    #p6 .lang-pill .flag { font-size: 18px; line-height: 1; }
+
+    #p6 .lang-pill .lang-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    #p6 .lang-pill .dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: 0.55;
+    }
+
+    #p6 .headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+      margin-bottom: 28px;
+    }
+
+    #p6 .headline em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    #p6 .subline {
+      font-family: 'Inter', sans-serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: var(--cream-dim);
+      line-height: 1.5;
+      max-width: 700px;
+    }
+
+    #p6 .pillars {
+      flex-shrink: 0;
+      display: flex;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      background: rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    #p6 .pillar {
+      flex: 1;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #p6 .pillar + .pillar {
+      border-left: 1px solid rgba(255,255,255,0.06);
+    }
+
+    #p6 .pillar-icon { font-size: 26px; line-height: 1; margin-bottom: 6px; }
+
+    #p6 .pillar-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    #p6 .pillar-desc {
+      font-size: 14px;
+      color: var(--cream-dim);
+      line-height: 1.5;
+    }
+
+    #p6 .p6-footer {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 72px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(0,0,0,0.22);
+      position: relative;
+      z-index: 10;
+    }
+
+    #p6 .footer-url {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.02em;
+    }
+
+    #p6 .logo-sm {
+      height: 48px;
+      filter: drop-shadow(0 4px 12px rgba(76,175,80,0.22));
+    }
+
+    /* ── SINGLE-CARD EXPORT MODE (?card=N) ── */
+    body.export-mode {
+      background: #0C1016;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: hidden;
+    }
+    body.export-mode .page-eyebrow,
+    body.export-mode .page-title,
+    body.export-mode .page-subtitle { display: none !important; }
+    body.export-mode .post-section { display: none !important; }
+    body.export-mode .post-section.active {
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    body.export-mode .post-header { display: none !important; }
+    body.export-mode .card-scale-landscape,
+    body.export-mode .card-scale-square { zoom: 1 !important; width: auto !important; }
+  </style>
+</head>
+<body>
+  <script>
+    (function() {
+      var p = new URLSearchParams(window.location.search).get('card');
+      if (!p) return;
+      function applyExport() {
+        document.body.classList.add('export-mode');
+        var sections = document.querySelectorAll('.post-section');
+        var idx = parseInt(p, 10) - 1;
+        if (sections[idx]) sections[idx].classList.add('active');
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyExport);
+      } else {
+        applyExport();
+      }
+    })();
+  </script>
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="page-eyebrow">Social Media Assets · Launch Series</div>
+  <h1 class="page-title">PocketSod LLC — 6 Post Cards</h1>
+  <p class="page-subtitle">LinkedIn (1200×628) · Instagram (1080×1080) · Facebook (1200×628)<br>
+     Served at 60% zoom for preview. Screenshot each card individually for export.</p>
+
+
+  <!-- ══════════════════════════════════════════
+       POST 1  ·  LinkedIn Launch
+  ══════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-header">
+      <span class="post-num">01</span>
+      <span class="platform-badge badge-li">LinkedIn</span>
+      <span class="post-title-label">Brand Launch Announcement</span>
+      <span class="post-dims">1200 × 628</span>
+    </div>
+
+    <div class="card-scale-landscape">
+      <div class="card" id="p1">
+        <div class="grain"></div>
+        <div class="glow-blue"></div>
+        <div class="corner-tl"></div>
+        <div class="corner-br"></div>
+        <div class="veteran-pill">🇺🇸 Veteran Owned</div>
+
+        <div class="inner">
+          <img class="logo" src="brand_assests/PSlogo6.png" alt="PocketSod">
+          <h2 class="headline">WE'RE OFFICIALLY OPEN.</h2>
+          <div class="rule"></div>
+          <p class="sub">Veteran-Owned Web Design &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; All 50 States</p>
+        </div>
+
+        <span class="url">pocketsod.com</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       POST 2  ·  Instagram — More Than a Number
+  ══════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-header">
+      <span class="post-num">02</span>
+      <span class="platform-badge badge-ig">Instagram</span>
+      <span class="post-title-label">Your Business Deserves More</span>
+      <span class="post-dims">1080 × 1080</span>
+    </div>
+
+    <div class="card-scale-square">
+      <div class="card" id="p2">
+        <div class="grain"></div>
+        <div class="glow"></div>
+        <div class="accent-bar"></div>
+
+        <div class="body">
+          <p class="eyebrow">Small Business Web Design</p>
+          <h2 class="headline">Your business deserves more than a phone number.</h2>
+
+          <div class="comparison">
+            <div class="panel panel-no">
+              <div class="panel-icon">✕</div>
+              <div class="panel-heading">Just a contact in someone's phone</div>
+              <p class="panel-body">No web presence. No credibility. No leads while you sleep.</p>
+            </div>
+            <div class="panel panel-yes">
+              <div class="panel-icon" style="color:var(--green)">✓</div>
+              <div class="panel-heading">A professional website working 24/7</div>
+              <p class="panel-body">Mobile-ready, bilingual EN/ES, and built to convert visitors into clients.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-val">$500</span>
+              <span class="stat-lbl">starting price</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">14 days</span>
+              <span class="stat-lbl">to launch</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">50 states</span>
+              <span class="stat-lbl">nationwide</span>
+            </div>
+          </div>
+          <img class="logo-sm" src="brand_assests/PSlogo6.png" alt="PocketSod">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       POST 3  ·  Facebook — Packages
+  ══════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-header">
+      <span class="post-num">03</span>
+      <span class="platform-badge badge-fb">Facebook</span>
+      <span class="post-title-label">Package Showcase</span>
+      <span class="post-dims">1200 × 628</span>
+    </div>
+
+    <div class="card-scale-landscape">
+      <div class="card" id="p3">
+        <div class="grain"></div>
+        <div class="glow"></div>
+
+        <div class="top">
+          <div class="top-left">
+            <span class="eyebrow">PocketSod LLC</span>
+            <h2 class="title">Find Your Fit.</h2>
+          </div>
+          <img class="logo-sm" src="brand_assests/PSlogo6.png" alt="PocketSod">
+        </div>
+
+        <div class="packages">
+          <!-- Starter -->
+          <div class="pkg">
+            <div class="pkg-name">Starter</div>
+            <div class="pkg-price"><sup>$</sup>500–1,000 <span>/ project</span></div>
+            <div class="pkg-rule"></div>
+            <ul class="feat-list">
+              <li>Up to 3 pages</li>
+              <li>Contact form</li>
+              <li>Mobile responsive</li>
+              <li>Basic SEO &amp; Google Maps</li>
+              <li>1 revision round</li>
+            </ul>
+          </div>
+
+          <!-- Growth — featured -->
+          <div class="pkg featured">
+            <div class="popular-tag">Most Popular</div>
+            <div class="pkg-name">Growth</div>
+            <div class="pkg-price"><sup>$</sup>1,000–2,500 <span>/ project</span></div>
+            <div class="pkg-rule"></div>
+            <ul class="feat-list">
+              <li>Up to 6 pages + blog</li>
+              <li>Bilingual EN/ES</li>
+              <li>Quote forms &amp; social links</li>
+              <li>SEO foundations</li>
+              <li>Maintenance-ready</li>
+            </ul>
+          </div>
+
+          <!-- Premium -->
+          <div class="pkg">
+            <div class="pkg-name">Premium</div>
+            <div class="pkg-price"><sup>$</sup>2,500+ <span>/ project</span></div>
+            <div class="pkg-rule"></div>
+            <ul class="feat-list">
+              <li>Unlimited pages</li>
+              <li>Custom design &amp; branding</li>
+              <li>Advanced SEO</li>
+              <li>Hosting management</li>
+              <li>Priority support + analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bar">
+          <span class="footer-tag">Veteran-Owned &nbsp;·&nbsp; All 50 States &nbsp;·&nbsp; Launches in 14 Days</span>
+          <span class="footer-url">pocketsod.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       POST 4  ·  Instagram — Portfolio
+  ══════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-header">
+      <span class="post-num">04</span>
+      <span class="platform-badge badge-ig">Instagram</span>
+      <span class="post-title-label">Portfolio Showcase</span>
+      <span class="post-dims">1080 × 1080</span>
+    </div>
+
+    <div class="card-scale-square">
+      <div class="card" id="p4">
+        <div class="grain"></div>
+
+        <div class="top">
+          <p class="eyebrow">Our Work</p>
+          <h2 class="headline">We don't just build websites.<br>We build first impressions.</h2>
+        </div>
+
+        <div class="grid">
+          <div class="thumb">
+            <img src="brand_assests/portfolio/thumb-delara.png" alt="DeLara Consulting">
+            <div class="thumb-overlay">
+              <div class="thumb-info">
+                <div class="thumb-name">DeLara Consulting</div>
+                <div class="thumb-type">Consulting · Premium</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="thumb">
+            <img src="brand_assests/portfolio/thumb-azpowerwash.png" alt="AZ Powerwash">
+            <div class="thumb-overlay">
+              <div class="thumb-info">
+                <div class="thumb-name">AZ Powerwash</div>
+                <div class="thumb-type">Home Services · Starter</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="thumb">
+            <img src="brand_assests/portfolio/thumb-casaespana.png" alt="Casa España Indiana">
+            <div class="thumb-overlay">
+              <div class="thumb-info">
+                <div class="thumb-name">Casa España Indiana</div>
+                <div class="thumb-type">Cultural Org · Growth</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="thumb">
+            <img src="brand_assests/portfolio/thumb-clj.png" alt="Center for Language Justice">
+            <div class="thumb-overlay">
+              <div class="thumb-info">
+                <div class="thumb-name">Center for Language Justice</div>
+                <div class="thumb-type">Nonprofit · Growth</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="cta">Your business could be <strong>next.</strong></div>
+          <img class="logo-sm" src="brand_assests/PSlogo6.png" alt="PocketSod">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       POST 5  ·  LinkedIn — 5 Tips
+  ══════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-header">
+      <span class="post-num">05</span>
+      <span class="platform-badge badge-li">LinkedIn</span>
+      <span class="post-title-label">5 Things Your Website Needs</span>
+      <span class="post-dims">1200 × 628</span>
+    </div>
+
+    <div class="card-scale-landscape">
+      <div class="card" id="p5">
+        <div class="grain"></div>
+        <div class="glow"></div>
+
+        <div class="left">
+          <div class="left-top">
+            <span class="eyebrow">PocketSod · 2026</span>
+            <div class="big-five">5</div>
+            <h2 class="headline">Things Your Small Business Website Needs in 2026</h2>
+          </div>
+          <img class="logo-sm" src="brand_assests/PSlogo6.png" alt="PocketSod">
+        </div>
+
+        <div class="right">
+          <div class="tip">
+            <div class="tip-num">1</div>
+            <div class="tip-body">
+              <div class="tip-title">Mobile-First Layout</div>
+              <div class="tip-sub">Over 60% of web traffic is mobile. If it breaks on a phone, you're losing customers.</div>
+            </div>
+          </div>
+          <div class="tip">
+            <div class="tip-num">2</div>
+            <div class="tip-body">
+              <div class="tip-title">Clear CTA Above the Fold</div>
+              <div class="tip-sub">Visitors decide in 3 seconds. Your next step must be obvious before they scroll.</div>
+            </div>
+          </div>
+          <div class="tip">
+            <div class="tip-num">3</div>
+            <div class="tip-body">
+              <div class="tip-title">Google Maps or Location Info</div>
+              <div class="tip-sub">Local SEO starts with your address. Let Google — and customers — find you.</div>
+            </div>
+          </div>
+          <div class="tip">
+            <div class="tip-num">4</div>
+            <div class="tip-body">
+              <div class="tip-title">Fast Load Time (Under 3s)</div>
+              <div class="tip-sub">Every second of delay costs 7% in conversions. Speed is a non-negotiable feature.</div>
+            </div>
+          </div>
+          <div class="tip">
+            <div class="tip-num">5</div>
+            <div class="tip-body">
+              <div class="tip-title">Bilingual Support (EN/ES)</div>
+              <div class="tip-sub">41M+ Spanish speakers in the US. Speak their language, earn their trust.</div>
+            </div>
+          </div>
+        </div>
+
+        <span class="url">pocketsod.com</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       POST 6  ·  Instagram/Facebook — Spanish Audience
+  ══════════════════════════════════════════ -->
+  <div class="post-section">
+    <div class="post-header">
+      <span class="post-num">06</span>
+      <span class="platform-badge badge-ig">Instagram</span>
+      <span class="platform-badge badge-fb" style="margin-left:4px">Facebook</span>
+      <span class="post-title-label">Para el Negocio Hispano</span>
+      <span class="post-dims">1080 × 1080</span>
+    </div>
+
+    <div class="card-scale-square">
+      <div class="card" id="p6">
+        <div class="grain"></div>
+        <div class="glow"></div>
+        <div class="accent-bar"></div>
+
+        <div class="top">
+          <div class="lang-pill">
+            <span class="flag">🇺🇸</span>
+            <span class="dot"></span>
+            <span class="lang-text">Sitios web bilingües · En / Es</span>
+            <span class="dot"></span>
+            <span class="flag">🇲🇽</span>
+          </div>
+
+          <h2 class="headline">Tu negocio<br>merece una<br><em>presencia en línea.</em></h2>
+          <p class="subline">Diseño web profesional que habla tu idioma — para negocios hispanos en los 50 estados.</p>
+        </div>
+
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🌐</div>
+            <div class="pillar-title">Bilingüe EN/ES</div>
+            <div class="pillar-desc">Llega a clientes en inglés y en español al mismo tiempo</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-title">Listo en 14 días</div>
+            <div class="pillar-desc">Lanza rápido y empieza a conseguir clientes nuevos</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">💰</div>
+            <div class="pillar-title">Desde $500</div>
+            <div class="pillar-desc">Sin costos escondidos. Sin contratos de por vida</div>
+          </div>
+        </div>
+
+        <div class="p6-footer">
+          <span class="footer-url">pocketsod.com</span>
+          <img class="logo-sm" src="brand_assests/PSlogo6.png" alt="PocketSod">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

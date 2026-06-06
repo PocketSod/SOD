@@ -1,25 +1,34 @@
-<!DOCTYPE html>
+﻿﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW8Y6YTRZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CW8Y6YTRZY');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>How Much Does a Small Business Website Cost in 2026? | PocketSod</title>
-  <meta name="description" content="The honest breakdown of small business website costs in 2026 — from $0 DIY builders to $50K+ agency builds. Find out what you actually need and what you'll pay.">
+  <meta name="description" content="The honest breakdown of small business website costs in 2026: $0 DIY builders, $50K+ agency builds, and everything between. What you actually need, and what you'll pay for it.">
   <meta name="author" content="PocketSod LLC">
-  <link rel="canonical" href="https://www.pocketsod.com/blog/how-much-does-a-small-business-website-cost-2026.html">
+  <link rel="canonical" href="https://pocketsod.com/blog/how-much-does-a-small-business-website-cost-2026.html">
 
   <meta property="og:type"        content="article">
-  <meta property="og:url"         content="https://www.pocketsod.com/blog/how-much-does-a-small-business-website-cost-2026.html">
+  <meta property="og:url"         content="https://pocketsod.com/blog/how-much-does-a-small-business-website-cost-2026.html">
   <meta property="og:title"       content="How Much Does a Small Business Website Cost in 2026?">
-  <meta property="og:description" content="The honest breakdown of small business website costs in 2026 — from $0 DIY builders to $50K+ agency builds. Find out what you actually need and what you'll pay.">
-  <meta property="og:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+  <meta property="og:description" content="The honest breakdown of small business website costs in 2026: $0 DIY builders, $50K+ agency builds, and everything between. What you actually need, and what you'll pay for it.">
+  <meta property="og:image"       content="https://pocketsod.com/brand_assests/OG.png">
   <meta property="og:site_name"   content="PocketSod LLC">
 
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="How Much Does a Small Business Website Cost in 2026?">
-  <meta name="twitter:description" content="Stop guessing. Here's the real cost breakdown for small business websites — by tier, with no fluff.">
-  <meta name="twitter:image"       content="https://www.pocketsod.com/brand_assests/OG.png">
+  <meta name="twitter:description" content="Stop guessing. The real cost breakdown for small business websites, tier by tier, with no fluff.">
+  <meta name="twitter:image"       content="https://pocketsod.com/brand_assests/OG.png">
 
   <link rel="icon" type="image/png" href="../brand_assests/favicon.png">
   <link rel="apple-touch-icon"      href="../brand_assests/favicon.png">
@@ -29,11 +38,11 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "How Much Does a Small Business Website Cost in 2026?",
-    "description": "The honest breakdown of small business website costs in 2026 — from $0 DIY builders to $50K+ agency builds.",
-    "author": { "@type": "Organization", "name": "PocketSod LLC", "url": "https://www.pocketsod.com" },
-    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://www.pocketsod.com/brand_assests/PSlogo6.png" } },
+    "description": "The honest breakdown of small business website costs in 2026: $0 DIY builders, $50K+ agency builds, and everything between.",
+    "author": { "@type": "Organization", "name": "PocketSod LLC", "url": "https://pocketsod.com" },
+    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://pocketsod.com/brand_assests/PSlogo6.png" } },
     "datePublished": "2026-04-30",
-    "url": "https://www.pocketsod.com/blog/how-much-does-a-small-business-website-cost-2026.html"
+    "url": "https://pocketsod.com/blog/how-much-does-a-small-business-website-cost-2026.html"
   }
   </script>
 
@@ -430,26 +439,98 @@
       .cta-block { padding: 2.25rem 1.5rem; }
       .cost-table { font-size: 0.8rem; }
       .cost-table th, .cost-table td { padding: 0.6rem 0.75rem; }
+      .lang-toggle { bottom: 14px; right: 14px; }
     }
+
+    /* ── LANGUAGE TOGGLE ─────────────────────────────── */
+    .lang-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      align-items: stretch;
+      background: var(--dark);
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(26,51,86,0.35);
+    }
+    .lt-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      padding: 0 0.85rem;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid rgba(44,110,171,0.25);
+    }
+    .lt-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: background var(--t);
+    }
+    .lt-btn.active { background: var(--blue); }
+    .lt-btn:not(.active):hover { background: rgba(255,255,255,0.07); }
+    .lt-code {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .lt-name {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    .lt-btn.active .lt-name { color: rgba(255,255,255,0.75); }
+    .lt-divider { width: 1px; background: rgba(44,110,171,0.25); }
   </style>
 </head>
 <body>
 
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle">
+    <div class="lt-label">Lang</div>
+    <button onclick="setLang('en')" class="lt-btn active" data-lang="en">
+      <span class="lt-code">EN</span>
+      <span class="lt-name">English</span>
+    </button>
+    <div class="lt-divider"></div>
+    <button onclick="setLang('es')" class="lt-btn" data-lang="es">
+      <span class="lt-code">ES</span>
+      <span class="lt-name">Español</span>
+    </button>
+  </div>
+
   <!-- NAV -->
   <nav class="nav">
-    <a class="nav-logo" href="https://www.pocketsod.com/">
+    <a class="nav-logo" href="https://pocketsod.com/">
       <img src="../brand_assests/PSlogo6.png" alt="PocketSod">
       <span>PocketSod</span>
     </a>
-    <a class="nav-back" href="https://www.pocketsod.com/">Back to Home</a>
+    <a class="nav-back" href="https://pocketsod.com/" data-i18n="nav_back">Back to Home</a>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="hero-inner">
-      <div class="hero-tag">Pricing Guide · 2026</div>
-      <h1>How Much Does a Small Business<br><span>Website Cost in 2026?</span></h1>
-      <p class="hero-meta">By PocketSod LLC &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 7 min read</p>
+      <div class="hero-tag" data-i18n="hero_tag">Pricing Guide · 2026</div>
+      <h1 data-i18n-html="hero_h1">How Much Does a Small Business<br><span>Website Cost in 2026?</span></h1>
+      <p class="hero-meta" data-i18n-html="hero_meta">By PocketSod LLC &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 7 min read</p>
     </div>
   </header>
 
@@ -457,20 +538,20 @@
   <div class="cost-strip">
     <div class="cost-strip-inner">
       <div class="cost-tier">
-        <div class="cost-tier-label">DIY Builder</div>
-        <div class="cost-tier-range">$0–$500<br><small style="font-weight:400;color:var(--muted)">/yr</small></div>
+        <div class="cost-tier-label" data-i18n="strip1_label">DIY Builder</div>
+        <div class="cost-tier-range">$0–$500<br><small style="font-weight:400;color:var(--muted)" data-i18n="strip_yr">/yr</small></div>
       </div>
       <div class="cost-tier highlight">
-        <div class="cost-tier-label">Freelancer</div>
-        <div class="cost-tier-range">$500–$3K<br><small style="font-weight:400;color:var(--muted)">one-time</small></div>
+        <div class="cost-tier-label" data-i18n="strip2_label">Freelancer</div>
+        <div class="cost-tier-range">$500–$3K<br><small style="font-weight:400;color:var(--muted)" data-i18n="strip_onetime">one-time</small></div>
       </div>
       <div class="cost-tier highlight">
-        <div class="cost-tier-label">Boutique Shop</div>
-        <div class="cost-tier-range">$2.5K–$10K<br><small style="font-weight:400;color:var(--muted)">one-time</small></div>
+        <div class="cost-tier-label" data-i18n="strip3_label">Boutique Shop</div>
+        <div class="cost-tier-range">$2.5K–$10K<br><small style="font-weight:400;color:var(--muted)" data-i18n="strip_onetime">one-time</small></div>
       </div>
       <div class="cost-tier">
-        <div class="cost-tier-label">Full Agency</div>
-        <div class="cost-tier-range">$10K–$100K+<br><small style="font-weight:400;color:var(--muted)">one-time</small></div>
+        <div class="cost-tier-label" data-i18n="strip4_label">Full Agency</div>
+        <div class="cost-tier-range">$10K–$100K+<br><small style="font-weight:400;color:var(--muted)" data-i18n="strip_onetime">one-time</small></div>
       </div>
     </div>
   </div>
@@ -478,8 +559,8 @@
   <!-- ARTICLE -->
   <main class="article-wrap">
 
-    <p class="intro">
-      Most people searching this question get either a useless "it depends" or a scare-tactic article designed to sell a $10,000 package. This is neither. Below is the actual cost breakdown by tier — what you get, what the trade-offs are, and where most small businesses actually land. We built this guide because we're tired of watching business owners overpay for features they don't need, or underpay and end up with a site that hurts them more than it helps.
+    <p class="intro" data-i18n="intro">
+      Search this question and you'll usually find a useless "it depends" or a scare piece written to sell you a $10,000 package. Below is the real cost breakdown by tier: what you get, where the trade-offs sit, and where most small businesses end up landing. We wrote this because we've watched too many business owners overpay for features they'll never use, or underpay and end up with a site that costs them more in lost business than it ever saved.
     </p>
 
     <!-- 1 -->
@@ -487,18 +568,18 @@
       <div class="item-header">
         <div class="item-num blue">01</div>
         <div>
-          <h2 class="item-title">DIY Website Builders — Wix, Squarespace, GoDaddy</h2>
-          <span class="item-price-tag">$0 upfront · $17–$45/month ongoing</span>
+          <h2 class="item-title" data-i18n="item1_title">DIY Website Builders: Wix, Squarespace, GoDaddy</h2>
+          <span class="item-price-tag" data-i18n="item1_price">$0 upfront · $17–$45/month ongoing</span>
         </div>
       </div>
-      <p>The pitch sounds great: build your own site for free, pay a small monthly fee, no developer needed. And if you have a few hours and a good eye, the results can be respectable — especially for a brand-new business that needs something online fast.</p>
-      <p>The trade-offs show up over time. These platforms lock you in. Your content, your design, your SEO history — it all lives on their servers, and migrating away is painful. The templates are shared by millions of other businesses, so differentiation is hard. And the SEO tools, while improving, still lag behind what a properly-built custom site can do.</p>
+      <p data-i18n="item1_p1">The pitch sounds great: build your own site for free, pay a small monthly fee, no developer needed. Spend a few hours on it with a good eye for design, and the results can look respectable, especially for a brand-new business that just needs something online fast.</p>
+      <p data-i18n="item1_p2">The trade-offs show up over time. These platforms lock you in: your content, your design, and your SEO history all live on their servers, and pulling it out later is a slog. The templates get reused by millions of other businesses, so standing out gets harder. And the built-in SEO tools, while they keep improving, still trail what a properly built custom site can do.</p>
       <div class="callout">
-        <p><strong>The 5-year math:</strong> A $25/month Squarespace plan costs $1,500 over five years — and at the end of that period, you still own nothing and can't take the site with you.</p>
+        <p data-i18n-html="item1_callout"><strong>The 5-year math:</strong> A $25/month Squarespace plan adds up to $1,500 over five years. At the end of it, you still own nothing, and you can't take the site with you when you leave.</p>
       </div>
-      <p>DIY builders are the right choice when you're pre-revenue, validating an idea, or truly operating on zero budget. They're the wrong choice when your website is a primary sales channel and you need it to rank, convert, and grow with you.</p>
+      <p data-i18n="item1_p3">DIY builders make sense when you're pre-revenue, testing an idea, or working with close to no budget at all. They stop making sense once your website becomes a real sales channel, one that needs to rank, convert, and grow alongside your business.</p>
       <div class="tip">
-        <p><strong>Fair use case:</strong> A sole proprietor who handles all client work through word of mouth and just needs something to point to when someone asks for a URL. For everyone else, the recurring cost usually justifies a one-time custom build within 2–3 years.</p>
+        <p data-i18n-html="item1_tip"><strong>Fair use case:</strong> A sole proprietor who handles all client work through word of mouth and just needs something to point to when someone asks for a URL. For everyone else, the recurring cost usually justifies a one-time custom build within 2–3 years.</p>
       </div>
     </div>
 
@@ -507,44 +588,44 @@
       <div class="item-header">
         <div class="item-num green">02</div>
         <div>
-          <h2 class="item-title">Freelancer-Built — The Most Common Starting Point</h2>
-          <span class="item-price-tag">$500–$3,000 one-time</span>
+          <h2 class="item-title" data-i18n="item2_title">Freelancer-Built: The Most Common Starting Point</h2>
+          <span class="item-price-tag" data-i18n="item2_price">$500–$3,000 one-time</span>
         </div>
       </div>
-      <p>This is where most small businesses start — and for good reason. A solo web designer handles design, development, and basic setup, delivering a finished site you own outright. No monthly platform fees. No lock-in.</p>
-      <p>The wide range ($500–$3,000) reflects real variation in what you get. At $500, expect a premium template customized with your brand and content — functional, professional, but not unique. At $2,500–$3,000, expect custom layouts, original copywriting, on-page SEO, and a handoff that includes training and documentation.</p>
+      <p data-i18n="item2_p1">This is where most small businesses start, and for good reason. A solo web designer handles the design, the development, and the setup, then hands you a finished site that's yours outright, with no monthly platform fee and nothing locking you in.</p>
+      <p data-i18n="item2_p2">The range ($500–$3,000) tracks real differences in what you get. At $500, you're typically looking at a premium template dressed up with your brand and content: functional and professional, but not one-of-a-kind. At $2,500–$3,000, you start seeing custom layouts, original copywriting, on-page SEO, and a handoff that comes with training and documentation.</p>
 
       <table class="cost-table">
         <thead>
           <tr>
-            <th>Budget</th>
-            <th>What You Typically Get</th>
+            <th data-i18n="t1_h1">Budget</th>
+            <th data-i18n="t1_h2">What You Typically Get</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="amt">~$500</td>
-            <td>Template site, 2–3 pages, basic contact form, mobile-responsive. You write the copy.</td>
+            <td data-i18n="t1_r1">Template site, 2–3 pages, basic contact form, mobile-responsive. You write the copy.</td>
           </tr>
           <tr>
             <td class="amt">~$1,000</td>
-            <td>3–5 pages, custom branding applied, SEO basics (title tags, meta descriptions), Google Maps.</td>
+            <td data-i18n="t1_r2">3–5 pages, custom branding applied, SEO basics (title tags, meta descriptions), Google Maps.</td>
           </tr>
           <tr>
             <td class="amt">~$1,500–$2,500</td>
-            <td>6+ pages, bilingual EN/ES option, quote forms, blog setup, 1 revision round, 30-day support.</td>
+            <td data-i18n="t1_r3">6+ pages, bilingual EN/ES option, quote forms, blog setup, 1 revision round, 30-day support.</td>
           </tr>
           <tr>
             <td class="amt">~$3,000</td>
-            <td>Full custom design, professional copywriting, schema markup, Google Search Console setup, handoff training.</td>
+            <td data-i18n="t1_r4">Full custom design, professional copywriting, schema markup, Google Search Console setup, handoff training.</td>
           </tr>
         </tbody>
       </table>
 
       <div class="tip">
-        <p><strong>Before you hire:</strong> Ask to see 3 recent examples and check that those sites actually rank for anything in Google Search Console. Portfolio screenshots are easy to fake. Live rankings are not.</p>
+        <p data-i18n-html="item2_tip"><strong>Before you hire:</strong> Ask to see 3 recent examples, then check whether those sites rank for anything in Google Search Console. A nice portfolio screenshot proves someone can design. A live ranking proves the site works.</p>
       </div>
-      <p>The freelancer tier hits the sweet spot for most small businesses: you get a site that looks professional, works on every device, and costs a fraction of what an agency charges — with no ongoing platform fee eating into your margin.</p>
+      <p data-i18n="item2_p3">For most small businesses, the freelancer tier is the sweet spot. You get a site that looks professional, works on every device, and costs a fraction of an agency's rate, with no monthly platform fee chipping away at your margin.</p>
     </div>
 
     <!-- 3 -->
@@ -552,16 +633,16 @@
       <div class="item-header">
         <div class="item-num blue">03</div>
         <div>
-          <h2 class="item-title">Small Agency or Boutique Shop — More Process, More Polish</h2>
-          <span class="item-price-tag">$2,500–$10,000 one-time</span>
+          <h2 class="item-title" data-i18n="item3_title">Small Agency or Boutique Shop: More Process, More Polish</h2>
+          <span class="item-price-tag" data-i18n="item3_price">$2,500–$10,000 one-time</span>
         </div>
       </div>
-      <p>A boutique shop is typically a team of 2–5 people: a designer, a developer, and a strategist (or one person wearing all three hats). The process is more structured — discovery calls, wireframes, brand strategy, multiple revision rounds — and the output reflects it.</p>
-      <p>At this tier, you're paying for process as much as product. A boutique shop will spend time understanding your business, your competitors, and your customers before writing a single line of code. The result is a site that's purpose-built for your specific audience, not adapted from someone else's template.</p>
+      <p data-i18n="item3_p1">A boutique shop usually means a team of 2–5 people: a designer, a developer, a strategist, or sometimes one person wearing all three hats. The process runs more structured, with discovery calls, wireframes, brand strategy, and several rounds of revisions, and the final product shows it.</p>
+      <p data-i18n="item3_p2">At this tier, you're paying for process as much as product. A boutique shop will spend time understanding your business, your competitors, and your customers before writing a single line of code. The result is a site that's purpose-built for your specific audience, not adapted from someone else's template.</p>
       <div class="callout">
-        <p><strong>When it's worth it:</strong> You're in a competitive market (multiple providers customers can choose from), your site is your primary lead source, or you're running paid ads and need a landing page that actually converts. <strong>A $5,000 site that converts at 4% beats a $1,000 site that converts at 0.5%</strong> — if you're driving traffic to it.</p>
+        <p data-i18n-html="item3_callout"><strong>When it's worth it:</strong> You're competing in a crowded market, your website is your main source of leads, or you're running paid ads and need a landing page that converts. Run the math: a $5,000 site converting at 4% will outearn a $1,000 site converting at 0.5%, as long as you're sending it traffic.</p>
       </div>
-      <p>When it's not worth it: when you just need a credible presence and a working contact form, and you're getting most of your business through referrals. Don't pay for strategy you don't need yet.</p>
+      <p data-i18n="item3_p3">It's not worth it if all you need is a credible presence and a working contact form, and most of your business already comes through referrals. Save the strategy budget for later, once you actually need it.</p>
     </div>
 
     <!-- 4 -->
@@ -569,14 +650,14 @@
       <div class="item-header">
         <div class="item-num green">04</div>
         <div>
-          <h2 class="item-title">Full-Service Agency — Enterprise Builds and Complex Integrations</h2>
-          <span class="item-price-tag">$10,000–$100,000+</span>
+          <h2 class="item-title" data-i18n="item4_title">Full-Service Agency: Enterprise Builds and Complex Integrations</h2>
+          <span class="item-price-tag" data-i18n="item4_price">$10,000–$100,000+</span>
         </div>
       </div>
-      <p>This tier exists for franchise businesses, multi-location companies, ecommerce stores with thousands of products, or organizations with complex backend integrations (CRMs, ERPs, booking systems, custom APIs). The price reflects project complexity, team size, and the account management overhead that comes with a larger firm.</p>
-      <p>For the vast majority of small businesses, this is overkill — and every salesperson at a full-service agency knows it. The services aren't designed for a 3-person plumbing company or a local catering operation. They're designed for brands with marketing departments and quarterly retainer budgets.</p>
+      <p data-i18n="item4_p1">This tier exists for franchise businesses, multi-location companies, ecommerce stores with thousands of products, or organizations with complex backend integrations (CRMs, ERPs, booking systems, custom APIs). The price reflects project complexity, team size, and the account management overhead that comes with a larger firm.</p>
+      <p data-i18n="item4_p2">For most small businesses, this tier is more than they'll ever need, and the salespeople at these agencies know it too. These services were built for brands running marketing departments on quarterly retainer budgets, not a 3-person plumbing company or a local catering operation.</p>
       <div class="tip">
-        <p><strong>Red flag to watch:</strong> If an agency quotes you $15,000 for a 5-page informational site with a contact form, ask them to itemize it line by line. That conversation will tell you quickly whether the number reflects your needs or their overhead.</p>
+        <p data-i18n-html="item4_tip"><strong>Red flag to watch:</strong> If an agency quotes $15,000 for a 5-page informational site with a contact form, ask them to break it down line by line. That conversation will tell you whether the number reflects your needs or their overhead.</p>
       </div>
     </div>
 
@@ -584,70 +665,70 @@
     <div class="item">
       <div class="item-header">
         <div class="item-num blue">05</div>
-        <h2 class="item-title">Hidden Costs That Inflate Every Budget</h2>
+        <h2 class="item-title" data-i18n="item5_title">The Hidden Costs Most Quotes Leave Out</h2>
       </div>
-      <p>Whatever tier you choose, the quote you receive is rarely the final number. These costs are real, recurring, and often left out of initial conversations:</p>
+      <p data-i18n="item5_p1">Whatever tier you choose, the quote you receive is rarely the final number. These costs are real, recurring, and often left out of initial conversations:</p>
 
       <table class="cost-table">
         <thead>
           <tr>
-            <th>Cost Item</th>
-            <th>Typical Range</th>
-            <th>Notes</th>
+            <th data-i18n="t2_h1">Cost Item</th>
+            <th data-i18n="t2_h2">Typical Range</th>
+            <th data-i18n="t2_h3">Notes</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Domain name</td>
+            <td data-i18n="t2_r1_item">Domain name</td>
             <td class="amt">$12–$20/yr</td>
-            <td>Renews annually. Buy from Namecheap, Porkbun, or Google Domains.</td>
+            <td data-i18n="t2_r1_note">Renews annually. Buy from Namecheap, Porkbun, or Google Domains.</td>
           </tr>
           <tr>
-            <td>Hosting</td>
+            <td data-i18n="t2_r2_item">Hosting</td>
             <td class="amt">$5–$100+/mo</td>
-            <td>Shared hosting (cheap, slower) vs. VPS or managed hosting (faster, pricier). GitHub Pages is free for static sites.</td>
+            <td data-i18n="t2_r2_note">Shared hosting (cheap, slower) vs. VPS or managed hosting (faster, pricier). GitHub Pages is free for static sites.</td>
           </tr>
           <tr>
-            <td>Business email</td>
+            <td data-i18n="t2_r3_item">Business email</td>
             <td class="amt">$6–$12/mo</td>
-            <td>Google Workspace gives you @yourdomain.com. Free email forwarding is an option for light use.</td>
+            <td data-i18n="t2_r3_note">Google Workspace gives you @yourdomain.com. Free email forwarding is an option for light use.</td>
           </tr>
           <tr>
-            <td>SSL certificate</td>
+            <td data-i18n="t2_r4_item">SSL certificate</td>
             <td class="amt">$0</td>
-            <td>Free via Let's Encrypt or included with most hosts. If someone quotes you for SSL, that's a red flag.</td>
+            <td data-i18n="t2_r4_note">Free via Let's Encrypt or included with most hosts. If someone quotes you for SSL, that's a red flag.</td>
           </tr>
           <tr>
-            <td>Stock photography</td>
+            <td data-i18n="t2_r5_item">Stock photography</td>
             <td class="amt">$0–$500+</td>
-            <td>Free options (Unsplash, Pexels) are fine. Real photos of your actual business are better.</td>
+            <td data-i18n="t2_r5_note">Free options (Unsplash, Pexels) are fine. Real photos of your actual business are better.</td>
           </tr>
           <tr>
-            <td>Ongoing maintenance</td>
+            <td data-i18n="t2_r6_item">Ongoing maintenance</td>
             <td class="amt">$50–$200/mo</td>
-            <td>Plugin updates, security patches, content edits. Optional but worth it if you're not technical.</td>
+            <td data-i18n="t2_r6_note">Plugin updates, security patches, content edits. Optional but worth it if you're not technical.</td>
           </tr>
           <tr>
-            <td>SEO management</td>
+            <td data-i18n="t2_r7_item">SEO management</td>
             <td class="amt">$100–$500/mo</td>
-            <td>Monthly keyword tracking, content, and link building. Only needed once you're ready to scale.</td>
+            <td data-i18n="t2_r7_note">Monthly keyword tracking, content, and link building. Only needed once you're ready to scale.</td>
           </tr>
         </tbody>
       </table>
 
       <div class="callout">
-        <p><strong>Always ask:</strong> "What's not included in this quote?" Hosting, email, stock photos, and ongoing support are frequently left out of upfront estimates. Get the total 12-month cost in writing before you commit.</p>
+        <p data-i18n-html="item5_callout"><strong>Worth asking:</strong> "What's not included in this quote?" Hosting, email, stock photos, and ongoing support tend to fall out of the upfront estimate. Get the full 12-month cost in writing before you sign anything.</p>
       </div>
-      <p>At PocketSod, we're upfront about this because we've seen too many business owners get surprised by invoices they didn't expect. Our packages include a clear scope, and we'll tell you exactly what you'll need beyond us to keep the site running.</p>
+      <p data-i18n="item5_p2">At PocketSod, we lay this out up front because we've watched too many business owners get hit with invoices they never saw coming. Our packages spell out the scope clearly, and we'll tell you what else you'll need to keep the site running once it's live.</p>
     </div>
 
     <!-- CTA -->
     <div class="cta-block">
       <div class="cta-block-inner">
-        <span class="label">Veteran-Owned · Transparent Pricing · All 50 States</span>
-        <h2>Know Your Budget. <span>Get the Right Site.</span></h2>
-        <p>PocketSod builds professional, mobile-ready websites for small businesses — starting at $500 with clear pricing and no surprise fees. Tell us what you need and we'll tell you exactly what it costs.</p>
-        <a href="https://www.pocketsod.com/start.html" class="btn btn-primary">Get a Free Quote →</a>
+        <span class="label" data-i18n="cta_label">Veteran-Owned · Transparent Pricing · All 50 States</span>
+        <h2 data-i18n-html="cta_h2">Know Your Budget. <span>Get the Right Site.</span></h2>
+        <p data-i18n="cta_sub">PocketSod builds professional, mobile-ready websites for small businesses, starting at $500, with pricing you can see up front and no surprise fees. Tell us what you need, and we'll tell you what it costs.</p>
+        <a href="https://pocketsod.com/start.html" class="btn btn-primary" data-i18n="cta_btn">Get a Free Quote →</a>
       </div>
     </div>
 
@@ -655,8 +736,184 @@
 
   <!-- FOOTER -->
   <footer class="foot">
-    <p>© 2026 PocketSod LLC · <a href="https://www.pocketsod.com/">pocketsod.com</a> · Veteran-Owned Small Business Web Design</p>
+    <p><span data-i18n="footer_copy">© 2026 PocketSod LLC</span> · <a href="https://pocketsod.com/">pocketsod.com</a> · <span data-i18n="footer_tag">Veteran-Owned Small Business Web Design</span></p>
   </footer>
+
+  <script>
+    const T = {
+      en: {
+        nav_back: 'Back to Home',
+        hero_tag: 'Pricing Guide · 2026',
+        hero_h1: 'How Much Does a Small Business<br><span>Website Cost in 2026?</span>',
+        hero_meta: 'By PocketSod LLC &nbsp;&middot;&nbsp; April 2026 &nbsp;&middot;&nbsp; 7 min read',
+        strip1_label: 'DIY Builder',
+        strip2_label: 'Freelancer',
+        strip3_label: 'Boutique Shop',
+        strip4_label: 'Full Agency',
+        strip_yr: '/yr',
+        strip_onetime: 'one-time',
+        intro: 'Search this question and you\'ll usually find a useless "it depends" or a scare piece written to sell you a $10,000 package. Below is the real cost breakdown by tier: what you get, where the trade-offs sit, and where most small businesses end up landing. We wrote this because we\'ve watched too many business owners overpay for features they\'ll never use, or underpay and end up with a site that costs them more in lost business than it ever saved.',
+        item1_title: 'DIY Website Builders: Wix, Squarespace, GoDaddy',
+        item1_price: '$0 upfront · $17–$45/month ongoing',
+        item1_p1: 'The pitch sounds great: build your own site for free, pay a small monthly fee, no developer needed. Spend a few hours on it with a good eye for design, and the results can look respectable, especially for a brand-new business that just needs something online fast.',
+        item1_p2: 'The trade-offs show up over time. These platforms lock you in: your content, your design, and your SEO history all live on their servers, and pulling it out later is a slog. The templates get reused by millions of other businesses, so standing out gets harder. And the built-in SEO tools, while they keep improving, still trail what a properly built custom site can do.',
+        item1_callout: '<strong>The 5-year math:</strong> A $25/month Squarespace plan adds up to $1,500 over five years. At the end of it, you still own nothing, and you can\'t take the site with you when you leave.',
+        item1_p3: 'DIY builders make sense when you\'re pre-revenue, testing an idea, or working with close to no budget at all. They stop making sense once your website becomes a real sales channel, one that needs to rank, convert, and grow alongside your business.',
+        item1_tip: '<strong>Fair use case:</strong> A sole proprietor who handles all client work through word of mouth and just needs something to point to when someone asks for a URL. For everyone else, the recurring cost usually justifies a one-time custom build within 2–3 years.',
+        item2_title: 'Freelancer-Built: The Most Common Starting Point',
+        item2_price: '$500–$3,000 one-time',
+        item2_p1: 'This is where most small businesses start, and for good reason. A solo web designer handles the design, the development, and the setup, then hands you a finished site that\'s yours outright, with no monthly platform fee and nothing locking you in.',
+        item2_p2: 'The range ($500–$3,000) tracks real differences in what you get. At $500, you\'re typically looking at a premium template dressed up with your brand and content: functional and professional, but not one-of-a-kind. At $2,500–$3,000, you start seeing custom layouts, original copywriting, on-page SEO, and a handoff that comes with training and documentation.',
+        t1_h1: 'Budget',
+        t1_h2: 'What You Typically Get',
+        t1_r1: 'Template site, 2–3 pages, basic contact form, mobile-responsive. You write the copy.',
+        t1_r2: '3–5 pages, custom branding applied, SEO basics (title tags, meta descriptions), Google Maps.',
+        t1_r3: '6+ pages, bilingual EN/ES option, quote forms, blog setup, 1 revision round, 30-day support.',
+        t1_r4: 'Full custom design, professional copywriting, schema markup, Google Search Console setup, handoff training.',
+        item2_tip: '<strong>Before you hire:</strong> Ask to see 3 recent examples, then check whether those sites rank for anything in Google Search Console. A nice portfolio screenshot proves someone can design. A live ranking proves the site works.',
+        item2_p3: 'For most small businesses, the freelancer tier is the sweet spot. You get a site that looks professional, works on every device, and costs a fraction of an agency\'s rate, with no monthly platform fee chipping away at your margin.',
+        item3_title: 'Small Agency or Boutique Shop: More Process, More Polish',
+        item3_price: '$2,500–$10,000 one-time',
+        item3_p1: 'A boutique shop usually means a team of 2–5 people: a designer, a developer, a strategist, or sometimes one person wearing all three hats. The process runs more structured, with discovery calls, wireframes, brand strategy, and several rounds of revisions, and the final product shows it.',
+        item3_p2: 'At this tier, you\'re paying for process as much as product. A boutique shop will spend time understanding your business, your competitors, and your customers before writing a single line of code. The result is a site that\'s purpose-built for your specific audience, not adapted from someone else\'s template.',
+        item3_callout: '<strong>When it\'s worth it:</strong> You\'re competing in a crowded market, your website is your main source of leads, or you\'re running paid ads and need a landing page that converts. Run the math: a $5,000 site converting at 4% will outearn a $1,000 site converting at 0.5%, as long as you\'re sending it traffic.',
+        item3_p3: 'It\'s not worth it if all you need is a credible presence and a working contact form, and most of your business already comes through referrals. Save the strategy budget for later, once you actually need it.',
+        item4_title: 'Full-Service Agency: Enterprise Builds and Complex Integrations',
+        item4_price: '$10,000–$100,000+',
+        item4_p1: 'This tier exists for franchise businesses, multi-location companies, ecommerce stores with thousands of products, or organizations with complex backend integrations (CRMs, ERPs, booking systems, custom APIs). The price reflects project complexity, team size, and the account management overhead that comes with a larger firm.',
+        item4_p2: 'For most small businesses, this tier is more than they\'ll ever need, and the salespeople at these agencies know it too. These services were built for brands running marketing departments on quarterly retainer budgets, not a 3-person plumbing company or a local catering operation.',
+        item4_tip: '<strong>Red flag to watch:</strong> If an agency quotes $15,000 for a 5-page informational site with a contact form, ask them to break it down line by line. That conversation will tell you whether the number reflects your needs or their overhead.',
+        item5_title: 'The Hidden Costs Most Quotes Leave Out',
+        item5_p1: 'Whatever tier you choose, the quote you receive is rarely the final number. These costs are real, recurring, and often left out of initial conversations:',
+        t2_h1: 'Cost Item',
+        t2_h2: 'Typical Range',
+        t2_h3: 'Notes',
+        t2_r1_item: 'Domain name',
+        t2_r1_note: 'Renews annually. Buy from Namecheap, Porkbun, or Google Domains.',
+        t2_r2_item: 'Hosting',
+        t2_r2_note: 'Shared hosting (cheap, slower) vs. VPS or managed hosting (faster, pricier). GitHub Pages is free for static sites.',
+        t2_r3_item: 'Business email',
+        t2_r3_note: 'Google Workspace gives you @yourdomain.com. Free email forwarding is an option for light use.',
+        t2_r4_item: 'SSL certificate',
+        t2_r4_note: 'Free via Let\'s Encrypt or included with most hosts. If someone quotes you for SSL, that\'s a red flag.',
+        t2_r5_item: 'Stock photography',
+        t2_r5_note: 'Free options (Unsplash, Pexels) are fine. Real photos of your actual business are better.',
+        t2_r6_item: 'Ongoing maintenance',
+        t2_r6_note: 'Plugin updates, security patches, content edits. Optional but worth it if you\'re not technical.',
+        t2_r7_item: 'SEO management',
+        t2_r7_note: 'Monthly keyword tracking, content, and link building. Only needed once you\'re ready to scale.',
+        item5_callout: '<strong>Worth asking:</strong> "What\'s not included in this quote?" Hosting, email, stock photos, and ongoing support tend to fall out of the upfront estimate. Get the full 12-month cost in writing before you sign anything.',
+        item5_p2: 'At PocketSod, we lay this out up front because we\'ve watched too many business owners get hit with invoices they never saw coming. Our packages spell out the scope clearly, and we\'ll tell you what else you\'ll need to keep the site running once it\'s live.',
+        cta_label: 'Veteran-Owned · Transparent Pricing · All 50 States',
+        cta_h2: 'Know Your Budget. <span>Get the Right Site.</span>',
+        cta_sub: 'PocketSod builds professional, mobile-ready websites for small businesses, starting at $500, with pricing you can see up front and no surprise fees. Tell us what you need, and we\'ll tell you what it costs.',
+        cta_btn: 'Get a Free Quote →',
+        footer_copy: '© 2026 PocketSod LLC',
+        footer_tag: 'Veteran-Owned Small Business Web Design'
+      },
+      es: {
+        nav_back: 'Volver al Inicio',
+        hero_tag: 'Guía de Precios · 2026',
+        hero_h1: '¿Cuánto Cuesta el Sitio Web<br><span>de un Negocio en 2026?</span>',
+        hero_meta: 'Por PocketSod LLC &nbsp;&middot;&nbsp; Abril de 2026 &nbsp;&middot;&nbsp; 7 min de lectura',
+        strip1_label: 'Creador DIY',
+        strip2_label: 'Freelancer',
+        strip3_label: 'Estudio Boutique',
+        strip4_label: 'Agencia Completa',
+        strip_yr: '/año',
+        strip_onetime: 'pago único',
+        intro: 'Busca esta pregunta y normalmente encontrarás un inútil "depende" o un artículo alarmista escrito para venderte un paquete de $10,000. A continuación está el desglose real de costos por nivel: qué obtienes, dónde están las concesiones y dónde termina la mayoría de los pequeños negocios. Escribimos esto porque hemos visto a demasiados dueños de negocios pagar de más por funciones que nunca usarán, o pagar de menos y terminar con un sitio que les cuesta más en negocios perdidos de lo que ahorraron.',
+        item1_title: 'Creadores de Sitios DIY: Wix, Squarespace, GoDaddy',
+        item1_price: '$0 inicial · $17–$45/mes en adelante',
+        item1_p1: 'La propuesta suena genial: arma tu propio sitio gratis, paga una pequeña cuota mensual, sin necesidad de un desarrollador. Si le dedicas unas horas y tienes buen ojo para el diseño, el resultado puede verse decente, sobre todo para un negocio nuevo que solo necesita algo en línea rápido.',
+        item1_p2: 'Las concesiones aparecen con el tiempo. Estas plataformas te atan: tu contenido, tu diseño y tu historial de SEO viven en sus servidores, y sacarlos de ahí después es una odisea. Las plantillas las reutilizan millones de otros negocios, así que destacar cuesta más trabajo. Y las herramientas de SEO integradas, aunque van mejorando, siguen quedándose atrás de lo que puede hacer un sitio personalizado bien construido.',
+        item1_callout: '<strong>La cuenta a 5 años:</strong> un plan de Squarespace de $25/mes suma $1,500 en cinco años. Al final de ese período, sigues sin ser dueño de nada y no puedes llevarte el sitio contigo cuando te vayas.',
+        item1_p3: 'Los creadores DIY tienen sentido cuando aún no generas ingresos, estás probando una idea o trabajas con un presupuesto casi nulo. Dejan de tener sentido en cuanto tu sitio web se convierte en un canal de ventas real, uno que necesita posicionarse, convertir y crecer junto con tu negocio.',
+        item1_tip: '<strong>Caso de uso justo:</strong> un trabajador independiente que consigue todos sus clientes de boca en boca y solo necesita algo a lo que remitir cuando alguien le pide una URL. Para todos los demás, el costo recurrente suele justificar una construcción personalizada de pago único dentro de 2 a 3 años.',
+        item2_title: 'Construido por un Freelancer: El Punto de Partida Más Común',
+        item2_price: '$500–$3,000 pago único',
+        item2_p1: 'Aquí es donde empiezan la mayoría de los pequeños negocios, y por buena razón. Un diseñador web independiente se encarga del diseño, el desarrollo y la configuración, y te entrega un sitio terminado que es tuyo por completo, sin cuota mensual de plataforma y sin nada que te ate.',
+        item2_p2: 'El rango ($500–$3,000) refleja diferencias reales en lo que obtienes. Por $500, normalmente estás viendo una plantilla premium adaptada con tu marca y contenido: funcional y profesional, pero no única. Por $2,500–$3,000, empiezas a ver diseños personalizados, redacción original, SEO en la página y una entrega que incluye capacitación y documentación.',
+        t1_h1: 'Presupuesto',
+        t1_h2: 'Qué Obtienes Normalmente',
+        t1_r1: 'Sitio con plantilla, 2–3 páginas, formulario de contacto básico, responsivo para móviles. Tú escribes el contenido.',
+        t1_r2: '3–5 páginas, marca personalizada aplicada, SEO básico (etiquetas de título, meta descripciones), Google Maps.',
+        t1_r3: '6+ páginas, opción bilingüe EN/ES, formularios de cotización, blog configurado, 1 ronda de revisión, 30 días de soporte.',
+        t1_r4: 'Diseño completamente personalizado, redacción profesional, marcado de esquema (schema), configuración de Google Search Console, capacitación de entrega.',
+        item2_tip: '<strong>Antes de contratar:</strong> pide ver 3 ejemplos recientes y luego revisa si esos sitios se posicionan por algo en Google Search Console. Una buena captura del portafolio demuestra que alguien sabe diseñar. Un posicionamiento real demuestra que el sitio funciona.',
+        item2_p3: 'Para la mayoría de los pequeños negocios, el nivel freelancer es el punto óptimo. Obtienes un sitio que se ve profesional, funciona en cualquier dispositivo y cuesta una fracción de la tarifa de una agencia, sin cuota mensual de plataforma carcomiendo tu margen.',
+        item3_title: 'Agencia Pequeña o Estudio Boutique: Más Proceso, Más Pulido',
+        item3_price: '$2,500–$10,000 pago único',
+        item3_p1: 'Un estudio boutique normalmente es un equipo de 2 a 5 personas: un diseñador, un desarrollador, un estratega, o a veces una sola persona que cubre los tres roles. El proceso es más estructurado, con llamadas de descubrimiento, wireframes, estrategia de marca y varias rondas de revisiones, y el resultado final se nota.',
+        item3_p2: 'En este nivel, pagas por el proceso tanto como por el producto. Un estudio boutique dedicará tiempo a entender tu negocio, tu competencia y tus clientes antes de escribir una sola línea de código. El resultado es un sitio construido específicamente para tu público, no adaptado de la plantilla de alguien más.',
+        item3_callout: '<strong>Cuándo vale la pena:</strong> compites en un mercado saturado, tu sitio web es tu principal fuente de clientes potenciales, o corres anuncios pagados y necesitas una página de aterrizaje que convierta de verdad. Haz la cuenta: un sitio de $5,000 que convierte al 4% va a superar a uno de $1,000 que convierte al 0.5%, siempre que le envíes tráfico.',
+        item3_p3: 'No vale la pena si todo lo que necesitas es una presencia creíble y un formulario de contacto que funcione, y la mayor parte de tu negocio ya llega por referencias. Guarda el presupuesto de estrategia para después, cuando de verdad lo necesites.',
+        item4_title: 'Agencia de Servicio Completo: Construcciones Empresariales e Integraciones Complejas',
+        item4_price: '$10,000–$100,000+',
+        item4_p1: 'Este nivel existe para franquicias, empresas con varias sucursales, tiendas de comercio electrónico con miles de productos, u organizaciones con integraciones complejas de backend (CRMs, ERPs, sistemas de reservas, APIs personalizadas). El precio refleja la complejidad del proyecto, el tamaño del equipo y el costo de gestión de cuentas que conlleva una firma más grande.',
+        item4_p2: 'Para la mayoría de los pequeños negocios, este nivel es más de lo que jamás necesitarán, y los vendedores de estas agencias también lo saben. Estos servicios se diseñaron para marcas que manejan departamentos de marketing con presupuestos trimestrales, no para una plomería de 3 personas o un negocio local de banquetes.',
+        item4_tip: '<strong>Señal de alerta:</strong> si una agencia te cotiza $15,000 por un sitio informativo de 5 páginas con un formulario de contacto, pídeles que lo desglosen línea por línea. Esa conversación te dirá si el número refleja tus necesidades o sus gastos generales.',
+        item5_title: 'Los Costos Ocultos que la Mayoría de las Cotizaciones Omiten',
+        item5_p1: 'Sea cual sea el nivel que elijas, la cotización que recibes rara vez es el número final. Estos costos son reales, recurrentes y a menudo se quedan fuera de las conversaciones iniciales:',
+        t2_h1: 'Costo',
+        t2_h2: 'Rango Típico',
+        t2_h3: 'Notas',
+        t2_r1_item: 'Nombre de dominio',
+        t2_r1_note: 'Se renueva cada año. Cómpralo en Namecheap, Porkbun o Google Domains.',
+        t2_r2_item: 'Hospedaje (hosting)',
+        t2_r2_note: 'Hospedaje compartido (barato, más lento) frente a VPS o hospedaje administrado (más rápido, más caro). GitHub Pages es gratis para sitios estáticos.',
+        t2_r3_item: 'Correo de negocio',
+        t2_r3_note: 'Google Workspace te da @tudominio.com. El reenvío de correo gratuito es una opción para uso ligero.',
+        t2_r4_item: 'Certificado SSL',
+        t2_r4_note: 'Gratis a través de Let\'s Encrypt o incluido con la mayoría de los proveedores. Si alguien te cobra por el SSL, eso es una señal de alerta.',
+        t2_r5_item: 'Fotografía de stock',
+        t2_r5_note: 'Las opciones gratuitas (Unsplash, Pexels) funcionan bien. Las fotos reales de tu negocio son mejores.',
+        t2_r6_item: 'Mantenimiento continuo',
+        t2_r6_note: 'Actualizaciones de plugins, parches de seguridad, ediciones de contenido. Opcional, pero vale la pena si no eres técnico.',
+        t2_r7_item: 'Gestión de SEO',
+        t2_r7_note: 'Seguimiento mensual de palabras clave, contenido y construcción de enlaces. Solo se necesita cuando estés listo para escalar.',
+        item5_callout: '<strong>Vale la pena preguntar:</strong> "¿Qué no está incluido en esta cotización?" El hospedaje, el correo, las fotos de stock y el soporte continuo suelen quedar fuera del estimado inicial. Pide el costo total a 12 meses por escrito antes de firmar nada.',
+        item5_p2: 'En PocketSod, dejamos esto claro desde el principio porque hemos visto a demasiados dueños de negocios recibir facturas que nunca vieron venir. Nuestros paquetes detallan el alcance con claridad, y te decimos qué más vas a necesitar para mantener el sitio funcionando una vez que esté en línea.',
+        cta_label: 'Fundado por un Veterano · Precios Transparentes · Los 50 Estados',
+        cta_h2: 'Conoce Tu Presupuesto. <span>Consigue el Sitio Correcto.</span>',
+        cta_sub: 'PocketSod construye sitios web profesionales y listos para móviles para pequeños negocios, desde $500, con precios que ves desde el principio y sin cobros sorpresa. Dinos qué necesitas, y te decimos cuánto cuesta.',
+        cta_btn: 'Pide una Cotización Gratis →',
+        footer_copy: '© 2026 PocketSod LLC',
+        footer_tag: 'Negocio de Diseño Web Fundado por un Veterano'
+      }
+    };
+
+    function setLang(lang) {
+      const t = T[lang];
+      if (!t) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      document.querySelectorAll('.lt-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.documentElement.lang = lang;
+
+      try { localStorage.setItem('ps_lang', lang); } catch(e) {}
+    }
+
+    (function() {
+      let saved;
+      try { saved = localStorage.getItem('ps_lang'); } catch(e) {}
+      const browserLang = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+      setLang(saved || browserLang);
+    })();
+  </script>
 
 </body>
 </html>
+
