@@ -38,12 +38,6 @@
   <meta property="og:site_name"   content="PocketSod LLC">
   <meta property="og:locale"      content="en_US">
 
-  <!-- ── TWITTER CARD ── -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="PocketSod | Small Business Web Design — Veteran Owned">
-  <meta name="twitter:description" content="Veteran-owned web design for small businesses. Custom websites starting at $500, bilingual EN/ES support. All 50 states.">
-  <meta name="twitter:image"        content="https://pocketsod.com/brand_assests/OG.png">
-
   <!-- ── FAVICON ── -->
   <link rel="icon" type="image/png" href="brand_assests/favicon.png">
   <link rel="apple-touch-icon" href="brand_assests/favicon.png">
@@ -69,7 +63,10 @@
     "priceRange": "$500 - $2500+",
     "knowsLanguage": ["English", "Spanish"],
     "slogan": "Small Business Web Site Design",
-    "sameAs": []
+    "sameAs": [
+      "https://www.linkedin.com/company/pocketsod",
+      "https://www.facebook.com/profile.php?id=61573347643482"
+    ]
   }
   </script>
 
@@ -479,6 +476,19 @@
       font-style: normal;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+    }
+    .founder-photo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .founder-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(76,175,80,0.5);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
     }
     .about-content .label { display: block; }
     .about-list {
@@ -1113,7 +1123,7 @@
         <a href="#testimonials"  onclick="closeMobile()" data-i18n="nav_testimonials">Testimonials</a>
         <a href="#process"       onclick="closeMobile()" data-i18n="nav_process">Process</a>
         <a href="blog/"                               data-i18n="nav_blog">Blog</a>
-        <a href="#contact"   onclick="closeMobile()" data-i18n="nav_cta">Get a Quote</a>
+        <a href="start.html" onclick="closeMobile()" data-i18n="nav_cta">Get a Quote</a>
       </div>
     </div>
   </nav>
@@ -1128,7 +1138,7 @@
         <h1 data-i18n-html="hero_h1">Your Business.<br><span class="hl-green">Online.</span><br><span class="hl-blue">Affordable.</span></h1>
         <p class="hero-sub" data-i18n="hero_sub">PocketSod builds professional websites that help small businesses grow: fast turnaround, fair prices, and support that's still there after launch. All 50 states.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary" data-i18n="hero_cta_primary">Get a Free Quote</a>
+          <a href="start.html" class="btn btn-primary" data-i18n="hero_cta_primary">Get a Free Quote</a>
           <a href="#packages" class="btn btn-outline" data-i18n="hero_cta_secondary">See Packages</a>
         </div>
       </div>
@@ -1166,6 +1176,9 @@
   <section class="about section" id="about">
     <div class="container about-inner">
       <div class="about-quote reveal">
+        <div class="founder-photo-wrap">
+          <img src="https://placehold.co/200x200/1A3356/FFFFFF?text=Photo" alt="Founder of PocketSod LLC" width="200" height="200" class="founder-photo">
+        </div>
         <blockquote data-i18n="about_quote">"We build websites the same way we served — with discipline, attention to detail, and no excuses."</blockquote>
         <cite data-i18n="about_cite">— PocketSod LLC, Veteran-Owned</cite>
       </div>
@@ -1207,7 +1220,7 @@
             <li data-i18n="pkg_s5">Google Maps integration</li>
             <li data-i18n="pkg_s6">1 revision round</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost" data-i18n="pkg_btn_start">Get Started</a>
+          <a href="start.html?package=Starter" class="btn btn-ghost" data-i18n="pkg_btn_start">Get Started</a>
         </div>
         <!-- Growth -->
         <div class="card featured reveal">
@@ -1224,7 +1237,7 @@
             <li data-i18n="pkg_g6">Social media links</li>
             <li data-i18n="pkg_g7">Maintenance-ready</li>
           </ul>
-          <a href="#contact" class="btn btn-blue" data-i18n="pkg_btn_start">Get Started</a>
+          <a href="start.html?package=Growth" class="btn btn-blue" data-i18n="pkg_btn_start">Get Started</a>
         </div>
         <!-- Premium -->
         <div class="card reveal">
@@ -1240,7 +1253,7 @@
             <li data-i18n="pkg_p6">Analytics dashboard</li>
             <li data-i18n="pkg_p7">Priority support</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost" data-i18n="pkg_btn_start">Get Started</a>
+          <a href="start.html?package=Premium" class="btn btn-ghost" data-i18n="pkg_btn_start">Get Started</a>
         </div>
       </div>
     </div>
@@ -1575,7 +1588,7 @@
           <ul>
             <li><a href="tel:3173480539">(317) 348-0539</a></li>
             <li><a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></li>
-            <li><a href="#contact" data-i18n="hero_cta_primary">Get a Free Quote</a></li>
+            <li><a href="start.html" data-i18n="hero_cta_primary">Get a Free Quote</a></li>
             <li><a href="https://www.linkedin.com/company/pocketsod" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href="https://www.facebook.com/profile.php?id=61573347643482" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             <li><a href="https://www.instagram.com/psllc2026/" target="_blank" rel="noopener noreferrer">Instagram</a></li>

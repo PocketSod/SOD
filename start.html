@@ -557,7 +557,7 @@
         <div class="step" id="step2">
           <div class="step-heading">
             <div class="step-eyebrow">Step 2 of 3</div>
-            <h1 class="step-title">What do<br><span>you need?</span></h1>
+            <h2 class="step-title">What do<br><span>you need?</span></h2>
             <p class="step-sub">Pick whichever package sounds closest. We'll nail down the details on the call.</p>
           </div>
 
@@ -625,7 +625,7 @@
         <div class="step" id="step3">
           <div class="step-heading">
             <div class="step-eyebrow">Step 3 of 3</div>
-            <h1 class="step-title">How do we<br><span>reach you?</span></h1>
+            <h2 class="step-title">How do we<br><span>reach you?</span></h2>
             <p class="step-sub">We respond within 24 hours, usually much sooner.</p>
           </div>
 
@@ -737,6 +737,14 @@
       selectedPkg = name;
       checkStep2();
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const pkg = new URLSearchParams(location.search).get('package');
+      if (pkg) {
+        const card = document.querySelector(`.pkg-card[data-pkg="${pkg}"]`);
+        if (card) selectPkg(card, pkg);
+      }
+    });
 
     function selectTimeline(el, val) {
       document.querySelectorAll('.tl-card').forEach(c => c.classList.remove('selected'));
