@@ -16,7 +16,6 @@
   <!-- ── PRIMARY SEO ── -->
   <title>PocketSod | Small Business Web Design — Veteran Owned</title>
   <meta name="description" content="PocketSod LLC — Veteran-owned web design for small businesses. Affordable custom websites starting at $500, bilingual EN/ES support, SEO, and ongoing care. Serving all 50 states.">
-  <meta name="keywords" content="small business web design, veteran owned web design, affordable websites, bilingual website, Spanish English website, local business website">
   <meta name="author" content="PocketSod LLC">
   <link rel="canonical" href="https://pocketsod.com/">
 
@@ -31,7 +30,7 @@
   <meta property="og:url"         content="https://pocketsod.com/">
   <meta property="og:title"       content="PocketSod | Small Business Web Design — Veteran Owned">
   <meta property="og:description" content="Veteran-owned web design for small businesses. Custom websites starting at $500, bilingual EN/ES support, SEO, and ongoing care. All 50 states.">
-  <meta property="og:image"        content="https://pocketsod.com/brand_assests/OG.png">
+  <meta property="og:image"        content="https://pocketsod.com/brand_assets/OG.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt"    content="PocketSod — Small Business Web Site Design">
@@ -39,8 +38,8 @@
   <meta property="og:locale"      content="en_US">
 
   <!-- ── FAVICON ── -->
-  <link rel="icon" type="image/png" href="brand_assests/favicon.png">
-  <link rel="apple-touch-icon" href="brand_assests/favicon.png">
+  <link rel="icon" type="image/png" href="brand_assets/favicon.png">
+  <link rel="apple-touch-icon" href="brand_assets/favicon.png">
 
   <!-- ── SCHEMA MARKUP — LocalBusiness ── -->
   <script type="application/ld+json">
@@ -52,8 +51,8 @@
     "url": "https://pocketsod.com",
     "telephone": "+13173480539",
     "email": "contact@pocketsod.com",
-    "logo": "https://pocketsod.com/brand_assests/PSlogo.png",
-    "image": "https://pocketsod.com/brand_assests/PSlogo.png",
+    "logo": "https://pocketsod.com/brand_assets/PSlogo.png",
+    "image": "https://pocketsod.com/brand_assets/PSlogo.png",
     "foundingDate": "2026",
     "areaServed": {
       "@type": "Country",
@@ -71,7 +70,7 @@
   </script>
 
   <!-- LCP preload — must be before stylesheets -->
-  <link rel="preload" as="image" href="brand_assests/PSlogo.png" fetchpriority="high">
+  <link rel="preload" as="image" href="brand_assets/PSlogo.png" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -818,6 +817,59 @@
       color: var(--green);
       letter-spacing: 0.04em;
     }
+    /* ── FAQ ──────────────────────────────────────── */
+    .faq { background: var(--cream-dark); }
+    .faq-list { max-width: 720px; margin: 2.5rem auto 0; }
+    details.faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    details.faq-item:first-child { border-top: 1px solid var(--border); }
+    details.faq-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      cursor: pointer;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      list-style: none;
+      user-select: none;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: '+';
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    details.faq-item[open] summary::after {
+      content: '−';
+      background: var(--blue);
+      transform: rotate(180deg);
+    }
+    details.faq-item summary:hover::after { background: var(--blue); }
+    .faq-answer {
+      padding: 0 0 1.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .faq-answer p { margin-bottom: 0.75rem; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+
     @media (max-width: 860px) {
       .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
     }
@@ -1101,7 +1153,7 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="#" class="nav-logo">
-        <img src="brand_assests/PSlogo.png" alt="PocketSod" width="676" height="369">
+        <img src="brand_assets/PSlogo.png" alt="PocketSod" width="676" height="369">
       </a>
       <ul class="nav-links">
         <li><a href="#about" data-i18n="nav_about">About</a></li>
@@ -1144,7 +1196,7 @@
         </div>
       </div>
       <div class="hero-logo-wrap">
-        <img src="brand_assests/PSlogo.png" alt="PocketSod — Small Business Web Site Design" width="676" height="369" fetchpriority="high" decoding="sync" loading="eager">
+        <img src="brand_assets/PSlogo.png" alt="PocketSod — Small Business Web Site Design" width="676" height="369" fetchpriority="high" decoding="sync" loading="eager">
       </div>
     </div>
   </section>
@@ -1181,7 +1233,7 @@
           <img src="https://placehold.co/200x200/1A3356/FFFFFF?text=Photo" alt="Founder of PocketSod LLC" width="200" height="200" class="founder-photo">
         </div>
         <blockquote data-i18n="about_quote">"We build websites the same way we served — with discipline, attention to detail, and no excuses."</blockquote>
-        <cite data-i18n="about_cite">— PocketSod LLC, Veteran-Owned</cite>
+        <cite data-i18n="about_cite">— Founder, PocketSod LLC</cite>
       </div>
       <div class="about-content reveal">
         <span class="label" data-i18n="about_label">About Us</span>
@@ -1260,6 +1312,42 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" data-i18n="faq_label">Common Questions</span>
+        <h2 class="section-title" data-i18n-html="faq_title">Answers Before You <span class="green">Ask</span></h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span data-i18n="faq1_q">What if I don't have a logo or photos yet?</span></summary>
+          <div class="faq-answer" data-i18n-html="faq1_a"><p>No problem. We source professional stock photos that fit your business, and we can work with placeholder content while you gather assets. If you need a logo, we offer basic logo design as an add-on. Most clients come to us with just a business name and a phone number — we handle the rest.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span data-i18n="faq2_q">What platform do you build on? Can I update the site myself?</span></summary>
+          <div class="faq-answer" data-i18n-html="faq2_a"><p>We build clean, custom-coded sites — no subscription-locked page builders. On Growth and Premium plans, we can add a simple content editor so you can update text, photos, and blog posts yourself. On all plans, we're available for edits — just send us a message and we'll handle it, usually within 24 hours.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span data-i18n="faq3_q">Are the sites in your portfolio real client sites?</span></summary>
+          <div class="faq-answer" data-i18n-html="faq3_a"><p>Yes — every site in our portfolio is a live website built for a real paying client. Some are hosted on pocketsod.com subdomains while the client sets up their own domain; others are already on the client's own domain. Every one of them is in active use.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span data-i18n="faq4_q">What if I'm not happy with how the site looks?</span></summary>
+          <div class="faq-answer" data-i18n-html="faq4_a"><p>We don't launch until you sign off. If something isn't right — layout, colors, copy, anything — we fix it. There are no extra charges for reasonable revision requests during the build. Our goal is a site you're proud to share, not just a site that's technically done.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span data-i18n="faq5_q">How long does the whole process take?</span></summary>
+          <div class="faq-answer" data-i18n-html="faq5_a"><p>Most sites launch within 14 days of kickoff. The timeline depends on how quickly we receive your feedback and any assets (logo, photos, content). We move fast — the main variable is usually the client review cycle, not our build time.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span data-i18n="faq6_q">Do you offer payment plans?</span></summary>
+          <div class="faq-answer" data-i18n-html="faq6_a"><p>Yes. We work on a 50% deposit at kickoff and 50% at launch. For larger projects we can discuss a phased payment schedule. We accept all major cards and bank transfer.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ADD-ONS -->
   <section class="addons section" id="addons">
     <div class="container">
@@ -1303,7 +1391,7 @@
       <div class="portfolio-header reveal">
         <span class="label blue" data-i18n="port_label">Portfolio</span>
         <h2 class="section-title" data-i18n-html="port_title">Sites We've <span class="blue">Built</span></h2>
-        <p class="section-sub" data-i18n="port_sub">A few of the businesses we've built sites for, and how those sites turned out.</p>
+        <p class="section-sub" data-i18n="port_sub">Real websites for real clients — every site here is live and in use today.</p>
       </div>
       <div class="portfolio-grid">
         <div class="portfolio-card reveal">
@@ -1313,7 +1401,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">toolsandtable.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-toolsandtable.png" alt="Tools &amp; Table website" width="1280" height="800" loading="lazy" decoding="async"></div>
+          <div class="portfolio-thumb"><img src="brand_assets/portfolio/thumb-toolsandtable.png" alt="Tools &amp; Table website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
               <h3>Tools &amp; Table</h3>
@@ -1329,7 +1417,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">casaespanaindiana.org</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-casaespana.png" alt="Casa España Indiana website" width="1280" height="800" loading="lazy" decoding="async"></div>
+          <div class="portfolio-thumb"><img src="brand_assets/portfolio/thumb-casaespana.png" alt="Casa España Indiana website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
               <h3>Casa España Indiana</h3>
@@ -1345,7 +1433,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">clj.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-clj.png" alt="Center for Language Justice website" width="1280" height="800" loading="lazy" decoding="async"></div>
+          <div class="portfolio-thumb"><img src="brand_assets/portfolio/thumb-clj.png" alt="Center for Language Justice website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
               <h3>Center for Language Justice</h3>
@@ -1361,7 +1449,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">azpowerwash.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-azpowerwash.png" alt="AZ Powerwash website" width="1280" height="800" loading="lazy" decoding="async"></div>
+          <div class="portfolio-thumb"><img src="brand_assets/portfolio/thumb-azpowerwash.png" alt="AZ Powerwash website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
               <h3>AZ Powerwash</h3>
@@ -1377,7 +1465,7 @@
             <div class="browser-dot dot-g"></div>
             <div class="browser-url">delara.pocketsod.com</div>
           </div>
-          <div class="portfolio-thumb"><img src="brand_assests/portfolio/thumb-delara.png" alt="DeLara Consulting website" width="1280" height="800" loading="lazy" decoding="async"></div>
+          <div class="portfolio-thumb"><img src="brand_assets/portfolio/thumb-delara.png" alt="DeLara Consulting website" width="1280" height="800" loading="lazy" decoding="async"></div>
           <div class="portfolio-info">
             <div>
               <h3>DeLara Consulting</h3>
@@ -1563,7 +1651,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="brand_assests/PSlogo.png" alt="PocketSod" width="676" height="369">
+          <img src="brand_assets/PSlogo.png" alt="PocketSod" width="676" height="369">
           <p data-i18n="footer_brand_desc">A Veteran-owned web design business for small companies. Professional sites, fair prices, and support that doesn't disappear after launch.</p>
         </div>
         <div class="footer-col">
@@ -1590,6 +1678,7 @@
             <li><a href="tel:3173480539">(317) 348-0539</a></li>
             <li><a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></li>
             <li><a href="start.html" data-i18n="hero_cta_primary">Get a Free Quote</a></li>
+            <li><a href="https://g.page/r/pocketsod" target="_blank" rel="noopener noreferrer">Google Business</a></li>
             <li><a href="https://www.linkedin.com/company/pocketsod" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href="https://www.facebook.com/profile.php?id=61573347643482" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             <li><a href="https://www.instagram.com/psllc2026/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
@@ -1627,7 +1716,7 @@
         stat_satisfaction: 'Satisfaction Rate',
 
         about_quote: '"We build websites the same way we served — with discipline, attention to detail, and no excuses."',
-        about_cite:  '— PocketSod LLC, Veteran-Owned',
+        about_cite:  '— Founder, PocketSod LLC',
         about_label: 'About Us',
         about_title: 'Small Business Websites, <span class="green">Done Right</span>',
         about_sub:   'We build affordable, professional websites for small businesses in all 50 states. Skip the bloated agency contracts. Just a site that works.',
@@ -1647,6 +1736,20 @@
         pkg_growth_name:  'Growth',
         pkg_premium_name: 'Premium',
         pkg_btn_start:    'Get Started',
+        faq_label: 'Common Questions',
+        faq_title: 'Answers Before You <span class="green">Ask</span>',
+        faq1_q: "What if I don't have a logo or photos yet?",
+        faq1_a: "<p>No problem. We source professional stock photos that fit your business, and we can work with placeholder content while you gather assets. If you need a logo, we offer basic logo design as an add-on. Most clients come to us with just a business name and a phone number — we handle the rest.</p>",
+        faq2_q: 'What platform do you build on? Can I update the site myself?',
+        faq2_a: "<p>We build clean, custom-coded sites — no subscription-locked page builders. On Growth and Premium plans, we can add a simple content editor so you can update text, photos, and blog posts yourself. On all plans, we're available for edits — just send us a message and we'll handle it, usually within 24 hours.</p>",
+        faq3_q: 'Are the sites in your portfolio real client sites?',
+        faq3_a: '<p>Yes — every site in our portfolio is a live website built for a real paying client. Some are hosted on pocketsod.com subdomains while the client sets up their own domain; others are already on the client\'s own domain. Every one of them is in active use.</p>',
+        faq4_q: "What if I'm not happy with how the site looks?",
+        faq4_a: "<p>We don't launch until you sign off. If something isn't right — layout, colors, copy, anything — we fix it. There are no extra charges for reasonable revision requests during the build. Our goal is a site you're proud to share, not just a site that's technically done.</p>",
+        faq5_q: 'How long does the whole process take?',
+        faq5_a: '<p>Most sites launch within 14 days of kickoff. The timeline depends on how quickly we receive your feedback and any assets. We move fast — the main variable is usually the client review cycle, not our build time.</p>',
+        faq6_q: 'Do you offer payment plans?',
+        faq6_a: '<p>Yes. We work on a 50% deposit at kickoff and 50% at launch. For larger projects we can discuss a phased payment schedule. We accept all major cards and bank transfer.</p>',
         pkg_s1: 'Up to 3 pages',
         pkg_s2: 'Contact form',
         pkg_s3: 'Mobile responsive',
@@ -1683,7 +1786,7 @@
 
         port_label: 'Portfolio',
         port_title: 'Sites We\'ve <span class="blue">Built</span>',
-        port_sub:   'A few of the businesses we\'ve built sites for, and how those sites turned out.',
+        port_sub:   'Real websites for real clients — every site here is live and in use today.',
         port1_desc: 'Professional consulting services website',
         port2_desc: 'Pressure washing & exterior cleaning',
         port3_desc: 'Spanish cultural organization website',
@@ -1770,7 +1873,7 @@
         stat_satisfaction: 'Satisfacción Total',
 
         about_quote: '"Creamos sitios web de la misma manera que servimos — con disciplina, atención al detalle y sin excusas."',
-        about_cite:  '— PocketSod LLC, Empresa de Veteranos',
+        about_cite:  '— Fundador, PocketSod LLC',
         about_label: 'Sobre Nosotros',
         about_title: 'Sitios Web para Negocios, <span class="green">Bien Hechos</span>',
         about_sub:   'Nos especializamos en diseño web profesional y accesible para pequeños negocios en los 50 estados. Sin agencias costosas, sin contratos confusos — solo resultados.',
@@ -1790,6 +1893,20 @@
         pkg_growth_name:  'Crecimiento',
         pkg_premium_name: 'Premium',
         pkg_btn_start:    'Comenzar',
+        faq_label: 'Preguntas Frecuentes',
+        faq_title: 'Respuestas Antes de que <span class="green">Preguntes</span>',
+        faq1_q: '¿Qué pasa si todavía no tengo logo o fotos?',
+        faq1_a: '<p>Sin problema. Conseguimos fotos profesionales que se adaptan a tu negocio y podemos trabajar con contenido provisional mientras reúnes tus materiales. Si necesitas un logo, lo ofrecemos como complemento. La mayoría de clientes llegan a nosotros solo con el nombre del negocio y un teléfono — nosotros nos encargamos del resto.</p>',
+        faq2_q: '¿En qué plataforma construyen? ¿Puedo actualizar el sitio yo mismo?',
+        faq2_a: '<p>Construimos sitios con código limpio y personalizado, sin plataformas con suscripción. En los planes Growth y Premium podemos agregar un editor de contenido sencillo para que puedas actualizar textos, fotos y publicaciones de blog. En todos los planes, estamos disponibles para ediciones — solo envíanos un mensaje y lo resolvemos, generalmente en 24 horas.</p>',
+        faq3_q: '¿Son sitios reales de clientes los que aparecen en tu portafolio?',
+        faq3_a: '<p>Sí — cada sitio en nuestro portafolio es un sitio web en vivo construido para un cliente real. Algunos están alojados en subdominios de pocketsod.com mientras el cliente configura su propio dominio; otros ya están en el dominio del cliente. Todos están en uso activo.</p>',
+        faq4_q: '¿Qué pasa si no estoy satisfecho con cómo quedó el sitio?',
+        faq4_a: '<p>No lanzamos hasta que tú lo apruebes. Si algo no está bien — diseño, colores, textos, lo que sea — lo corregimos. No hay cobros adicionales por solicitudes razonables de revisión durante la construcción. Nuestro objetivo es un sitio del que estés orgulloso de compartir.</p>',
+        faq5_q: '¿Cuánto tiempo tarda todo el proceso?',
+        faq5_a: '<p>La mayoría de los sitios se lanzan en 14 días desde el inicio. El plazo depende de la rapidez con que recibamos tus comentarios y materiales. Trabajamos rápido — la principal variable suele ser el ciclo de revisión del cliente, no nuestro tiempo de construcción.</p>',
+        faq6_q: '¿Ofrecen planes de pago?',
+        faq6_a: '<p>Sí. Trabajamos con un depósito del 50% al inicio y el 50% restante al lanzamiento. Para proyectos más grandes podemos hablar de un calendario de pagos por fases. Aceptamos todas las tarjetas principales y transferencia bancaria.</p>',
         pkg_s1: 'Hasta 3 páginas',
         pkg_s2: 'Formulario de contacto',
         pkg_s3: 'Diseño responsivo',

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -21,11 +21,11 @@
   <meta property="og:url"         content="https://pocketsod.com/blog/do-i-need-a-website-if-i-have-facebook.html">
   <meta property="og:title"       content="Do I Need a Website If I Have a Facebook Page?">
   <meta property="og:description" content="A Facebook page is not a website. Here's exactly what you're missing without one, and why it matters more than you think.">
-  <meta property="og:image"       content="https://pocketsod.com/brand_assests/OG.png">
+  <meta property="og:image"       content="https://pocketsod.com/brand_assets/OG.png">
   <meta property="og:site_name"   content="PocketSod LLC">
 
-  <link rel="icon" type="image/png" href="../brand_assests/favicon.png">
-  <link rel="apple-touch-icon"      href="../brand_assests/favicon.png">
+  <link rel="icon" type="image/png" href="../brand_assets/favicon.png">
+  <link rel="apple-touch-icon"      href="../brand_assets/favicon.png">
 
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
     "headline": "Do I Need a Website If I Have a Facebook Page?",
     "description": "A Facebook page is not a website. Here's exactly what you're missing without one.",
     "author": { "@type": "Organization", "name": "PocketSod LLC", "url": "https://pocketsod.com" },
-    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://pocketsod.com/brand_assests/PSlogo.png" } },
+    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://pocketsod.com/brand_assets/PSlogo.png" } },
     "datePublished": "2026-06-23",
     "url": "https://pocketsod.com/blog/do-i-need-a-website-if-i-have-facebook.html"
   }
@@ -349,6 +349,14 @@
     .lt-btn.active .lt-name { color: rgba(255,255,255,0.75); }
     .lt-divider { width: 1px; background: rgba(44,110,171,0.25); }
 
+    .more-articles { margin: 3rem 0 2rem; padding: 1.5rem; background: var(--cream-dark); border-radius: 12px; }
+    .more-label { font-family: var(--font-head); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 1rem; }
+    .more-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); text-decoration: none; }
+    .more-link:last-child { border-bottom: none; }
+    .more-link:hover .more-title { color: var(--blue); }
+    .more-tag { flex-shrink: 0; font-family: var(--font-head); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--dark); padding: 0.18rem 0.5rem; border-radius: 4px; }
+    .more-title { font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; color: var(--text); transition: color 0.2s ease; }
+
     @media (max-width: 600px) {
       .item-header { gap: 1rem; }
       .item-num { width: 44px; height: 44px; font-size: 1rem; }
@@ -374,7 +382,7 @@
 
   <nav class="nav">
     <a class="nav-logo" href="https://pocketsod.com/">
-      <img src="../brand_assests/PSlogo.png" alt="PocketSod">
+      <img src="../brand_assets/PSlogo.png" alt="PocketSod">
       <span>PocketSod</span>
     </a>
     <a class="nav-back" href="https://pocketsod.com/" data-i18n="nav_back">Back to Home</a>
@@ -453,6 +461,19 @@
       <p data-i18n="item5_p3">The good news: a professional small business website doesn't have to cost a fortune or take months. A clean, focused 3–5 page site — home, services, about, contact — is enough to establish credibility, rank in local searches, and convert visitors into customers. You don't need a blog, an online store, or a custom platform to start. You need a site that works.</p>
     </div>
 
+    <!-- MORE ARTICLES -->
+    <nav class="more-articles" aria-label="More articles">
+      <p class="more-label" data-i18n="more_label">More from the Blog</p>
+      <a class="more-link" href="how-to-get-your-business-on-google-maps.html">
+        <span class="more-tag" data-i18n="more1_tag">Local SEO</span>
+        <span class="more-title" data-i18n="more1_title">How to Get Your Small Business on Google Maps</span>
+      </a>
+      <a class="more-link" href="how-much-does-a-small-business-website-cost-2026.html">
+        <span class="more-tag" data-i18n="more2_tag">Pricing</span>
+        <span class="more-title" data-i18n="more2_title">How Much Does a Small Business Website Cost in 2026?</span>
+      </a>
+    </nav>
+
     <div class="cta-block">
       <div class="cta-block-inner">
         <span class="label" data-i18n="cta_label">Veteran-Owned · All 50 States</span>
@@ -500,6 +521,9 @@
         cta_label: 'Veteran-Owned · All 50 States',
         cta_h2: 'Ready to Own Your <span>Online Presence?</span>',
         cta_sub: 'PocketSod builds affordable, professional websites for small businesses: mobile-ready, SEO-optimized, and live in 14 days. Plans start at $500.',
+        more_label: 'More from the Blog',
+        more1_tag: 'Local SEO', more1_title: 'How to Get Your Small Business on Google Maps',
+        more2_tag: 'Pricing',   more2_title: 'How Much Does a Small Business Website Cost in 2026?',
         cta_btn: 'Get a Free Quote →',
         footer_copy: '© 2026 PocketSod LLC',
         footer_tag: 'Veteran-Owned Small Business Web Design'
@@ -534,6 +558,9 @@
         cta_label: 'Fundado por un Veterano · Los 50 Estados',
         cta_h2: '¿Listo para <span>Tener Tu Propia Presencia Online?</span>',
         cta_sub: 'PocketSod construye sitios web asequibles y profesionales para pequeños negocios: listos para móviles, optimizados para SEO, y en línea en 14 días. Desde $500.',
+        more_label: 'Más del Blog',
+        more1_tag: 'SEO Local', more1_title: 'Cómo Poner Tu Pequeño Negocio en Google Maps',
+        more2_tag: 'Precios',   more2_title: '¿Cuánto Cuesta un Sitio Web para Pequeños Negocios en 2026?',
         cta_btn: 'Pide una Cotización Gratis →',
         footer_copy: '© 2026 PocketSod LLC',
         footer_tag: 'Diseño Web para Pequeños Negocios — Fundado por un Veterano'

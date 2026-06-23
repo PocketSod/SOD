@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -21,11 +21,11 @@
   <meta property="og:url"         content="https://pocketsod.com/blog/bilingual-website-for-small-business.html">
   <meta property="og:title"       content="Bilingual Website for Your Small Business: Why EN/ES Matters">
   <meta property="og:description" content="42 million Spanish speakers in the US — most small business websites serve them in English only. Here's why a bilingual EN/ES site matters.">
-  <meta property="og:image"       content="https://pocketsod.com/brand_assests/OG.png">
+  <meta property="og:image"       content="https://pocketsod.com/brand_assets/OG.png">
   <meta property="og:site_name"   content="PocketSod LLC">
 
-  <link rel="icon" type="image/png" href="../brand_assests/favicon.png">
-  <link rel="apple-touch-icon"      href="../brand_assests/favicon.png">
+  <link rel="icon" type="image/png" href="../brand_assets/favicon.png">
+  <link rel="apple-touch-icon"      href="../brand_assets/favicon.png">
 
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
     "headline": "Bilingual Website for Your Small Business: Why EN/ES Matters",
     "description": "42 million Spanish speakers in the US — and most small business websites serve them in English only.",
     "author": { "@type": "Organization", "name": "PocketSod LLC", "url": "https://pocketsod.com" },
-    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://pocketsod.com/brand_assests/PSlogo.png" } },
+    "publisher": { "@type": "Organization", "name": "PocketSod LLC", "logo": { "@type": "ImageObject", "url": "https://pocketsod.com/brand_assets/PSlogo.png" } },
     "datePublished": "2026-06-23",
     "url": "https://pocketsod.com/blog/bilingual-website-for-small-business.html"
   }
@@ -121,6 +121,14 @@
     .lt-btn.active .lt-name { color: rgba(255,255,255,0.75); }
     .lt-divider { width: 1px; background: rgba(44,110,171,0.25); }
 
+    .more-articles { margin: 3rem 0 2rem; padding: 1.5rem; background: var(--cream-dark); border-radius: 12px; }
+    .more-label { font-family: var(--font-head); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 1rem; }
+    .more-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); text-decoration: none; }
+    .more-link:last-child { border-bottom: none; }
+    .more-link:hover .more-title { color: var(--blue); }
+    .more-tag { flex-shrink: 0; font-family: var(--font-head); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--dark); padding: 0.18rem 0.5rem; border-radius: 4px; }
+    .more-title { font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; color: var(--text); transition: color 0.2s ease; }
+
     @media (max-width: 600px) {
       .item-header { gap: 1rem; }
       .item-num { width: 44px; height: 44px; font-size: 1rem; }
@@ -146,7 +154,7 @@
 
   <nav class="nav">
     <a class="nav-logo" href="https://pocketsod.com/">
-      <img src="../brand_assests/PSlogo.png" alt="PocketSod">
+      <img src="../brand_assets/PSlogo.png" alt="PocketSod">
       <span>PocketSod</span>
     </a>
     <a class="nav-back" href="https://pocketsod.com/" data-i18n="nav_back">Back to Home</a>
@@ -225,6 +233,19 @@
       <p data-i18n="item5_p3">Even if you don't currently have many Spanish-speaking customers, a bilingual site positions you to capture that market as your area grows. US Hispanic population growth has outpaced overall population growth for decades. The businesses that built relationships with this community early have a significant head start over those that wait.</p>
     </div>
 
+    <!-- MORE ARTICLES -->
+    <nav class="more-articles" aria-label="More articles">
+      <p class="more-label" data-i18n="more_label">More from the Blog</p>
+      <a class="more-link" href="how-to-get-your-business-on-google-maps.html">
+        <span class="more-tag" data-i18n="more1_tag">Local SEO</span>
+        <span class="more-title" data-i18n="more1_title">How to Get Your Small Business on Google Maps</span>
+      </a>
+      <a class="more-link" href="5-things-every-small-business-website-needs.html">
+        <span class="more-tag" data-i18n="more2_tag">Essentials</span>
+        <span class="more-title" data-i18n="more2_title">5 Things Every Small Business Website Needs</span>
+      </a>
+    </nav>
+
     <div class="cta-block">
       <div class="cta-block-inner">
         <span class="label" data-i18n="cta_label">EN/ES · Veteran-Owned · All 50 States</span>
@@ -272,6 +293,9 @@
         cta_label: 'EN/ES · Veteran-Owned · All 50 States',
         cta_h2: 'Ready for a <span>Bilingual Website?</span>',
         cta_sub: 'PocketSod builds bilingual EN/ES websites for small businesses. Fluent Spanish support, fair prices, and live in 14 days. Growth and Premium plans include full bilingual builds.',
+        more_label: 'More from the Blog',
+        more1_tag: 'Local SEO',  more1_title: 'How to Get Your Small Business on Google Maps',
+        more2_tag: 'Essentials', more2_title: '5 Things Every Small Business Website Needs',
         cta_btn: 'Get a Free Quote →',
         footer_copy: '© 2026 PocketSod LLC',
         footer_tag: 'Veteran-Owned Small Business Web Design'
@@ -306,6 +330,9 @@
         cta_label: 'EN/ES · Fundado por un Veterano · Los 50 Estados',
         cta_h2: '¿Listo para un <span>Sitio Web Bilingüe?</span>',
         cta_sub: 'PocketSod construye sitios web bilingües EN/ES para pequeños negocios. Soporte fluido en español, precios justos, y en línea en 14 días.',
+        more_label: 'Más del Blog',
+        more1_tag: 'SEO Local',  more1_title: 'Cómo Poner Tu Pequeño Negocio en Google Maps',
+        more2_tag: 'Esenciales', more2_title: '5 Cosas que Todo Sitio Web de Negocio Necesita',
         cta_btn: 'Pide una Cotización Gratis →',
         footer_copy: '© 2026 PocketSod LLC',
         footer_tag: 'Diseño Web para Pequeños Negocios — Fundado por un Veterano'
