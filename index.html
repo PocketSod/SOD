@@ -988,9 +988,10 @@
       margin-bottom: 1rem;
     }
     .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     .footer-col ul a {
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.82);
       transition: color var(--t);
     }
     .footer-col ul a:hover { color: var(--white); }
@@ -1395,13 +1396,13 @@
       <div class="testimonials-header reveal">
         <span class="label" data-i18n="testi_label">Client Stories</span>
         <h2 class="section-title" data-i18n-html="testi_title">What Our <span class="green">Clients Say</span></h2>
-        <p class="section-sub" data-i18n="testi_sub">What the people we've built sites for actually said.</p>
+        <p class="section-sub" data-i18n="testi_sub">Client results, in their own words.</p>
       </div>
       <div class="testimonials-grid">
 
         <div class="testi-card reveal">
           <div class="testi-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span class="sr-only">5 out of 5 stars</span>
           </div>
           <p class="testi-quote" data-i18n="testi1_quote">"PocketSod created an attractive and highly effective bilingual website for DeLara LLC Consulting that perfectly matched our logo and branding. They took the time to understand our business and built a site that looks professional, feels polished, and clearly communicates our services in both English and Spanish. We have received great feedback from clients and are extremely happy with the final product."</p>
           <div class="testi-divider"></div>
@@ -1413,7 +1414,7 @@
 
         <div class="testi-card reveal">
           <div class="testi-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span class="sr-only">5 out of 5 stars</span>
           </div>
           <p class="testi-quote" data-i18n="testi2_quote">"PocketSod did an amazing job creating an attractive, professional website for my business and got me up and running much faster than I expected. They found smart ways to cut my costs while still making the site look great and helped improve my visibility online. I would highly recommend PocketSod to any small business looking for an affordable, effective website solution."</p>
           <div class="testi-divider"></div>
@@ -1425,7 +1426,7 @@
 
         <div class="testi-card reveal">
           <div class="testi-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span class="sr-only">5 out of 5 stars</span>
           </div>
           <p class="testi-quote" data-i18n="testi3_quote">"PocketSod created a gorgeous bilingual website for Casa De España en Indiana that truly reflects our organization and community. They also added an amazing daily-updating news feed that keeps our members informed and our website feeling fresh. The entire process was smooth, professional, and affordable. We could not be happier with the final result."</p>
           <div class="testi-divider"></div>
@@ -1692,7 +1693,7 @@
 
         testi_label: 'Client Stories',
         testi_title: 'What Our <span class="green">Clients Say</span>',
-        testi_sub:   'What the people we\'ve built sites for actually said.',
+        testi_sub:   'Client results, in their own words.',
         testi1_quote: '"PocketSod created an attractive and highly effective bilingual website for DeLara LLC Consulting that perfectly matched our logo and branding. They took the time to understand our business and built a site that looks professional, feels polished, and clearly communicates our services in both English and Spanish. We have received great feedback from clients and are extremely happy with the final product."',
         testi1_name:  'Lara D.',
         testi2_quote: '"PocketSod did an amazing job creating an attractive, professional website for my business and got me up and running much faster than I expected. They found smart ways to cut my costs while still making the site look great and helped improve my visibility online. I would highly recommend PocketSod to any small business looking for an affordable, effective website solution."',
