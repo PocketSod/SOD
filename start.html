@@ -797,10 +797,7 @@
 
       emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params, EMAILJS_PUBLIC_KEY)
         .then(() => {
-          document.getElementById('progressWrap').style.display = 'none';
-          document.getElementById('stepsContainer').style.display = 'none';
-          document.getElementById('trustBar').style.display = 'none';
-          document.getElementById('successScreen').classList.add('show');
+          window.location.href = '/thank-you.html';
         })
         .catch(() => {
           btn.textContent = 'Send My Request →';

@@ -290,6 +290,18 @@
       border-radius: 6px;
     }
     .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+    .nav-phone {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark) !important;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+    .nav-phone::before { content: '📞'; font-size: 0.75rem; }
+    .nav-phone:hover { color: var(--green-dark) !important; }
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -522,6 +534,21 @@
 
     /* ── PACKAGES ───────────────────────────────────── */
     .packages { background: var(--cream); }
+    .urgency-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(76,175,80,0.12);
+      border: 1px solid rgba(76,175,80,0.35);
+      color: var(--green-dark);
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
     .packages-header { text-align: center; margin-bottom: 3rem; }
     .packages-header .section-sub { margin: 0 auto; text-align: center; }
     .cards {
@@ -1162,6 +1189,7 @@
         <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
         <li><a href="#process" data-i18n="nav_process">Process</a></li>
         <li><a href="blog/" data-i18n="nav_blog">Blog</a></li>
+        <li><a href="tel:3173480539" class="nav-phone">(317) 348-0539</a></li>
         <li><a href="start.html" class="nav-cta" data-i18n="nav_cta">Get a Quote</a></li>
       </ul>
       <button class="nav-hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1176,6 +1204,7 @@
         <a href="#testimonials"  onclick="closeMobile()" data-i18n="nav_testimonials">Testimonials</a>
         <a href="#process"       onclick="closeMobile()" data-i18n="nav_process">Process</a>
         <a href="blog/"                               data-i18n="nav_blog">Blog</a>
+        <a href="tel:3173480539">📞 (317) 348-0539</a>
         <a href="start.html" onclick="closeMobile()" data-i18n="nav_cta">Get a Quote</a>
       </div>
     </div>
@@ -1206,8 +1235,8 @@
     <div class="container">
       <div class="stats-inner">
         <div class="stat-item reveal">
-          <div class="stat-number" aria-hidden="true">🎖</div>
-          <div class="stat-label" data-i18n="stat_vet">Veteran Owned</div>
+          <div class="stat-number">10+</div>
+          <div class="stat-label" data-i18n="stat_sites">Sites Launched</div>
         </div>
         <div class="stat-item reveal">
           <div class="stat-number">50</div>
@@ -1258,6 +1287,7 @@
         <span class="label blue" data-i18n="pkg_label">Pricing</span>
         <h2 class="section-title" data-i18n-html="pkg_title">Simple, <span class="blue">Transparent</span> Packages</h2>
         <p class="section-sub" data-i18n="pkg_sub">Pick the package that fits your business. The price you see is the price you pay.</p>
+        <div class="urgency-badge" data-i18n="pkg_urgency">📅 Currently booking July — a few spots remain</div>
       </div>
       <div class="cards">
         <!-- Starter -->
@@ -1726,7 +1756,7 @@
         hero_cta_primary:  'Get a Free Quote',
         hero_cta_secondary:'See Packages',
 
-        stat_vet:          'Veteran Owned',
+        stat_sites:        'Sites Launched',
         stat_states:       'States Served',
         stat_days:         'Day Avg Launch',
         stat_satisfaction: 'Satisfaction Rate',
@@ -1746,6 +1776,7 @@
         pkg_label:        'Pricing',
         pkg_title:        'Simple, <span class="blue">Transparent</span> Packages',
         pkg_sub:          'Pick the package that fits your business. The price you see is the price you pay.',
+        pkg_urgency:      '📅 Currently booking July — a few spots remain',
         pkg_popular:      'Most Popular',
         pkg_onetime:      'one-time',
         pkg_starter_name: 'Starter',
@@ -1884,7 +1915,7 @@
         hero_cta_primary:  'Cotización Gratis',
         hero_cta_secondary:'Ver Paquetes',
 
-        stat_vet:          'Empresa Veterana',
+        stat_sites:        'Sitios Lanzados',
         stat_states:       'Estados Atendidos',
         stat_days:         'Días Promedio',
         stat_satisfaction: 'Satisfacción Total',
@@ -1904,6 +1935,7 @@
         pkg_label:        'Precios',
         pkg_title:        'Paquetes <span class="blue">Simples y Transparentes</span>',
         pkg_sub:          'Elige el paquete que se adapta a tu negocio. Sin cargos ocultos, sin sorpresas.',
+        pkg_urgency:      '📅 Actualmente agendando julio — pocos lugares disponibles',
         pkg_popular:      'Más Popular',
         pkg_onetime:      'pago único',
         pkg_starter_name: 'Inicial',
