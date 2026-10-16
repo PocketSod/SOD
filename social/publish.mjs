@@ -4,7 +4,7 @@
  * Usage:
  *   node social/publish.mjs                 # publish every post dated today (America/New_York)
  *   node social/publish.mjs --id w1-en      # publish one post by id
- *   node social/publish.mjs --dry-run       # show what would be posted, call nothing
+ *   node social/publish.mjs --dry-run       # show what would be posted; with a token set, also check access (read-only)
  *
  * Env: META_PAGE_TOKEN, META_PAGE_ID, META_IG_ID (META_IG_ID optional: skips Instagram if unset)
  * Posts come from social/weekly/posts.json. Images must already be live on pocketsod.com.
@@ -50,6 +50,15 @@ async function postToInstagram(post) {
   return id;
 }
 
+// Read-only: confirms the token can see the Page and Instagram account
+async function verifyAccess() {
+  const page = await graph(process.env.META_PAGE_ID, { fields: 'name' }, 'GET');
+  console.log(`Token OK for Facebook Page: ${page.name}`);
+  if (!process.env.META_IG_ID) return console.log('No META_IG_ID set: Instagram will be skipped');
+  const ig = await graph(process.env.META_IG_ID, { fields: 'username' }, 'GET');
+  console.log(`Token OK for Instagram: @${ig.username}`);
+}
+
 async function publish(post) {
   if (dryRun) return console.log(`[dry run] ${post.id} → ${post.image}\n${post.caption}\n`);
   console.log(`${post.id}: Facebook ${await postToFacebook(post)}`);
@@ -64,6 +73,10 @@ if (!dryRun && due.length && !(process.env.META_PAGE_TOKEN && process.env.META_P
 }
 
 let failed = false;
+if (dryRun && process.env.META_PAGE_TOKEN) {
+  try { await verifyAccess(); }
+  catch (err) { failed = true; console.error(`Access check failed: ${err.message}`); }
+}
 for (const post of due) {
   try { await publish(post); }
   catch (err) { failed = true; console.error(`${post.id} failed: ${err.message}`); }
