@@ -534,21 +534,6 @@
 
     /* ── PACKAGES ───────────────────────────────────── */
     .packages { background: var(--cream); }
-    .urgency-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(76,175,80,0.12);
-      border: 1px solid rgba(76,175,80,0.35);
-      color: var(--green-dark);
-      font-family: var(--font-head);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-      letter-spacing: 0.02em;
-    }
     .packages-header { text-align: center; margin-bottom: 3rem; }
     .packages-header .section-sub { margin: 0 auto; text-align: center; }
     .cards {
@@ -617,6 +602,8 @@
       font-size: 0.85rem;
       font-weight: 400;
       color: var(--muted);
+      display: block;
+      margin-top: 0.4rem;
     }
     .card-features {
       display: flex;
@@ -1291,7 +1278,6 @@
         <span class="label blue" data-i18n="pkg_label">Pricing</span>
         <h2 class="section-title" data-i18n-html="pkg_title">Simple, <span class="blue">Transparent</span> Packages</h2>
         <p class="section-sub" data-i18n="pkg_sub">Pick the package that fits your business. The price you see is the price you pay.</p>
-        <div class="urgency-badge" data-i18n="pkg_urgency">📅 Currently booking July — a few spots remain</div>
       </div>
       <div class="cards">
         <!-- Starter -->
@@ -1744,7 +1730,6 @@
             <li><a href="tel:3173480539">(317) 348-0539</a></li>
             <li><a href="mailto:contact@pocketsod.com">contact@pocketsod.com</a></li>
             <li><a href="start.html" data-i18n="hero_cta_primary">Get a Free Quote</a></li>
-            <li><a href="https://g.page/r/pocketsod" target="_blank" rel="noopener noreferrer">Google Business</a></li>
             <li><a href="https://www.linkedin.com/company/pocketsod" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href="https://www.facebook.com/profile.php?id=61573347643482" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             <li><a href="https://www.instagram.com/psllc2026/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
@@ -1796,7 +1781,6 @@
         pkg_label:        'Pricing',
         pkg_title:        'Simple, <span class="blue">Transparent</span> Packages',
         pkg_sub:          'Pick the package that fits your business. The price you see is the price you pay.',
-        pkg_urgency:      '📅 Currently booking July — a few spots remain',
         pkg_popular:      'Most Popular',
         pkg_onetime:      'one-time',
         pkg_starter_name: 'Starter',
@@ -1956,7 +1940,6 @@
         pkg_label:        'Precios',
         pkg_title:        'Paquetes <span class="blue">Simples y Transparentes</span>',
         pkg_sub:          'Elige el paquete que se adapta a tu negocio. Sin cargos ocultos, sin sorpresas.',
-        pkg_urgency:      '📅 Actualmente agendando julio — pocos lugares disponibles',
         pkg_popular:      'Más Popular',
         pkg_onetime:      'pago único',
         pkg_starter_name: 'Inicial',

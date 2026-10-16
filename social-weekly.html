@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>PocketSod Weekly Posts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:      #1A3356;
+      --navy-deep: #111E30;
+      --blue:      #2C6EAB;
+      --green:     #4CAF50;
+      --green-dim: rgba(76,175,80,0.14);
+      --cream:     #F8F5F0;
+      --cream-2:   #EFEAE1;
+      --ink:       #1A3356;
+      --muted:     #5B6B80;
+    }
+
+    /* ── GALLERY CHROME (not exported) ── */
+    body {
+      background: #0E141D;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 48px 32px 96px;
+    }
+    .page-head { max-width: 1100px; margin: 0 auto 48px; }
+    .page-head h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px; font-weight: 800; letter-spacing: -0.03em;
+    }
+    .page-head p { color: rgba(248,245,240,0.6); font-size: 15px; max-width: 70ch; }
+    .page-head code { color: var(--cream); }
+
+    .week { max-width: 1100px; margin: 0 auto 80px; }
+    .week-head {
+      display: flex; align-items: baseline; gap: 16px;
+      padding-bottom: 12px; margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .week-head h2 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; }
+    .week-head span { color: rgba(248,245,240,0.5); font-size: 14px; }
+
+    .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+    .variant h3 { font-size: 13px; font-weight: 600; color: rgba(248,245,240,0.55); margin-bottom: 10px; }
+    .scale { zoom: 0.48; width: 1080px; border-radius: 16px; overflow: hidden; }
+    .caption {
+      margin-top: 16px; padding: 16px; border-radius: 8px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+      font-size: 14px; white-space: pre-line; color: rgba(248,245,240,0.85);
+    }
+
+    /* ── POST CARD · 1080 × 1350 (4:5 feed) ── */
+    .post {
+      position: relative;
+      width: 1080px; height: 1350px;
+      overflow: hidden;
+      background:
+        radial-gradient(900px 600px at 100% 0%, rgba(76,175,80,0.10), transparent 60%),
+        radial-gradient(700px 500px at 0% 100%, rgba(44,110,171,0.10), transparent 60%),
+        var(--cream);
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+    }
+    .post .grain {
+      position: absolute; inset: 0; z-index: 5; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+
+    .post .head { position: absolute; left: 64px; right: 64px; top: 64px; }
+    .post .tag {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 600;
+      color: #2E7D32; background: var(--green-dim);
+      padding: 8px 20px; border-radius: 999px;
+    }
+    .post .headline {
+      margin-top: 24px;
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: 68px; line-height: 1.06; letter-spacing: -0.03em;
+      color: var(--navy);
+      max-width: 940px;
+      text-wrap: balance;
+    }
+
+    /* the pocket */
+    .pocket { position: absolute; left: 64px; top: 360px; width: 952px; height: 820px; }
+    .pocket svg { position: absolute; inset: 0; filter: drop-shadow(0 2px 4px rgba(17,30,48,0.10)) drop-shadow(0 18px 40px rgba(17,30,48,0.18)); }
+    .pocket .inner {
+      position: absolute; left: 72px; right: 72px; top: 72px; height: 600px;
+      color: var(--cream);
+    }
+
+    .post .foot {
+      position: absolute; left: 64px; right: 64px; bottom: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .post .foot img { height: 120px; width: auto; margin-left: -12px; }
+    .post .foot .url {
+      font-family: 'Poppins', sans-serif; font-size: 30px; font-weight: 700;
+      color: var(--blue); letter-spacing: -0.01em;
+    }
+
+    /* week 1 · client spotlight */
+    .browser { border-radius: 12px; overflow: hidden; background: var(--cream); box-shadow: 0 12px 32px rgba(0,0,0,0.30); }
+    .browser .bar { height: 44px; display: flex; align-items: center; gap: 9px; padding: 0 18px; background: var(--cream-2); }
+    .browser .bar i { width: 13px; height: 13px; border-radius: 50%; display: block; }
+    .browser .bar i:nth-child(1) { background: #E5604F; }
+    .browser .bar i:nth-child(2) { background: #E8B33F; }
+    .browser .bar i:nth-child(3) { background: #5DB860; }
+    .browser .bar span {
+      margin-left: 14px; flex: 1; height: 28px; border-radius: 6px; background: #fff;
+      font-size: 16px; line-height: 28px; padding: 0 12px; color: var(--muted);
+    }
+    .browser img { display: block; width: 100%; height: 470px; object-fit: cover; object-position: top; }
+    .spot-meta { margin-top: 14px; font-size: 32px; font-weight: 500; color: var(--muted); }
+
+    /* week 2 · pricing */
+    .price { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 190px; line-height: 0.95; letter-spacing: -0.04em; color: var(--green); }
+    .price-sub { font-size: 30px; font-weight: 500; color: rgba(248,245,240,0.8); margin-top: 8px; }
+    .checks { list-style: none; margin-top: 40px; display: grid; gap: 18px; }
+    .checks li { display: flex; align-items: center; gap: 18px; font-size: 34px; font-weight: 500; }
+    .checks li::before {
+      content: ""; flex: none; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 22px no-repeat;
+    }
+
+    /* week 3 · tip */
+    .reasons { list-style: none; display: grid; gap: 34px; margin-top: 8px; }
+    .reasons li { padding-left: 34px; border-left: 5px solid var(--green); }
+    .reasons b { display: block; font-family: 'Poppins', sans-serif; font-size: 36px; font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; }
+    .reasons span { display: block; font-size: 27px; line-height: 1.45; color: rgba(248,245,240,0.75); margin-top: 6px; }
+
+    /* week 4 · review */
+    .mark { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 200px; line-height: 0.6; color: var(--green); height: 90px; }
+    .quote { font-size: 39px; line-height: 1.45; font-weight: 500; letter-spacing: -0.005em; }
+    .who { margin-top: 36px; font-size: 28px; color: rgba(248,245,240,0.7); }
+    .who b { color: var(--cream); font-weight: 600; }
+
+    /* ── EXPORT MODE (?card=w1-en) ── */
+    body.export { background: none; padding: 0; }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="pocket" viewBox="0 0 952 820">
+        <path d="M0 28 Q0 0 28 0 H924 Q952 0 952 28 V700 L476 820 L0 700 Z" fill="#1A3356"/>
+        <path d="M0 28 Q0 0 28 0 H924 Q952 0 952 28 V700 L476 820 L0 700 Z" fill="url(#pocketShade)"/>
+        <path d="M26 44 Q26 26 44 26 H908 Q926 26 926 44 V680 L476 792 L26 680 Z" fill="none" stroke="#F8F5F0" stroke-opacity="0.42" stroke-width="3" stroke-dasharray="16 11" stroke-linecap="round"/>
+      </symbol>
+      <radialGradient id="pocketShade" cx="0.25" cy="0" r="1.1">
+        <stop offset="0" stop-color="#2C6EAB" stop-opacity="0.45"/>
+        <stop offset="1" stop-color="#111E30" stop-opacity="0.35"/>
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <header class="page-head">
+    <h1>Weekly posts, Oct 19 – Nov 15</h1>
+    <p>One post a week for Instagram and Facebook, each in English and Spanish. Every card is 1080 × 1350, the 4:5 size both feeds show without cropping. Export a card with <code>?card=w1-en</code> (week 1–4, en or es).</p>
+  </header>
+
+  <!-- ═══ WEEK 1 · Client spotlight ═══ -->
+  <section class="week">
+    <div class="week-head"><h2>Week 1 · Client spotlight</h2><span>Week of Oct 19</span></div>
+    <div class="pair">
+      <div class="variant">
+        <h3>English</h3>
+        <div class="scale">
+          <article class="post" id="w1-en">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Client spotlight</span>
+              <h2 class="headline">Just launched: a new website for Warrner Legal.</h2>
+              <p class="spot-meta">An immigration law firm in Indianapolis</p>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <div class="browser">
+                  <div class="bar"><i></i><i></i><i></i><span>erinwlegal.com</span></div>
+                  <img src="brand_assets/portfolio/thumb-erinwlegal.webp" alt="Warrner Legal homepage">
+                </div>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">We just launched a new website for Warrner Legal, an immigration law firm in Indianapolis. Clients can now read about the firm's practice areas and request a consultation right from the homepage.
+
+See the site: erinwlegal.com
+Want one for your business? Get a free quote at pocketsod.com
+
+#SmallBusiness #WebDesign #Indianapolis #VeteranOwned</p>
+      </div>
+
+      <div class="variant">
+        <h3>Spanish</h3>
+        <div class="scale">
+          <article class="post" id="w1-es" lang="es">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Cliente destacado</span>
+              <h2 class="headline">Recién lanzado: el nuevo sitio web de Warrner Legal.</h2>
+              <p class="spot-meta">Un bufete de inmigración en Indianápolis</p>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <div class="browser">
+                  <div class="bar"><i></i><i></i><i></i><span>erinwlegal.com</span></div>
+                  <img src="brand_assets/portfolio/thumb-erinwlegal.webp" alt="Página principal de Warrner Legal">
+                </div>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">Acabamos de lanzar el nuevo sitio web de Warrner Legal, un bufete de inmigración en Indianápolis. Ahora sus clientes pueden conocer sus áreas de práctica y pedir una consulta desde la página principal.
+
+Visita el sitio: erinwlegal.com
+¿Quieres uno para tu negocio? Pide tu cotización gratis en pocketsod.com
+
+#PequeñosNegocios #DiseñoWeb #Indianápolis #NegociosHispanos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WEEK 2 · Pricing ═══ -->
+  <section class="week">
+    <div class="week-head"><h2>Week 2 · Clear pricing</h2><span>Week of Oct 26</span></div>
+    <div class="pair">
+      <div class="variant">
+        <h3>English</h3>
+        <div class="scale">
+          <article class="post" id="w2-en">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Pricing</span>
+              <h2 class="headline">What does a small business website cost?</h2>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <div class="price">$500</div>
+                <p class="price-sub">Starter package, one-time price</p>
+                <ul class="checks">
+                  <li>Up to 3 pages</li>
+                  <li>Contact form and Google Maps</li>
+                  <li>Looks right on every phone</li>
+                  <li>Revisions until you love it</li>
+                  <li>Live in about 14 days</li>
+                </ul>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">A professional website for your business starts at $500, paid once. Our Starter package includes up to 3 pages, a contact form, Google Maps, a design that works on every phone, and revisions until you love it. Most sites go live in about 14 days.
+
+Need more pages, a blog, or English and Spanish? Our Growth and Premium packages cover that.
+
+Get a free quote at pocketsod.com
+
+#SmallBusiness #WebDesign #SmallBusinessOwner #VeteranOwned</p>
+      </div>
+
+      <div class="variant">
+        <h3>Spanish</h3>
+        <div class="scale">
+          <article class="post" id="w2-es" lang="es">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Precios</span>
+              <h2 class="headline">¿Cuánto cuesta un sitio web para tu negocio?</h2>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <div class="price">$500</div>
+                <p class="price-sub">Paquete Inicial, pago único</p>
+                <ul class="checks">
+                  <li>Hasta 3 páginas</li>
+                  <li>Formulario de contacto y Google Maps</li>
+                  <li>Se ve bien en cualquier celular</li>
+                  <li>Cambios hasta que te encante</li>
+                  <li>En línea en unos 14 días</li>
+                </ul>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">Un sitio web profesional para tu negocio desde $500, en un solo pago. El paquete Inicial incluye hasta 3 páginas, formulario de contacto, Google Maps, un diseño que se ve bien en cualquier celular y cambios hasta que te encante. La mayoría de los sitios están en línea en unos 14 días.
+
+¿Necesitas más páginas, un blog o tu sitio en inglés y español? Los paquetes Crecimiento y Premium lo incluyen.
+
+Pide tu cotización gratis en pocketsod.com
+
+#PequeñosNegocios #DiseñoWeb #Emprendedores #NegociosHispanos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WEEK 3 · Tip ═══ -->
+  <section class="week">
+    <div class="week-head"><h2>Week 3 · Quick tip</h2><span>Week of Nov 2</span></div>
+    <div class="pair">
+      <div class="variant">
+        <h3>English</h3>
+        <div class="scale">
+          <article class="post" id="w3-en">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Quick tip</span>
+              <h2 class="headline">Have a Facebook page? You still need a website.</h2>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <ul class="reasons">
+                  <li><b>You don't own your page.</b><span>Facebook sets the rules and can change your reach overnight.</span></li>
+                  <li><b>Google can't see most of it.</b><span>Customers searching for you may never find it.</span></li>
+                  <li><b>A website builds trust.</b><span>New customers take a real site more seriously.</span></li>
+                  <li><b>You can't collect leads there.</b><span>No quote forms, no email list of your own.</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">A Facebook page is a great start, but it isn't a website. You don't own the page, Google can't see most of it, and you can't build an email list there. Your website is the one place online that's fully yours.
+
+Read the full post: pocketsod.com/blog/do-i-need-a-website-if-i-have-facebook.html
+
+#SmallBusinessTips #WebDesign #LocalBusiness #SmallBusiness</p>
+      </div>
+
+      <div class="variant">
+        <h3>Spanish</h3>
+        <div class="scale">
+          <article class="post" id="w3-es" lang="es">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Consejo rápido</span>
+              <h2 class="headline">¿Tienes Facebook? Igual necesitas un sitio web.</h2>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <ul class="reasons">
+                  <li><b>Tu página no es tuya.</b><span>Facebook pone las reglas y puede cambiar tu alcance de un día para otro.</span></li>
+                  <li><b>Google no ve casi nada.</b><span>Los clientes que te buscan quizás nunca la encuentren.</span></li>
+                  <li><b>Un sitio web da confianza.</b><span>Los clientes nuevos toman más en serio un sitio propio.</span></li>
+                  <li><b>Ahí no captas clientes.</b><span>Sin formularios de cotización ni lista de correo propia.</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">Una página de Facebook es un buen comienzo, pero no es un sitio web. La página no es tuya, Google no ve casi nada de ella y ahí no puedes crear tu propia lista de correo. Tu sitio web es el único lugar en internet que es completamente tuyo.
+
+Lee el artículo completo: pocketsod.com/blog/do-i-need-a-website-if-i-have-facebook.html
+
+#ConsejosDeNegocio #DiseñoWeb #PequeñosNegocios #NegociosHispanos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WEEK 4 · Review ═══ -->
+  <section class="week">
+    <div class="week-head"><h2>Week 4 · Client review</h2><span>Week of Nov 9</span></div>
+    <div class="pair">
+      <div class="variant">
+        <h3>English</h3>
+        <div class="scale">
+          <article class="post" id="w4-en">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Client review</span>
+              <h2 class="headline">What it's like to work with us.</h2>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <div class="mark">“</div>
+                <p class="quote">PocketSod did an amazing job creating an attractive, professional website for my business and got me up and running much faster than I expected. They found smart ways to cut my costs while still making the site look great.</p>
+                <p class="who"><b>Alex Z.</b>, AZ Powerwash</p>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">"Up and running much faster than I expected." Thank you, Alex! Here's what working with us was like for AZ Powerwash.
+
+See their site: azpowerwash.pocketsod.com
+Ready for yours? Get a free quote at pocketsod.com
+
+#ClientLove #SmallBusiness #WebDesign #VeteranOwned</p>
+      </div>
+
+      <div class="variant">
+        <h3>Spanish</h3>
+        <div class="scale">
+          <article class="post" id="w4-es" lang="es">
+            <div class="grain"></div>
+            <div class="head">
+              <span class="tag">Opinión de cliente</span>
+              <h2 class="headline">Así es trabajar con nosotros.</h2>
+            </div>
+            <div class="pocket">
+              <svg viewBox="0 0 952 820"><use href="#pocket"/></svg>
+              <div class="inner">
+                <div class="mark">“</div>
+                <p class="quote">PocketSod hizo un trabajo increíble creando un sitio web atractivo y profesional para mi negocio, y me puso en marcha mucho más rápido de lo esperado. Encontraron formas inteligentes de reducir mis costos sin sacrificar la calidad del diseño.</p>
+                <p class="who"><b>Alex Z.</b>, AZ Powerwash</p>
+              </div>
+            </div>
+            <div class="foot"><img src="brand_assets/PSlogo.png" alt="PocketSod"><span class="url">pocketsod.com</span></div>
+          </article>
+        </div>
+        <p class="caption">"Me puso en marcha mucho más rápido de lo esperado." ¡Gracias, Alex! Así fue trabajar con nosotros para AZ Powerwash.
+
+Mira su sitio: azpowerwash.pocketsod.com
+¿Listo para el tuyo? Pide tu cotización gratis en pocketsod.com
+
+#ClientesFelices #PequeñosNegocios #DiseñoWeb #NegociosHispanos</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ?card=w1-en renders that single card at full size for export
+    const id = new URLSearchParams(location.search).get('card');
+    const card = id && document.getElementById(id);
+    if (card) {
+      const sprite = document.querySelector('body > svg');
+      document.body.replaceChildren(sprite, card);
+      document.body.className = 'export';
+    }
+  </script>
+</body>
+</html>
