@@ -16,6 +16,7 @@
 - **Get a Quote intake page** — 3-step wizard at /start.html (EmailJS wired, nav CTA links here)
 - **Social media footer links** — LinkedIn, Facebook, Instagram linked in footer Contact column
 - **Social post cards (Posts 1–6)** — Published across LinkedIn, Instagram, Facebook (completed 2026-05-06)
+- **Weekly social posts, batch 1** — 4 weeks × EN/ES cards in `social-weekly.html`, auto-published to Facebook + Instagram by the daily "Weekly social posts" GitHub Action from `social/weekly/posts.json` (Oct 20 – Nov 12, 2026; set up 2026-10-16)
 
 ---
 
@@ -37,6 +38,9 @@ Free visibility in directories that serve your two core audiences:
 ---
 
 ## 🔲 Remaining Build Tasks (Claude can do these)
+
+**⏰ Next weekly social batch — due by Mon Nov 9, 2026**
+Batch 1 ends with the Nov 12 post; after that nothing is scheduled and posting stops. Ask Claude for "the next 4 weeks of social posts": it adds new cards to `social-weekly.html`, exports them, appends dated entries to `social/weekly/posts.json`, and pushes. Same rotation: client spotlight → pricing → tip → client review, EN on Tuesday, ES on Thursday.
 
 **6. Per-client case study pages**
 Brief pages for DeLara, AZ Powerwash, and Casa España Indiana — "the problem / what we built / the result." Rank for client name searches and serve as sales material.
