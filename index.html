@@ -700,11 +700,14 @@
     .portfolio-header { text-align: center; margin-bottom: 3rem; }
     .portfolio-header .section-sub { margin: 0 auto; }
     .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 2rem;
     }
     .portfolio-card {
+      flex: 0 1 calc((100% - 4rem) / 3);
+      min-width: 260px;
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -1135,7 +1138,8 @@
       .cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .addon-cards { grid-template-columns: 1fr; }
       /* Portfolio */
-      .portfolio-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .portfolio-grid { max-width: 420px; margin: 0 auto; }
+      .portfolio-card { flex-basis: 100%; }
       /* Process */
       .process-steps { grid-template-columns: repeat(2, 1fr); }
       .process-steps::before { display: none; }
