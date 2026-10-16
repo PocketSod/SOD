@@ -24,8 +24,8 @@
 **1. Check Google indexing**
 Search `pocketsod llc` on Google. If still not showing, go to Search Console → URL Inspection → Request Indexing again. Root cause (Porkbun redirect loop to pocketsod-com.l.ink) was fixed 2026-04-17.
 
-**2. Ask clients for Google reviews**
-Reach out to Lara D., Alex Z., and Maria W. and ask them to post their testimonials as Google reviews on your Business Profile. This is the single highest-impact thing you can do for local search right now.
+**2. Ask clients for Facebook recommendations**
+First make sure recommendations are turned on for the PocketSod Page (Page → Settings → Privacy / Reviews). Then ask Lara D., Alex Z., and Maria W. to post their existing testimonials as recommendations on the Page — send each a direct link. They show beside the weekly posts and need no business address. (PocketSod doesn't qualify for a Google Business Profile, so Google reviews aren't an option. Later: Clutch.co is the review site built for web design agencies.)
 
 
 **4. Get listed on veteran and Hispanic business directories**
