@@ -11,7 +11,7 @@
 import { createInterface } from 'readline';
 import { execFileSync } from 'child_process';
 
-const GRAPH = 'https://graph.facebook.com/v23.0';
+const GRAPH = 'https://graph.facebook.com/v26.0';
 const REPO = 'PocketSod/SOD';
 const GH = process.platform === 'win32' ? 'C:/Program Files/GitHub CLI/gh.exe' : 'gh';
 

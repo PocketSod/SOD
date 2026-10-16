@@ -13,7 +13,7 @@ import { readFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-const GRAPH = 'https://graph.facebook.com/v23.0';
+const GRAPH = 'https://graph.facebook.com/v26.0';
 const posts = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'weekly/posts.json'), 'utf8'));
 
 const args = process.argv.slice(2);
