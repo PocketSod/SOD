@@ -5,7 +5,6 @@
 - **Contact form** — EmailJS integration wired up, sends to contact@pocketsod.com
 - **Email** — Updated to contact@pocketsod.com across all pages (Porkbun forwarding to Gmail)
 - **Google Search Console** — Sitemap submitted at search.google.com/search-console
-- **Google Business Profile** — Set up at business.google.com
 - **Testimonials section** — 3 real quotes live (Lara D. / DeLara, Alex Z. / AZ Powerwash, Maria W. / Casa España Indiana)
 - **Real favicon** — brand_assests/favicon.png (denim pocket icon)
 - **Real OG image** — brand_assests/OG.png (1200×630 branded share card)
