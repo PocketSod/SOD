@@ -1,0 +1,38 @@
+name: Weekly social posts
+
+on:
+  schedule:
+    - cron: '0 14 * * *'   # daily; posts only when social/weekly/posts.json has an entry dated today (ET)
+  workflow_dispatch:
+    inputs:
+      id:
+        description: 'Post id to publish now (e.g. w1-en). Leave empty for today''s posts.'
+        required: false
+      dry_run:
+        description: 'Show what would be posted without posting'
+        type: boolean
+        default: false
+
+concurrency: social-weekly
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Publish
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_ID: ${{ secrets.META_IG_ID }}
+          POST_ID: ${{ inputs.id }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set --
+          if [ -n "$POST_ID" ]; then set -- "$@" --id "$POST_ID"; fi
+          if [ "$DRY_RUN" = "true" ]; then set -- "$@" --dry-run; fi
+          node social/publish.mjs "$@"
