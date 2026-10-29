@@ -63,7 +63,7 @@ This is a **static site** — no framework, no bundler, no build step.
 ├── 404.html            ← Custom error page
 ├── start.html          ← Onboarding/lead capture page
 ├── blog/               ← Blog posts (individual HTML files)
-├── clients/            ← Generated client sites (e.g. clients/coequity/)
+├── clients/            ← Generated client sites (e.g. clients/<slug>/)
 ├── template/           ← Source template for client site generator
 │   ├── index.html
 │   ├── css/style.css
@@ -111,7 +111,7 @@ python gui-generator.py   # GUI wrapper
 **Parameters:** Business Name, City, Primary Service, Phone, Formspree Form ID
 **Output:** `clients/{sanitized-business-name}/index.html`
 
-Generated client sites are committed into the same repo and served as subpaths (e.g. `pocketsod.com/clients/coequity/`).
+Generated client sites are committed into the same repo and served as subpaths (e.g. `pocketsod.com/clients/<slug>/`).
 
 ---
 
